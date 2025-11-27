@@ -4,4 +4,4 @@ The final analysis results in a score if >= 0 emails are classified as SPAM.
 If the final score is <0, an alert is provided for the presence of phishing emails.
 
 Script Usage
-$ python3 EN_CL_Phish_Check_ver_1.3.py test_email_1.eml
+$ python3 EN_CL_Phish_Check_ver_1.3.py test_email_x.eml

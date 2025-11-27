@@ -1,0 +1,292 @@
+Delivered-To: quad.hermes@gmail.com
+Received: by 2002:a05:7412:8096:b0:1a3:d8:56cc with SMTP id f22csp34753rda;
+        Tue, 11 Nov 2025 23:30:47 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG0CqfQqNy0E15V+DrpyRxnlnhKqsyO6kaSjHVwqG0brJSm2jn8+QiAx9VB9zrlBiMEbQwy
+X-Received: by 2002:a5d:5d10:0:b0:42b:3155:21da with SMTP id ffacd0b85a97d-42b4bb86a7amr1278108f8f.2.1762932647770;
+        Tue, 11 Nov 2025 23:30:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1762932647; cv=none;
+        d=google.com; s=arc-20240605;
+        b=GhlqbFdJn7dUy972dSSXiWXYidURw2IZsBfhh4nLD9FSr0yvd7P7jNvl+szQ17XbSd
+         fPMyR+cJBcuFnBartyfMMDJYaxIks1ktIuOmGKbNYF2LAvU9DsmS3yfZKwrZ5eKRdIrO
+         Q8QvuKSPJVu4T8AtKJ9k/cIiAMiNI179jBpfhVtyOmQiN5YvQt08Wf52k04cnjXv/aFe
+         qnS7iDnBSTAE7VNbe65uGhWU66Ji/EsMA7N0RBbVcyAI1mWOzvWx6mXoPQoDrLsBYYRV
+         fFvppiCGM6VE0pHzp0qWAI8fbngZFH1IfBgoYYWomfe0lw6TqO7Q4IdNvH2aoCm6tM3v
+         YHDA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=precedence:feedback-id:list-unsubscribe:list-unsubscribe-post
+         :mime-version:subject:message-id:to:reply-to:from:date
+         :dkim-signature;
+        bh=fqme9jwTeHpRvxOjj00tM/9gh+n1g98nICsWsgFZtX4=;
+        fh=jCZUi0CtEnhozcsvUlNJQnHncbRIOLm/k+fC6CTawTw=;
+        b=dVY6EHEPfnJOfkZb6mbaJ+rvsJDzXQHUcsa7W02QfxbAQVh076C/ma6fNeliXJ5rsJ
+         E9Uu96nahaXhejYa58aYG+Xd8pmcbhEJ1BDbiBr5IT0nICs2gKYOfBlyyq3IlDmX0u4L
+         m15tD3f9Bp8HpES9W4Vfhk8wCYuoYOXSfLHn3AS1bThfUxnGfh+BU/V97YZBQToUksOK
+         3/Ztp29owolqvcxTuPKCdkO/vU+1ggAjC5drxohuZNeG3v+3L+jQTTupsgT5kO8FxOdh
+         eILd7JQrpTA7wOR/H9Sivzjd9/6W2Badyr3B0w+N137XBCxsg656sX/EiVkKwoQULgOj
+         CYpg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@service.investimenti.bnpparibas.com header.s=default header.b="ctAaagH/";
+       spf=pass (google.com: domain of bnppetsdeux_rtfev-yuthhl@service.investimenti.bnpparibas.com designates 81.92.112.29 as permitted sender) smtp.mailfrom=bnppetsdeux_rtfev-yuthhl@service.investimenti.bnpparibas.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=service.investimenti.bnpparibas.com
+Return-Path: <bnppetsdeux_rtfev-yuthhl@service.investimenti.bnpparibas.com>
+Received: from mta1.service.investimenti.bnpparibas.com (mta1.service.investimenti.bnpparibas.com. [81.92.112.29])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-42ac6797dc9si9161746f8f.313.2025.11.11.23.30.47
+        for <quad.hermes@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 11 Nov 2025 23:30:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of bnppetsdeux_rtfev-yuthhl@service.investimenti.bnpparibas.com designates 81.92.112.29 as permitted sender) client-ip=81.92.112.29;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@service.investimenti.bnpparibas.com header.s=default header.b="ctAaagH/";
+       spf=pass (google.com: domain of bnppetsdeux_rtfev-yuthhl@service.investimenti.bnpparibas.com designates 81.92.112.29 as permitted sender) smtp.mailfrom=bnppetsdeux_rtfev-yuthhl@service.investimenti.bnpparibas.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=service.investimenti.bnpparibas.com
+Received: by mta1.service.investimenti.bnpparibas.com id h2grqe39snsh for <quad.hermes@gmail.com>; Wed, 12 Nov 2025 08:30:20 +0100 (envelope-from <bnppetsdeux_rtfev-yuthhl@service.investimenti.bnpparibas.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=default;
+ d=service.investimenti.bnpparibas.com;
+ h=Date:From:Reply-To:To:Message-ID:Subject:MIME-Version:Content-Type:
+ List-Unsubscribe-Post:List-Unsubscribe;
+ i=news@service.investimenti.bnpparibas.com;
+ bh=fqme9jwTeHpRvxOjj00tM/9gh+n1g98nICsWsgFZtX4=;
+ b=ctAaagH/iFhPvL8ke/OFsqiY+pesJnu9TBECqoJWYtm35UXv71S27XTIhNkgjCa1oeEfRJF8t5Bm
+   33BT+1CpzI3mIqQQx2N/ci9WCOXPdoySKhk9cpM9i0Gg4CMuNh1MI6+uzBB0bwm751CS+FuhUiKP
+   WSnCDR2zORtgApNTDcw=
+Received: by mta1.server.actito.com id h2groo39sns5 for <quad.hermes@gmail.com>; Wed, 12 Nov 2025 08:30:20 +0100 (envelope-from <bnppetsdeux_rtfev-yuthhl@service.investimenti.bnpparibas.com>)
+Date: Wed, 12 Nov 2025 08:30:20 +0100 (CET)
+From: BNP Paribas Investimenti <news@service.investimenti.bnpparibas.com>
+Reply-To: BNP Paribas Investimenti
+ <bnppetsdeux_rtfev-yuthhl@service.investimenti.bnpparibas.com>
+To: quad.hermes@gmail.com
+Message-ID: <101427826.1300721.1762932620368@webapp-sender-noheavy0-instance3.server.actito.com>
+Subject: Ci salutiamo prima delle vacanze di Natale! Ultimo evento dell'anno
+ di BNP Paribas
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1300720_1183603224.1762932620368"
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+List-Unsubscribe: <https://service.investimenti.bnpparibas.com/m/unsubscribe/200439/psaE3avNHlE9logYXEJMfA==>, <mailto:postmaster@campaign.citobi.be?subject=Unsubscribe2_200439_psaE3avNHlE9logYXEJMfA==>
+X-rpcampaign: bnppetsdeux_200439_520213
+X-MailType: Bulk
+X-CAMPAIGNTYPE: MASS
+X-SignalSpam-CID: 200439_520213
+Feedback-ID: 520213:200439:MASS:ACTITO
+X-job: 200439_520213
+X-ACTITO_INTERACTION_ID: C_200439_2_73421_psaE3avNHlE9logYXEJMfA==
+Precedence: bulk
+
+------=_Part_1300720_1183603224.1762932620368
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+EVENTO CON ANDREA CARTISANO
+
+<https://service.investimenti.bnpparibas.com/m/ml/200439/520213/psaE3avNHlE=
+9logYXEJMfA=3D=3D/unaZ54+oyp3f4aafqww2ch3iuQKTp2-DbtxYLycPxCw=3D/>
+
+EVENTO
+APERITRADING CON STEFANO SERAFINI
+Vi invitiamo all'ultimo seminario dell'anno, insieme a Stefano Serafini - i=
+l
+10 Dicembre alle ore 17:00, a Palazzo Diamante Piazza Bo Bardi 1/3 a Milano=
+.
+Durante la conferenza, Stefano approfondir=C3=A0 i principali market mover =
+e le
+tendenze attuali di mercato, oltre che dare pi=C3=B9 dettagli sul suo metod=
+o. Sar=C3=A0
+inoltre l=E2=80=99occasione per fare delle domande di persona, anche durant=
+e
+l=E2=80=99aperitivo che seguir=C3=A0. Sar=C3=A0 una bella occasione per sal=
+utarci prima delle
+vacanze Natalizie!
+
+10 Dicembre 2025
+ore 17:00 Palazzo Diamante, Milano
+Piazza Lina Bo Bardi, 3
+
+ISCRIVITI SUBITO, posti limitati
+<https://service.investimenti.bnpparibas.com/m/ml/200439/520213/psaE3avNHlE=
+9logYXEJMfA=3D=3D/unaZ54+oyp3f4aafqww2cjMkoGd1CnbibtxYLycPxCw=3D/>
+
+Messaggio pubblicitario con finalit=C3=A0 promozionali
+
+Prima di effettuare qualsiasi investimento si invita a leggere attentamente
+la documentazione di offerta e/o quotazione relativa agli strumenti finanzi=
+ari
+quivi menzionati, in particolare, le sezioni dedicate ai fattori di rischio
+connessi all=E2=80=99investimento, ai relativi costi e al trattamento fisca=
+le, nonch=C3=A9
+il relativo documento contenente le informazioni chiave (KID), ove disponib=
+ile.
+Tale documentazione =C3=A8 disponibile sul sito internet investimenti.bnppa=
+ribas.it
+e negli ulteriori eventuali luoghi indicati nella relativa documentazione d=
+i
+offerta e/o quotazione. L=E2=80=99investimento negli strumenti finanziari q=
+uivi
+menzionati pu=C3=B3 comportare il rischio di perdita totale o parziale del =
+capitale
+inizialmente investito, fermo restando il rischio Emittente e, ove applicab=
+ile,
+il rischio di assoggettamento del Garante allo strumento del bail-in. Ove t=
+ali
+strumenti finanziari siano venduti prima della scadenza, l=E2=80=99investit=
+ore potr=C3=A0
+incorrere anche in perdite in conto capitale. Nel caso in cui tali strument=
+i
+finanziari siano acquistati o venduti nel corso della loro durata, il
+rendimento potr=C3=A0 variare. Le informazioni quivi riportate hanno scopo =
+meramente
+promozionale e non sono da intendersi in alcun modo come ricerca,
+sollecitazione o raccomandazione all'investimento, offerta al pubblico o
+consulenza. Le informazioni e i grafici a contenuto finanziario quivi ripor=
+tati
+sono meramente indicativi e hanno scopo esclusivamente esemplificativo e no=
+n
+esaustivo. I rendimenti passati non sono indicativi dei rendimenti futuri. =
+BNP
+Paribas e/o le societ=C3=A0 del gruppo BNP Paribas non potr=C3=A0/anno esse=
+re
+considerata/e responsabile/i delle conseguenze finanziarie o di altra natur=
+a
+derivanti dall=E2=80=99investimento negli strumenti finanziari quivi menzio=
+nati.
+Avvertenza: L'indirizzo e-mail che stiamo utilizzando =C3=A8 stato da Lei f=
+ornito
+al momento della Sua iscrizione ai servizi del sito web
+investimenti.bnpparibas.it, in conformit=C3=A0 al Regolamento (UE) 2016/679=
+ del
+Parlamento europeo e del Consiglio, del 27 aprile 2016, relativo alla
+protezione delle persone fisiche con riguardo al trattamento dei dati
+personali, nonch=C3=A9 alla libera circolazione di tali dati e che abroga l=
+a
+direttiva 95/46/CE (General Data Protection Regulation - GDPR) e alle relat=
+ive
+disposizioni di attuazione in Italia, di cui al Decreto Legislativo n.
+196/2003, come modificato. In qualsiasi momento, pu=C3=B2 revocare il Suo c=
+onsenso
+all'utilizzo dei Suoi dati cliccandoQUI
+<https://service.investimenti.bnpparibas.com/m/ml/200439/520213/psaE3avNHlE=
+9logYXEJMfA=3D=3D/u5NCdiF7Wmi4evpT-KIwoOrtJVl2QxDS/ADCAAWh0dHBzOi8vc2VydiJw=
+AGNlLmludmUqEAB0MvAAbWVudGkuYm5wcGFyaWJhOhAALkJgAW9tL3dmLzIwMDQzOS82Mi9pdC9=
+TdGFKoAB0LmFjdD9wcm9mUBCgAWxlPTczNDIxJnByb2ZiMABsZUNoECAAZHgQIAU9Nzg2ZWJhZm=
+UzZjUyZmQyYTk2NjE5Y2VlMGI3OTE3NDJmMWFhYjg4Zg=3D=3D>
+. Per qualsiasi chiarimento, si prega di prendere visione della Data
+Information Notice del sito webinvestimenti.bnpparibas.it.
+<https://service.investimenti.bnpparibas.com/m/ml/200439/520213/psaE3avNHlE=
+9logYXEJMfA=3D=3D/unaZ54+oyp3f4aafqww2cqZBE1gYyfP7btxYLycPxCw=3D/>
+
+<>
+------=_Part_1300720_1183603224.1762932620368
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html> <html> <head> <meta charset=3D"UTF-8"> <title>EVENTO CON AN=
+DREA CARTISANO</title> </head> <body> <img style=3D"width: 1px; height: 1px=
+" width=3D"1" height=3D"1" id=3D"LogMailOpeningImg" src=3D"https://service.=
+investimenti.bnpparibas.com/m/opening/200439/520213/psaE3avNHlE9logYXEJMfA=
+=3D=3D/transpix.gif"> <table cellpadding=3D"0" cellspacing=3D"0" width=3D"6=
+00" align=3D"center" style=3D"border: 0px solid #E7E7E7;" bgcolor=3D"#FFFFF=
+F"> <tbody> <tr> <td align=3D"center"> <table align=3D"center" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"600"> <tbody> <tr align=3D"center"> <td a=
+lign=3D"center" height=3D"155" valign=3D"middle"><a href=3D"https://service=
+.investimenti.bnpparibas.com/m/ml/200439/520213/psaE3avNHlE9logYXEJMfA=3D=
+=3D/unaZ54+oyp3f4aafqww2ch3iuQKTp2-DbtxYLycPxCw=3D/" style=3D"display: bloc=
+k;" target=3D"blank"> <img src=3D"https://service.investimenti.bnpparibas.c=
+om/m/preview/images/200439/510744/j9v9CMw-o-f3RABLmFg-R5yF62B5gCKK/SGVhZGVy=
+IC0gREVNLSBESUZFU0EtQDJ4LTEwMF8zLmpwZw=3D=3D" width=3D"700" height=3D"413" =
+alt=3D"MORNING TRADING" style=3D"display: block;"> </a></td> </tr> <tr alig=
+n=3D"center"> <td> <table cellpadding=3D"0" cellspacing=3D"0" width=3D"600"=
+> <tbody> <tr> <td style=3D"padding: 20px 0px; color: rgb(51, 51, 51); font=
+-family: Arial,Helvetica,sans-serif; font-size: 15px; text-align: center; c=
+olor:#1F9262;"><strong>EVENTO</strong></td> </tr> <tr> <td style=3D"padding=
+: 0px 10px 10px 10px; font-family: Arial,Helvetica,sans-serif; font-size: 3=
+0px; text-align: center;"><strong>APERITRADING CON STEFANO SERAFINI</strong=
+></td> </tr> <tr> <td style=3D"padding: 15px 30px 35px 25px; color:#000000;=
+ font-family: Arial,Helvetica,sans-serif; font-size: 14px; text-align: cent=
+er; line-height:20px">Vi invitiamo all'ultimo seminario dell'anno, insieme =
+a <strong>Stefano Serafini</strong> - il 10 Dicembre alle ore 17:00, a Pala=
+zzo Diamante Piazza Bo Bardi 1/3 a Milano. Durante la conferenza, Stefano a=
+pprofondir=C3=A0 i principali market mover e le tendenze attuali di mercato=
+, oltre che dare pi=C3=B9 dettagli sul suo metodo. Sar=C3=A0 inoltre l=E2=
+=80=99occasione per fare delle domande di persona, anche durante l=E2=80=99=
+aperitivo che seguir=C3=A0. Sar=C3=A0 una bella occasione per salutarci pri=
+ma delle vacanze Natalizie!</td> </tr> </tbody> </table> <table width=3D"45=
+0" border=3D"0" align=3D"center"> <tbody> <tr> <td><img src=3D"https://serv=
+ice.investimenti.bnpparibas.com/m/preview/images/200439/517197/j9v9CMw-o-f3=
+RABLmFg-Ry4lrkdLYHTq/aW1tYWdpbmkvaWNvbl90cmFkaW5nLnBuZw=3D=3D" width=3D"210=
+" height=3D"86" alt=3D""></td> <td><img src=3D"https://service.investimenti=
+.bnpparibas.com/m/preview/images/200439/517197/j9v9CMw-o-f3RABLmFg-Ry4lrkdL=
+YHTq/aW1tYWdpbmkvaWNvbl9kaWFtYW50ZS5wbmc=3D" width=3D"210" height=3D"86" al=
+t=3D""></td> </tr> <tr> <td style=3D"padding: 0px 0px; color: rgb(51, 51, 5=
+1); font-family: Arial,Helvetica,sans-serif; font-size: 14px; text-align: c=
+enter; color:#000000;"><strong>10 Dicembre 2025<br>
+ore 17:00</strong></td> <td style=3D"padding: 0px 0px; color: rgb(51, 51, 5=
+1); font-family: Arial,Helvetica,sans-serif; font-size: 14px; text-align: c=
+enter; color:#000000;"><strong>Palazzo Diamante, Milano<br>
+Piazza Lina Bo Bardi, 3</strong></td> </tr> </tbody> </table><br></td> </tr=
+> </tbody> </table><br></td> </tr> <tr style=3D"font-family: Arial,Helvetic=
+a,sans-serif;" bgcolor=3D"#fff" align=3D"center"> <td style=3D"padding:10px=
+ 0px 35px;"><a href=3D"https://service.investimenti.bnpparibas.com/m/ml/200=
+439/520213/psaE3avNHlE9logYXEJMfA=3D=3D/unaZ54+oyp3f4aafqww2cjMkoGd1Cnbibtx=
+YLycPxCw=3D/" style=3D"max-width:400px; border:50px; background:#1F9262; he=
+ight:55px; display:block; text-transform:uppercase; text-decoration:none; l=
+ine-height:55px; font-size:17px; text-align:center; font-weight:bold; margi=
+n:0 auto; color: #FFFFFF;" target=3D"blank"> <center>
+ISCRIVITI SUBITO, posti limitati
+</center></a></td> </tr> <tr> <td align=3D"center"> <table cellpadding=3D"0=
+" cellspacing=3D"0" width=3D"600"> <tbody> <tr align=3D"center"> <td height=
+=3D"20" valign=3D"middle" style=3D"font-family: Arial, Helvetica, sans-seri=
+f; font-size:9px; padding:10px ;line-height: 13px; text-align: justify;"><s=
+pan style=3D"font-weight: bold;">Messaggio pubblicitario con finalit=C3=A0 =
+promozionali</span> <p></p> Prima di effettuare qualsiasi investimento si i=
+nvita a leggere attentamente la documentazione di offerta e/o quotazione re=
+lativa agli strumenti finanziari quivi menzionati, in particolare, le sezio=
+ni dedicate ai fattori di rischio connessi all=E2=80=99investimento, ai rel=
+ativi costi e al trattamento fiscale, nonch=C3=A9 il relativo documento con=
+tenente le informazioni chiave (KID), ove disponibile. Tale documentazione =
+=C3=A8 disponibile sul sito internet investimenti.bnpparibas.it e negli ult=
+eriori eventuali luoghi indicati nella relativa documentazione di offerta e=
+/o quotazione. L=E2=80=99investimento negli strumenti finanziari quivi menz=
+ionati pu=C3=B3 comportare il rischio di perdita totale o parziale del capi=
+tale inizialmente investito, fermo restando il rischio Emittente e, ove app=
+licabile, il rischio di assoggettamento del Garante allo strumento del bail=
+-in. Ove tali strumenti finanziari siano venduti prima della scadenza, l=E2=
+=80=99investitore potr=C3=A0 incorrere anche in perdite in conto capitale. =
+Nel caso in cui tali strumenti finanziari siano acquistati o venduti nel co=
+rso della loro durata, il rendimento potr=C3=A0 variare. Le informazioni qu=
+ivi riportate hanno scopo meramente promozionale e non sono da intendersi i=
+n alcun modo come ricerca, sollecitazione o raccomandazione all'investiment=
+o, offerta al pubblico o consulenza. Le informazioni e i grafici a contenut=
+o finanziario quivi riportati sono meramente indicativi e hanno scopo esclu=
+sivamente esemplificativo e non esaustivo. I rendimenti passati non sono in=
+dicativi dei rendimenti futuri. BNP Paribas e/o le societ=C3=A0 del gruppo =
+BNP Paribas non potr=C3=A0/anno essere considerata/e responsabile/i delle c=
+onseguenze finanziarie o di altra natura derivanti dall=E2=80=99investiment=
+o negli strumenti finanziari quivi menzionati.=20
+<p><strong>Avvertenza:</strong> L'indirizzo e-mail che stiamo utilizzando =
+=C3=A8 stato da Lei fornito al momento della Sua iscrizione ai servizi del =
+sito web investimenti.bnpparibas.it, in conformit=C3=A0 al Regolamento (UE)=
+ 2016/679 del Parlamento europeo e del Consiglio, del 27 aprile 2016, relat=
+ivo alla protezione delle persone fisiche con riguardo al trattamento dei d=
+ati personali, nonch=C3=A9 alla libera circolazione di tali dati e che abro=
+ga la direttiva 95/46/CE (General Data Protection Regulation - GDPR) e alle=
+ relative disposizioni di attuazione in Italia, di cui al Decreto Legislati=
+vo n. 196/2003, come modificato. In qualsiasi momento, pu=C3=B2 revocare il=
+ Suo consenso all'utilizzo dei Suoi dati cliccando <em><a href=3D"https://s=
+ervice.investimenti.bnpparibas.com/m/ml/200439/520213/psaE3avNHlE9logYXEJMf=
+A=3D=3D/u5NCdiF7Wmi4evpT-KIwoOrtJVl2QxDS/ADCAAWh0dHBzOi8vc2VydiJwAGNlLmludm=
+UqEAB0MvAAbWVudGkuYm5wcGFyaWJhOhAALkJgAW9tL3dmLzIwMDQzOS82Mi9pdC9TdGFKoAB0L=
+mFjdD9wcm9mUBCgAWxlPTczNDIxJnByb2ZiMABsZUNoECAAZHgQIAU9Nzg2ZWJhZmUzZjUyZmQy=
+YTk2NjE5Y2VlMGI3OTE3NDJmMWFhYjg4Zg=3D=3D" title=3D"https://service.investim=
+enti.bnpparibas.com/wf/200439/62/it/Start.act?profile=3D73421&amp;profileCo=
+de=3D786ebafe3f52fd2a96619cee0b791742f1aab88f" target=3D"blank">QUI</a></em=
+>. Per qualsiasi chiarimento, si prega di prendere visione della Data Infor=
+mation Notice del sito web <em><a href=3D"https://service.investimenti.bnpp=
+aribas.com/m/ml/200439/520213/psaE3avNHlE9logYXEJMfA=3D=3D/unaZ54+oyp3f4aaf=
+qww2cqZBE1gYyfP7btxYLycPxCw=3D/" target=3D"blank">investimenti.bnpparibas.i=
+t.</a></em></p></td> </tr> </tbody> </table></td> </tr> <tr> <td height=3D"=
+70" colspan=3D"0" align=3D"center"><a style=3D"border: none;"><img src=3D"h=
+ttps://service.investimenti.bnpparibas.com/m/preview/images/200439/517197/j=
+9v9CMw-o-f3RABLmFg-Ry4lrkdLYHTq/aW1tYWdpbmkvbG9nb19ibnBfaW52LmpwZw=3D=3D" w=
+idth=3D"600" height=3D"40" alt=3D"" style=3D"border: none; display: block;"=
+></a></td> </tr> </tbody> </table> </body> </html>
+------=_Part_1300720_1183603224.1762932620368--

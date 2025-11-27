@@ -1,0 +1,469 @@
+Delivered-To: quad.hermes@gmail.com
+Received: by 2002:a05:7412:4e02:b0:18e:5a96:f248 with SMTP id gb2csp3720460rdb;
+        Fri, 12 Sep 2025 02:54:56 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHv1iQ7rUb1XPR0HCNqdO7Je9bulaY5EW17yn4gF3wdMd4xEvq+IJkOpEhQyscE1zMJhv6k
+X-Received: by 2002:a05:6000:178c:b0:3d5:d5ea:38d5 with SMTP id ffacd0b85a97d-3e7657960acmr2067930f8f.25.1757670896175;
+        Fri, 12 Sep 2025 02:54:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1757670896; cv=none;
+        d=google.com; s=arc-20240605;
+        b=EpPXXXnsMiP+BIGERrcssYV0D7nTfZ9jMgP2GVnhvKiVp158ph5mQeXmuZlA9BJ6x2
+         8FjLoj8+HjwMrw4zDTm6UVDzJUMvPX9do6lXtRpv/5iXfKq4Jg5FywfqButZDtejCcNk
+         AEenfZv/zCqJIBrpQYgYJjhIcGwp3t1Bw/79QU5Z89D5VllquuS2DUnsSTTtni52ccDs
+         jQ1U1u3kAvus0h12C+zUCJdd8FU6vv9ICpf0MUtEScqzdsB2ZU8UEb1PsgP0JUMlFrba
+         qiRNetwkHxLWRQxXxJRgqVlds0w/1+47yY8qfqo9LGy+U2Ns50FNetu08Nh0DnRL6Yr+
+         Yf3w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:list-unsubscribe:list-unsubscribe-post
+         :content-transfer-encoding:mime-version:subject:message-id:to:from
+         :date:dkim-signature:dkim-signature;
+        bh=PhXD9tbLg0l7ywGtshuhjh8BOp6AbYcGmxuChL/YcMc=;
+        fh=jCZUi0CtEnhozcsvUlNJQnHncbRIOLm/k+fC6CTawTw=;
+        b=UvBhyZBI8k1ZTIMc1CEqNoVCTKKjfsRGpp+mBWvIb1Cmmg2X1Lzi0F2WpvqqaADTar
+         puoGCCdVk10iUZTcvAHF63pbEOZ5+VtOqjQ4JLmbz8eSFzchKhufqqCx65QsQEVHfZAz
+         NUBpjRRkaftYd1RXABKSmBR0/uOTKOwE61cnb7kE8q0SQAvwoWvf5cA6i+b8sTV7Js+L
+         lfsZRY92gqbr4Xjilf1+OlNOsBBY5b3RTc0yerB2xDDUgUV1r/k+I4BYxcgvQnLNGtvf
+         MHD8U+Kmpr3ZZfxO6h5hmTJNomsO4faJz3FAd9kfJkDP+nUiy4e/sac1oUmAc5i8BO2m
+         EuvQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@staffettaonline.com header.s=7y4do3wbpfj4tsf4dmrjq5tjlapplple header.b=WG8FfN28;
+       dkim=pass header.i=@amazonses.com header.s=ihchhvubuqgjsxyuhssfvqohv7z3u4hn header.b=VrxDYyhS;
+       spf=pass (google.com: domain of 010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000@eu-west-1.amazonses.com designates 54.240.3.7 as permitted sender) smtp.mailfrom=010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000@eu-west-1.amazonses.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=staffettaonline.com
+Return-Path: <010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000@eu-west-1.amazonses.com>
+Received: from a3-7.smtp-out.eu-west-1.amazonses.com (a3-7.smtp-out.eu-west-1.amazonses.com. [54.240.3.7])
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-45e018677aesi31544355e9.93.2025.09.12.02.54.55
+        for <quad.hermes@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 12 Sep 2025 02:54:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000@eu-west-1.amazonses.com designates 54.240.3.7 as permitted sender) client-ip=54.240.3.7;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@staffettaonline.com header.s=7y4do3wbpfj4tsf4dmrjq5tjlapplple header.b=WG8FfN28;
+       dkim=pass header.i=@amazonses.com header.s=ihchhvubuqgjsxyuhssfvqohv7z3u4hn header.b=VrxDYyhS;
+       spf=pass (google.com: domain of 010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000@eu-west-1.amazonses.com designates 54.240.3.7 as permitted sender) smtp.mailfrom=010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000@eu-west-1.amazonses.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=staffettaonline.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=7y4do3wbpfj4tsf4dmrjq5tjlapplple; d=staffettaonline.com;
+	t=1757670895;
+	h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:List-Unsubscribe-Post:List-Unsubscribe;
+	bh=AtdoCHlukKsJMQ+rWOCq8bG28VQZx/gIkDAqRw76lyM=;
+	b=WG8FfN28/xP4QE2iqiKEr3HiMU3phkM51QN2O6O6LkT1KslQv6FOwdyFhq5x0vJX
+	pK9ry00BhpW9oEcmSYnXJpSFK9UBdDK27RicECGdKfBNNz/ne46sW2lIMC0gkWFEZI8
+	+zcNVXS1Kqr93fJD5fRCIdeOyCwhhIJMaRr2s5Yg=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=ihchhvubuqgjsxyuhssfvqohv7z3u4hn; d=amazonses.com; t=1757670895;
+	h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:List-Unsubscribe-Post:List-Unsubscribe:Feedback-ID;
+	bh=AtdoCHlukKsJMQ+rWOCq8bG28VQZx/gIkDAqRw76lyM=;
+	b=VrxDYyhSQlC/lE8ZFHCW+MCO8HQV2ZgiHTDavAJCmqbRFZtPAAk3cKe3mjszrOg4
+	Uy17oSa+kmMfElzA3ac4KdJM7OXUD3KN8WCG8NxQoBV1guCB2Ju4pymXflAdInS9YY6
+	idPHJOOQhWpWJhyDRfuLFECeUeYQXlHNXjVbOf68=
+Date: Fri, 12 Sep 2025 09:54:55 +0000
+From: Newsletter Rienergia <newsletter.rienergia@staffettaonline.com>
+To: quad.hermes@gmail.com
+Message-ID: <010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000@eu-west-1.amazonses.com>
+Subject: Rinnovabili, una corsa a ostacoli - 11 settembre 2025
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Mailer: Lucee Mail
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+List-Unsubscribe: <http://rienergia.staffettaonline.com/unsubscribe/?req=F965EEA02702E53EE7FBEF2E454422E8D1F2C53ED30760C22FBE3F00FA8D3B71>
+X-CONTECH-ID: CONTECH-RIENERGIA
+X-CONTECHTAG-TAG: 37671
+X-CONTECHTAG-PORT: 2465
+Feedback-ID: ::1.eu-west-1.On5jXSEpTNPBtYuIxXgPTNyh1CprK0orOIyszfbTmlw=:AmazonSES
+X-SES-Outgoing: 2025.09.12-54.240.3.7
+
+
+				
+				 
+				
+				
+				
+
+				
+				
+				
+			
+			
+			<!DOCTYPE html>
+		<html lang="it">
+		<head>
+			<invalidTag charset="utf-8" />
+			<invalidTag name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
+			<style type='text/css' media='all'>
+			body {
+			    color:#444;
+			    font-size: 14px;
+			    line-height:21px;
+			    margin: 0
+			}
+			html {
+			    font-family: sans-serif;
+			    -webkit-text-size-adjust: 100%;
+			    -ms-text-size-adjust: 100%
+			}
+			h1, h2, h3, h4, h5, h6 {
+			    color:#222;
+			    font-weight: normal;
+			    line-height: 1.3;
+			    margin-top:2px;
+			    margin-bottom:12px;
+			}
+			h1 {font-size: 28px;}
+			#wrapper {
+			    background-color: #FFF;
+			    margin: 0 auto;
+			    width: 100%
+			}
+			.container {
+			    margin: 0 auto;
+			    padding: 0 20px;
+			    max-width: 1240px;
+			}
+			#primary-left {
+			    margin-right: 3%;
+			    float: left
+			}
+			#primary-left, #primary-right {
+			    margin-bottom: 30px;
+			    position: relative;
+			    width: 98%;
+			}
+			.clear {
+			    clear:both;
+			    display:block;
+			    overflow:hidden;
+			    visibility:hidden;
+			    width:0;
+			    height:0
+			}
+			.row:before, .row:after,
+			.clearfix:before, .clearfix:after, 
+			#primary-navigation:before, #primary-navigation:after,
+			.tabs ul:before, .tabs ul:after,
+			.zodiac-tabs ul:before, .zodiac-tabs ul:after,
+			ul.products:before, ul.products:after,
+			ul.cart_list li:before, ul.cart_list li:after,
+			ul.product_list_widget li:before, ul.product_list_widget li:after,
+			.product:before, .product:after {
+			    content: " ";
+			    display: table;
+			    width: 100%
+			}
+			.category-block-news-2 {
+			    margin-bottom: 20px
+			}
+			.category-title {
+			    margin-bottom: 15px;
+			    position: relative;
+			    padding: 0 15px;    
+			    line-height: 40px;
+			    height: 40px;
+			    background-color: #222
+			}
+			.category-title h3 {
+			    line-height: 40px;
+			    font-weight: 700;
+			    color: #fff;
+			    margin: 0;
+			    font-size: 15px;
+			    text-transform: uppercase
+			}
+			.entry-meta {
+			}
+			.entry-meta span {
+			}
+			.entry-meta span:after {
+			    margin-left: 4px;
+			    content: "-"
+			}
+			.entry-meta span:last-child:after {
+			    content: " ";
+			    margin-left: 0
+			}
+			.entry-meta .post-date, .entry-meta .post-comments, .entry-meta .post-author, .entry-meta .post-views {
+			    text-transform: uppercase;
+			    color: #999;
+			    font-size: 12px
+			}
+			.entry-meta a {
+			    color: #999 !important;
+			    text-decoration: none !important
+			}
+			.entry-meta a:hover {
+			    color: #222 !important
+			}
+			.main-post h2 {
+			    font-weight: 700;
+			    font-size:24px;
+			    margin:0
+			}
+			p {margin: 0 0 20px}
+			
+			img {border: 0; vertical-align: middle; max-width: 100%}
+			.main-post h2 a, 
+			ul.block-news a {
+			    text-decoration: none;
+			    color: #222
+			}
+			.main-post h2 a:hover, 
+			ul.block-news a:hover {
+			    color: #999
+			}
+			</style>
+		</head>
+		
+		<body>
+		
+			<div id="wrapper">
+				<div class="container">
+				<div id="primary-left">
+		     
+					<div>
+						
+						<span><a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Frienergia.staffettaonline.com/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/s1itIkrq4qBzYx73DpejA3BOZpg=443" target="0"><img src="http://rienergia.staffettaonline.com/nv14/img/rie-logo.png" ALT="" border="0" width="50%"></a></span>
+
+						
+						
+						
+
+						
+						
+
+						
+						
+						
+							
+						<h1><strong>Rinnovabili, una corsa a ostacoli - 11 settembre 2025 </strong></h1>
+						
+						
+			            
+					</div>		
+					
+				
+				
+					
+					
+					
+					
+					
+						
+							
+							
+								<div class="category-block-news-2 clearfix">
+									<div class="category-title" style="background-color: #8dc63f">
+					             		<h3>Analisi</h3>
+									</div>
+								</div>
+							
+							
+							
+								
+		
+		
+		
+		
+		
+			
+				 
+				
+			
+		
+		
+		
+							
+							
+							
+								
+								<div class="main-post">
+					            	<div class="cont-img">
+					                	<a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Frienergia.staffettaonline.com%2Farticolo%2F35792%2FEppure%2Ble%2Brinnovabili%2Bcontinuano%2B%E2%80%9Ctestardamente%E2%80%9D%2Ba%2Bcrescere%2FAterini%26utm_source=email%26utm_medium=Newseletter/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/Ysr45US63rCcyjymYptRbYyK6kQ=443"><img src="http://rienergia.staffettaonline.com/mediafiles/35792_art.jpg" width="200" alt="" title="" style="float:left;padding:5px;border:solid fff 3px;" align="left" /></a>
+					             	</div>
+					      		<div class="entry-meta">
+					            	<span class="post-date">giovedì, 11 settembre 2025</span>
+					            	<span class="post-author"><a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Frienergia.staffettaonline.com%2Fautore%2F276%2FAterini%2F0%26utm_source=email%26utm_medium=Newseletter/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/keKIMNMyRvqzuRlF861VnfAXGTM=443">Luca Aterini - (Caporedattore Greenreport.it)</a></span>
+					         	</div>
+					            	<h2><a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Frienergia.staffettaonline.com%2Farticolo%2F35792%2FEppure%2Ble%2Brinnovabili%2Bcontinuano%2B%E2%80%9Ctestardamente%E2%80%9D%2Ba%2Bcrescere%2FAterini%26utm_source=email%26utm_medium=Newseletter/2/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/pb1dRZ3G-PMOluKRbxnqDKZQ-oM=443">Eppure le rinnovabili continuano “testardamente” a crescere</a></h2>
+									<p><p>Mai come negli ultimi mesi, dal ritorno alla presidenza Usa di Donald <strong>Trump,</strong> la transizione ecologica ha dovuto confrontarsi col primato della politica e della guerra sull’economia: l’acuirsi delle tensioni internazionali – dal genocidio in corso a Gaza fino alla guerra d’invasione della Russia in Ucraina – s’accompagna al negazionismo climatico di The Donald</p></p>
+					         	</div>
+					 		
+						
+					
+						
+							
+							
+								<div class="category-block-news-2 clearfix">
+									<div class="category-title" style="background-color: #00AEEF">
+					             		<h3>Approfondimento</h3>
+									</div>
+								</div>
+							
+							
+							
+								
+		
+		
+		
+		
+		
+			
+				 
+				
+			
+		
+		
+		
+							
+							
+							
+								
+								<div class="main-post">
+					            	<div class="cont-img">
+					                	<a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Frienergia.staffettaonline.com%2Farticolo%2F35793%2FLa%2BCina%2Baccelera%2Bsempre%2Bpi%C3%B9%2Bsulle%2Brinnovabili%2Bper%2Binseguire%2Bi%2Bsuoi%2Bobiettivi%2Benergetici%2FDanesi%26utm_source=email%26utm_medium=Newseletter/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/KR_XcSjcMq-r3XKSdPJyJpa76RY=443"><img src="http://rienergia.staffettaonline.com/mediafiles/35793_art.jpg" width="200" alt="" title="" style="float:left;padding:5px;border:solid fff 3px;" align="left" /></a>
+					             	</div>
+					      		<div class="entry-meta">
+					            	<span class="post-date">giovedì, 11 settembre 2025</span>
+					            	<span class="post-author"><a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Frienergia.staffettaonline.com%2Fautore%2F2176%2FDanesi%2F0%26utm_source=email%26utm_medium=Newseletter/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/S2Hq9ug0akjVY8LBuA3E7FFQRm4=443">Michele Danesi - (ISPI)</a></span>
+					         	</div>
+					            	<h2><a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Frienergia.staffettaonline.com%2Farticolo%2F35793%2FLa%2BCina%2Baccelera%2Bsempre%2Bpi%C3%B9%2Bsulle%2Brinnovabili%2Bper%2Binseguire%2Bi%2Bsuoi%2Bobiettivi%2Benergetici%2FDanesi%26utm_source=email%26utm_medium=Newseletter/2/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/1euM13Or920d0jIzV8nHtEp_Deg=443">La Cina accelera sempre più sulle rinnovabili per inseguire i suoi obiettivi energetici</a></h2>
+									<p><p>La crescita a ritmi elevatissimi della Repubblica Popolare Cinese (RPC) nel settore delle <strong><em>clean tech</em> </strong>è un dato sotto gli occhi di tutti: d’altronde, visto che il Paese si sta avvicinando al picco di emissioni – fissato intorno al 2030, come annunciato dal Presidente Xi Jinping nel 2021 –, è necessaria un’accelerazione sempre maggiore anche per poter continuare a puntare verso l’ulteriore obiettivo, ovvero la neutralità carbonica entro il 2060.</p></p>
+					         	</div>
+					 		
+						
+					
+						
+							
+							
+								<hr>
+							
+							
+							
+								
+		
+		
+		
+		
+		
+			
+				 
+				
+			
+		
+		
+		
+							
+							
+							
+								
+								<div class="main-post">
+					            	<div class="cont-img">
+					                	<a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Frienergia.staffettaonline.com%2Farticolo%2F35794%2FRinnovabili:%2Bdopo%2Bil%2Bboom%2B2024,%2Bun%2Brallentamento%2Bnel%2B2025%2FLafronza%26utm_source=email%26utm_medium=Newseletter/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/lUA5nRW20LYJuq6D1Qh0ZEaZmS8=443"><img src="http://rienergia.staffettaonline.com/mediafiles/35794_art.jpg" width="200" alt="" title="" style="float:left;padding:5px;border:solid fff 3px;" align="left" /></a>
+					             	</div>
+					      		<div class="entry-meta">
+					            	<span class="post-date">giovedì, 11 settembre 2025</span>
+					            	<span class="post-author"><a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Frienergia.staffettaonline.com%2Fautore%2F2177%2FLafronza%2F0%26utm_source=email%26utm_medium=Newseletter/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/IPCf1HRaxFTSybJxVF4IR1WOlbE=443">Michelangelo Lafronza - (Segretario ANIE Rinnovabili)</a></span>
+					         	</div>
+					            	<h2><a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Frienergia.staffettaonline.com%2Farticolo%2F35794%2FRinnovabili:%2Bdopo%2Bil%2Bboom%2B2024,%2Bun%2Brallentamento%2Bnel%2B2025%2FLafronza%26utm_source=email%26utm_medium=Newseletter/2/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/_UhuEyj1RGciNa7e4IH1QAe3e7A=443">Rinnovabili: dopo il boom 2024, un rallentamento nel 2025</a></h2>
+									<p><p>Il <strong>2024</strong> è stato <strong>un anno positivo per le energie rinnovabili</strong> in Italia, con un aumento complessivo della capacità di generazione di quasi il 29%, confermando il ruolo strategico del settore per la sicurezza energetica e la competitività del Paese. La nuova capacità installata è cresciuta del 25%, mentre il <em>repowering</em> ha registrato un incremento del 68%, a conferma dell’attenzione del mercato non solo allo sviluppo di nuovi impianti, ma anche all’ottimizzazione del parco già esistente.</p></p>
+					         	</div>
+					 		
+						
+					
+						
+							
+							
+								<hr>
+							
+							
+							
+								
+		
+		
+		
+		
+		
+			
+				 
+				
+			
+		
+		
+		
+							
+							
+							
+								
+								<div class="main-post">
+					            	<div class="cont-img">
+					                	<a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Frienergia.staffettaonline.com%2Farticolo%2F35795%2FCosa%2Brallenta%2Ble%2Brinnovabili%2Bin%2BItalia%2FZorzoli%26utm_source=email%26utm_medium=Newseletter/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/tMYmKp6DvUlio2Xj3fsGmkzFwTA=443"><img src="http://rienergia.staffettaonline.com/mediafiles/35795_art.jpg" width="200" alt="" title="" style="float:left;padding:5px;border:solid fff 3px;" align="left" /></a>
+					             	</div>
+					      		<div class="entry-meta">
+					            	<span class="post-date">giovedì, 11 settembre 2025</span>
+					            	<span class="post-author"><a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Frienergia.staffettaonline.com%2Fautore%2F28%2FZorzoli%2F0%26utm_source=email%26utm_medium=Newseletter/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/fWz-9MAerMzoh-jEdSHaUcVgncA=443">G.B. Zorzoli - ()</a></span>
+					         	</div>
+					            	<h2><a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Frienergia.staffettaonline.com%2Farticolo%2F35795%2FCosa%2Brallenta%2Ble%2Brinnovabili%2Bin%2BItalia%2FZorzoli%26utm_source=email%26utm_medium=Newseletter/2/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/hLCNYKkcu7mb4MD-1bnRSWU5cvI=443">Cosa rallenta le rinnovabili in Italia?</a></h2>
+									<p><p>Due dati sono indiscutibili. Nel 2024, la Germania ha prodotto circa il 61,5% dell'energia elettrica con fonti rinnovabili, la Spagna quasi il 60%, mentre in Italia siamo  circa al 41%. Tra i grandi paesi europei solo in Francia, dove domina il nucleare, la percentuale (26,3%) è minore di quella italiana.</p></p>
+					         	</div>
+					 		
+						
+					
+					
+					
+					
+						
+				</div>
+				</div>
+			</div>
+			
+			
+			<table cellpadding="0" cellspacing="0" width="99%" border="0" align="center">
+			
+						
+			
+			<tr>
+				<td valign="top" align="left">
+				<span style="color:gray;">seguici su </span>
+				  <a href="https://f404gslc.r.eu-west-1.awstrack.me/L0/https:%2F%2Fwww.linkedin.com%2Fcompany%2Frienergia/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/fwgFUqxylLbfcDmFikLW6aqTbTE=443" target="_blank"><img src="http://rienergia.staffettaonline.com/images/socialnetwork/In.png" width="28" alt="linkedin" align="absmiddle" border="0"></a></li>
+				  <a href="https://f404gslc.r.eu-west-1.awstrack.me/L0/https:%2F%2Fplus.google.com%2F100860797002271716701%2Fabout%3Fhl=it/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/YgiuGSNd5G8sL3AugaTx6z_qkew=443" target="_blank"><img src="http://rienergia.staffettaonline.com/images/socialnetwork/Gplus.png" width="28" alt="GPlus" align="absmiddle" border="0"></a>		
+				  <a href="https://f404gslc.r.eu-west-1.awstrack.me/L0/https:%2F%2Fwww.facebook.com%2FRiEnergia%2F/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/NWytlXMNm5nTFAy60T62kr_QNmM=443" target="_blank"><img src="http://rienergia.staffettaonline.com/images/socialnetwork/Fb.png" width="28" alt="Fb" align="absmiddle" border="0"></a>
+				  <a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Fwww.twitter.com%2FRienergia/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/IOixfOHvk0AqMsOM1ul36X73lDQ=443" target="_blank"><img src="http://rienergia.staffettaonline.com/images/socialnetwork/Tw.png" width="28" alt="Twitter" align="absmiddle" border="0"></a>
+				</td>
+				
+				<td valign="top" align="right">
+				<a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Fwww.staffettaonline.com%2F/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/bxvZPXxkP_zDENN5JvOMGqIsbFw=443" target="_blank"><img src="http://rienergia.staffettaonline.com/nv14/img/Logo_staffetta_quotidiana_2013.png" border="0" width="190" align="absmiddle"></a>
+				<a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Fwww.rie.it%2F/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/u2rI9VIVeJs8lwrcCQc1YofRiNM=443" target="_blank"><img src="http://rienergia.staffettaonline.com/nv14/img/Logo-Rie.jpg" border="0" width="190" align="absmiddle"></a>
+				</td>
+				
+			</tr>
+			
+			</table>
+		
+		
+	<br>
+ 
+			
+			<hr>
+			
+			
+			Cordiali saluti
+			<BR>
+			La Redazione di RiEnergia
+			<hr align="center" color="red" noshade width="100%" size="1">
+				<font size="2" face="arial">
+				<b>Informazioni</b><BR>
+				La Newsletter di RiEnergia e' un servizio gratuito e volontario. 
+				<BR>Per cancellarsi dalla Newsletter e' sufficiente <a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Frienergia.staffettaonline.com%2Funsubscribe%2F%3Freq=F965EEA02702E53EE7FBEF2E454422E8D1F2C53ED30760C22FBE3F00FA8D3B71/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/gd7lAONzAHiIvIeRD28v55sGrIY=443" style="color:blue;">cliccare questo link</a>
+				<BR>Per problemi di tipo tecnico scrivere a <a href="mailto:webmaster@contechnet.it">webmaster@contechnet.it</a>
+				<BR><font size="2"><strong>Ricevi questa Newsletter perch&egrave; inviata all'indirizzo: quad.hermes@gmail.com</strong></font>
+	
+				<BR><BR>
+				<hr align="center" color="red" noshade width="100%" size="1">***
+				<BR><strong>Application and Hosting by <a href="http://f404gslc.r.eu-west-1.awstrack.me/L0/http:%2F%2Fwww.contechlab.it/1/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/drd7omkFzl74AkKYID9gZBMVvbE=443" target="_blank">Contech Lab</a></strong>
+				</font>
+				<hr align="center" color="red" noshade width="100%" size="1">
+				<img src="http://rienergia.staffettaonline.com/conferma_newsl_intermedia_read.cfm?req=F965EEA02702E53EE7FBEF2E454422E8D1F2C53ED30760C22FBE3F00FA8D3B71&ns_ns=427" border="0" alt="per la corretta visualizzazione della newsletter abilitare la visualizzazione immagini nella posta elettronica">
+			<img alt="" src="https://f404gslc.r.eu-west-1.awstrack.me/I0/010201993d597005-4c5179fe-2205-4f61-9e1e-9b361eb4e490-000000/yLvadti7SI2eMaFCiVgT7CT__p4=443" style="display: none; width: 1px; height: 1px;">
+</body>
+			</html>
+			

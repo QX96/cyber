@@ -1,0 +1,1554 @@
+Delivered-To: quad.hermes@gmail.com
+Received: by 2002:a05:7412:b9f:b0:15e:f5bd:ad9d with SMTP id v31csp1086353rdh;
+        Tue, 24 Jun 2025 07:30:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF6YhMdg8F3rxFvcGQn22Z4Uq2NybmdXiDez7adHwuPtXDIF434VxMA7srGn+L/ckVIRlz8
+X-Received: by 2002:ad4:5f4f:0:b0:6fa:9ca1:c520 with SMTP id 6a1803df08f44-6fd38859a84mr58654176d6.16.1750775408000;
+        Tue, 24 Jun 2025 07:30:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1750775407; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Ma3hpN3IrfzVr6oucHiias3+JiKOoGyKOFgJcPOf0eTaTENibNR1N6Di/YdtvxTu/9
+         Se3ARhIddBVSJx0QFpQmsg6Z6I7GWoT4HBiIKj48vrDJ8ncaFAhfY2sMKaNOAVctXF4J
+         R5ObbpD1nDOSfxy705xHhRXQAwQkM3QG2TGD6lPiMsBoPQjmapE+rQhQDUIu4eRp7aCI
+         Ah6sHlDK1PmbV05KqTssRC5EiyCiaJUQgMULL3r+MA1JH6kme1XIf6B7U3BLNcfmIaBF
+         cflDPMRrBxXTvZVju78pXe7mIkTW3H6XSXyKERy2H1VwxUUloI5EcO4IDxiZbY8PV3NH
+         Apwg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=list-unsubscribe:list-unsubscribe-post:precedence:mime-version
+         :subject:message-id:to:from:date:dkim-signature:dkim-signature;
+        bh=+CdDmFdFgxvUFwmJFjG4DjYcphH/FFLiyWvUqjpOEM4=;
+        fh=jCZUi0CtEnhozcsvUlNJQnHncbRIOLm/k+fC6CTawTw=;
+        b=C26Oytaeg+50DWDhYCQ8MuB5SqKpRVFW4Olhb/E+gce3/7TE9FAjkiOZUHBCi6+Moo
+         sjtndHNqnYVO/itlngQAEGe8QMFog8bUJ+fbbtXT5SayRtzqbl6eGyYkyIzKXSr1NkQp
+         eSYHvI+wyzLxm1YIUAwnETaNm92q9OC0eue+GpsdlLvmtHfya3QvDp6TyfA3Fo8I4ypX
+         nWBvBbIxP955Jqx4VYUn+ZlBCRd4Q4UFDdY6vRnvFv1Xm5XQPidhPUxDIAEzF5iJ9L6E
+         ghMqAQa6CC9Pj02v43p7LYX4wOvkj2D1/koXkVTzDsxdgeFQf2qJayF9E62TSUWeQNgZ
+         r0BA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@email.globalspec.com header.s=sailthru header.b="M/ujkhf2";
+       dkim=pass header.i=@pmta.sailthru.com header.s=mt header.b=fkIZJMVN;
+       spf=pass (google.com: domain of delivery_20250624103005.40396861.8827@bounce.email.globalspec.com designates 192.64.237.75 as permitted sender) smtp.mailfrom=delivery_20250624103005.40396861.8827@bounce.email.globalspec.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=email.globalspec.com
+Return-Path: <delivery_20250624103005.40396861.8827@bounce.email.globalspec.com>
+Received: from mta237-75.sailthru.com (mta237-75.sailthru.com. [192.64.237.75])
+        by mx.google.com with ESMTPS id af79cd13be357-7d3f99f7857si1001090985a.317.2025.06.24.07.30.07
+        for <quad.hermes@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Jun 2025 07:30:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of delivery_20250624103005.40396861.8827@bounce.email.globalspec.com designates 192.64.237.75 as permitted sender) client-ip=192.64.237.75;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@email.globalspec.com header.s=sailthru header.b="M/ujkhf2";
+       dkim=pass header.i=@pmta.sailthru.com header.s=mt header.b=fkIZJMVN;
+       spf=pass (google.com: domain of delivery_20250624103005.40396861.8827@bounce.email.globalspec.com designates 192.64.237.75 as permitted sender) smtp.mailfrom=delivery_20250624103005.40396861.8827@bounce.email.globalspec.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=email.globalspec.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=sailthru; d=email.globalspec.com;
+ h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:
+ List-Unsubscribe-Post:List-Unsubscribe; i=reply@email.globalspec.com;
+ bh=+CdDmFdFgxvUFwmJFjG4DjYcphH/FFLiyWvUqjpOEM4=;
+ b=M/ujkhf2zV/ZVhYaJLY+J3f0Ebozh3+tMPFI6I7X70AdxalyrfutBxxMHdZuY+uav022K4SldDaR
+   VlHZR+R/InygCGuWC0BSDOsDU+fiNuLbCQRQxDztMGM8qI+lcj7AW7zPr/V2dZREWDPItHepSS08
+   8CY8gGgEY5eIhlJt6Pg=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mt; d=pmta.sailthru.com;
+ h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:
+ List-Unsubscribe-Post:List-Unsubscribe;
+ bh=+CdDmFdFgxvUFwmJFjG4DjYcphH/FFLiyWvUqjpOEM4=;
+ b=fkIZJMVN+FwPD3oAPU+jwtATtT6Aw56Z8zOh1iAjPBKUG8zi+F+xkFKFVn/UfTrMucVLjvxalzij
+   wISvnoN/DYHBvp5KZSMUUE2T81Bm5xqurY80gcz0IISn3LJtZLJB9S4FExIUr6QKR4TG6muIOoO6
+   1Cl4ZH2p7eded7OcLzA=
+Received: from aws1-mta-relay4.sailthru.cloud (10.55.93.134) by pmta236-241.sailthru.com id hbar6u3791s3 for <quad.hermes@gmail.com>; Tue, 24 Jun 2025 09:30:05 -0500 (envelope-from <delivery_20250624103005.40396861.8827@bounce.email.globalspec.com>)
+Date: Tue, 24 Jun 2025 10:30:05 -0400 (EDT)
+From: Sensing & Data <reply@email.globalspec.com>
+To: quad.hermes@gmail.com
+Message-ID: <20250624103005.40396861.8827@sailthru.com>
+Subject: Take a look at this non-negotiable tool for monitoring process
+ gases
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_5797740_72088115.1750775405919"
+Precedence: bulk
+x-job: 8791-40396861-20250624
+X-Feedback-ID: 8791:40396861:campaign:sailthru
+X-TM-ID: 20250624103005.40396861.8827
+X-Info: Message sent by sailthru.com customer GlobalSpec
+X-Info: We do not permit unsolicited commercial email
+X-Info: Please report abuse by forwarding complete headers to
+X-Info: abuse@sailthru.com
+X-Mailer: sailthru.com
+X-JMailer: aws-campaign-mailer-25.sailthru.cloud
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-Unsubscribe-Web: https://link.globalspec.com/oc/5fda5e756d9c757011061e98o1uf1.6t7/d9491c63
+List-Unsubscribe: <https://link.globalspec.com/oc/5fda5e756d9c757011061e98o1uf1.6t7/d9491c63>,<mailto:unsubscribe_20250624103005.40396861.8827@mx.sailthru.com>
+X-rpcampaign: stnad40396861
+
+------=_Part_5797740_72088115.1750775405919
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<a href=3D""><img src=3D"https://link.globalspec.com/img/5fda5e756d9c757011=
+061e98o1uf1.6t7/9be6cbd5.gif" alt=3D"" border=3D"0" /></a> This compact and=
+ rugged binary gas analyzer is a non-negotiable tool for monitoring process=
+ gases
+
+Messe Frankfurt, Inc. <https://link.globalspec.com/click/40396861.8827/aHR0=
+cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTV=
+mNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODg5MiZrZXl3b3JkPWxpbm=
+tfMjE5ODg5MiZpdGVtaWQ9NDA1NzE2JnZpZD0xODgyMjk/5fda5e756d9c757011061e98C9e67=
+80e5>
+
+View web version <https://link.globalspec.com/view/5fda5e756d9c757011061e98=
+o1uf1.6t7/6180571c> 24 June 2025 =E2=80=94 Issue 12 | Vol 20
+
+Sensing & Data - GlobalSpec
+Sensing & Data - GlobalSpec
+
+Source Products <https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly=
+93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhN=
+yZrZXl3b3JkPXNvdXJjZXByb2R1Y3RzJlZvbD1Wb2wyMElzc3VlMTImUHViPTQ5/5fda5e756d9=
+c757011061e98C6205de3a>  |  Webinar Library <https://link.globalspec.com/cl=
+ick/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1a=
+D0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZrZXl3b3JkPXdlYmluYXJsaWJyYXJ5JlZvbD1Wb2wyMElz=
+c3VlMTImUHViPTQ5/5fda5e756d9c757011061e98C958ee55c>  |  Standards <https://=
+link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20=
+vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZrZXl3b3JkPXN0YW5kYXJkc2=
+5sJlZvbD1Wb2wyMElzc3VlMTImUHViPTQ5/5fda5e756d9c757011061e98C42031f40>
+
+This compact and rugged binary gas analyzer is a non-negotiable tool for mo=
+nitoring process gases <https://link.globalspec.com/click/40396861.8827/aHR=
+0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPT=
+VmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5OTA2NCZrZXl3b3JkPWxpb=
+mtfMjE5OTA2NCZpdGVtaWQ9NDA3NDk3/5fda5e756d9c757011061e98C21bb606d>
+
+This compact and rugged binary gas analyzer is a non-negotiable tool for mo=
+nitoring process gases <https://link.globalspec.com/click/40396861.8827/aHR=
+0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPT=
+VmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5OTA2NSZrZXl3b3JkPWxpb=
+mtfMjE5OTA2NSZpdGVtaWQ9NDA3NDk3/5fda5e756d9c757011061e98Cf0c04933>
+
+Designed with the demands of the chemical process industry and the hydrogen=
+ economy in mind, Panametrics' newest gas analyzer, the XMTCpro is now avai=
+lable for measuring binary gas mixtures in concentrations from 0.1% to 100%=
+. Read more <https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3=
+cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb=
+2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5OTA2NiZrZXl3b3JkPWxpbmtfMjE5OTA2=
+NiZpdGVtaWQ9NDA3NDk3/5fda5e756d9c757011061e98C2e2faa91> =E2=86=92
+
+Explore onsemi energy storage solutions <https://link.globalspec.com/click/=
+40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mb=
+WQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODg4=
+OSZrZXl3b3JkPWxpbmtfMjE5ODg4OSZpdGVtaWQ9NDAyNDkwJnZpZD0xMzg2NjI/5fda5e756d9=
+c757011061e98Cb9f8c84f> DigiKey
+Explore onsemi energy storage solutions <https://link.globalspec.com/click/=
+40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mb=
+WQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODg5=
+NyZrZXl3b3JkPWxpbmtfMjE5ODg5NyZpdGVtaWQ9NDAyNDkwJnZpZD0xMzg2NjI/5fda5e756d9=
+c757011061e98C1dd9947b>
+
+Energy storage solutions <https://link.globalspec.com/click/40396861.8827/a=
+HR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1o=
+PTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODg5NiZrZXl3b3JkPWx=
+pbmtfMjE5ODg5NiZpdGVtaWQ9NDAyNDkwJnZpZD0xMzg2NjI/5fda5e756d9c757011061e98Ca=
+1eab6af> (ESS) store electricity from various sources =E2=80=94 coal, nucle=
+ar, wind, solar =E2=80=94 in forms like batteries, compressed air or molten=
+ salt. This guide focuses on solar battery systems.
+
+View more <https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cu=
+Z2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w=
+9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkwNCZrZXl3b3JkPWxpbmtfMjE5ODkwNC=
+ZpdGVtaWQ9NDAyNDkwJnZpZD0xMzg2NjI/5fda5e756d9c757011061e98Cf01d7abb>
+
+Ultra-precise laser sensor for high-speed distance measurement <https://lin=
+k.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2=
+xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Y=
+j00OSZMaW5rSWQ9MjE5ODg5MCZrZXl3b3JkPWxpbmtfMjE5ODg5MCZpdGVtaWQ9NDA1MTc2JnZp=
+ZD0zNzE1OTc/5fda5e756d9c757011061e98C39bc0b4f> Micro-Epsilon Group
+Ultra-precise laser sensor for high-speed distance measurement <https://lin=
+k.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2=
+xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Y=
+j00OSZMaW5rSWQ9MjE5ODg5OSZrZXl3b3JkPWxpbmtfMjE5ODg5OSZpdGVtaWQ9NDA1MTc2JnZp=
+ZD0zNzE1OTc/5fda5e756d9c757011061e98C67129f8b>
+
+Discover the optoNCDT 5500 =E2=80=94 the ultimate laser sensor for ultra-pr=
+ecise and high-speed distance measurements. Boost your efficiency with this=
+ cutting-edge technology. Uncover details <https://link.globalspec.com/clic=
+k/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0=
+mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5OD=
+g5OCZrZXl3b3JkPWxpbmtfMjE5ODg5OCZpdGVtaWQ9NDA1MTc2JnZpZD0zNzE1OTc/5fda5e756=
+d9c757011061e98C0aa84369>!
+
+Learn more <https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3c=
+uZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2=
+w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkwNSZrZXl3b3JkPWxpbmtfMjE5ODkwN=
+SZpdGVtaWQ9NDA1MTc2JnZpZD0zNzE1OTc/5fda5e756d9c757011061e98Cee597746>  =20
+
+Integrated photonics set to disrupt traditional sensing tech <https://link.=
+globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xp=
+Y2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj0=
+0OSZMaW5rSWQ9MjE5OTA2NyZrZXl3b3JkPWxpbmtfMjE5OTA2NyZpdGVtaWQ9NDA3NDk4/5fda5=
+e756d9c757011061e98C850d1811> Integrated photonics set to disrupt tradition=
+al sensing tech <https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly=
+93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhN=
+yZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5OTA2OCZrZXl3b3JkPWxpbmtfMjE5=
+OTA2OCZpdGVtaWQ9NDA3NDk4/5fda5e756d9c757011061e98C07ee692e>
+
+Advances in silicon photonics, AI and fiber optics are driving down costs a=
+nd expanding applications for light-based sensors across medicine, infrastr=
+ucture and autonomous systems. Read more <https://link.globalspec.com/click=
+/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0m=
+bWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5OTA=
+2OSZrZXl3b3JkPWxpbmtfMjE5OTA2OSZpdGVtaWQ9NDA3NDk4/5fda5e756d9c757011061e98C=
+f292282b> =E2=86=92
+
+Conveyor technology for improved order accuracy <https://link.globalspec.co=
+m/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkP=
+SZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9=
+MjE5OTA3MCZrZXl3b3JkPWxpbmtfMjE5OTA3MCZpdGVtaWQ9NDA3NDk5/5fda5e756d9c757011=
+061e98C5762c2b8> Conveyor technology for improved order accuracy <https://l=
+ink.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20v=
+Q2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB=
+1Yj00OSZMaW5rSWQ9MjE5OTA3MSZrZXl3b3JkPWxpbmtfMjE5OTA3MSZpdGVtaWQ9NDA3NDk5/5=
+fda5e756d9c757011061e98C0d5f28c7>
+
+Traditional methods of material handling struggle to keep pace, often leadi=
+ng to mispicks, shipment errors and costly returns. Conveyor technology pla=
+ys a role in mitigating these challenges by integrating automation, precisi=
+on control and real-time tracking. Read more <https://link.globalspec.com/c=
+lick/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1=
+aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE=
+5OTA3MiZrZXl3b3JkPWxpbmtfMjE5OTA3MiZpdGVtaWQ9NDA3NDk5/5fda5e756d9c757011061=
+e98C949abc92> =E2=86=92
+
+Selecting the appropriate sensors for rotating equipment condition monitori=
+ng <https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmF=
+sc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMj=
+BJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkwNiZrZXl3b3JkPWxpbmtfMjE5ODkwNiZpdGVta=
+WQ9NDA3NDU2JnZpZD0zNTA1Mzk/5fda5e756d9c757011061e98Ce6f4e02c> TE Connectivi=
+ty=E2=84=A2
+Selecting the appropriate sensors for rotating equipment condition monitori=
+ng <https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmF=
+sc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMj=
+BJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkwNyZrZXl3b3JkPWxpbmtfMjE5ODkwNyZpdGVta=
+WQ9NDA3NDU2JnZpZD0zNTA1Mzk/5fda5e756d9c757011061e98C9981f896>
+
+This white paper helps engineers and maintenance professionals select the r=
+ight sensors =E2=80=94 vibration, temperature, oil quality and more =E2=80=
+=94 for monitoring rotating equipment like motors, pumps and gearboxes.
+
+View more <https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cu=
+Z2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w=
+9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkwOCZrZXl3b3JkPWxpbmtfMjE5ODkwOC=
+ZpdGVtaWQ9NDA3NDU2JnZpZD0zNTA1Mzk/5fda5e756d9c757011061e98C80be414d>
+
+What is FLIR Nexus and why is it important? <https://link.globalspec.com/cl=
+ick/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1a=
+D0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5=
+OTA3MyZrZXl3b3JkPWxpbmtfMjE5OTA3MyZpdGVtaWQ9NDA3NTAw/5fda5e756d9c757011061e=
+98C410f4296> What is FLIR Nexus and why is it important? <https://link.glob=
+alspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2sv=
+R28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZ=
+MaW5rSWQ9MjE5OTA3NCZrZXl3b3JkPWxpbmtfMjE5OTA3NCZpdGVtaWQ9NDA3NTAw/5fda5e756=
+d9c757011061e98Cb482b8b5>
+
+When combined with FLIR's camera analytics for detection, this total securi=
+ty system can identify, locate and track targets all at the edge. Read more=
+ <https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc=
+3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJ=
+c3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5OTA3NSZrZXl3b3JkPWxpbmtfMjE5OTA3NSZpdGVtaWQ=
+9NDA3NTAw/5fda5e756d9c757011061e98C8f05169c> =E2=86=92
+
+New dental flosser doubles as at-home stress monitor <https://link.globalsp=
+ec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_=
+dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5=
+rSWQ9MjE5OTA3NiZrZXl3b3JkPWxpbmtfMjE5OTA3NiZpdGVtaWQ9NDA3NTAx/5fda5e756d9c7=
+57011061e98Cab41c241> New dental flosser doubles as at-home stress monitor =
+<https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3=
+BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc=
+3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5OTA3NyZrZXl3b3JkPWxpbmtfMjE5OTA3NyZpdGVtaWQ9=
+NDA3NTAx/5fda5e756d9c757011061e98Cf18bcbae>
+
+The dental pick features floss that collects saliva and is connected to a m=
+icrofluidic thread that then carries saliva to a flexible electrochemical s=
+ensor located within the handle. Read more <https://link.globalspec.com/cli=
+ck/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD=
+0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5O=
+TA3OCZrZXl3b3JkPWxpbmtfMjE5OTA3OCZpdGVtaWQ9NDA3NTAx/5fda5e756d9c757011061e9=
+8C7e30ddef> =E2=86=92
+
+Pressure switches for air, gas and liquids <https://link.globalspec.com/cli=
+ck/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD=
+0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5O=
+Dg5MSZrZXl3b3JkPWxpbmtfMjE5ODg5MSZpdGVtaWQ9Mzk5MzA3JnZpZD0xMDA3NDQ/5fda5e75=
+6d9c757011061e98C1f5fa7ff> Tecmark Corporation
+Pressure switches for air, gas and liquids <https://link.globalspec.com/cli=
+ck/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD=
+0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5O=
+DkwMCZrZXl3b3JkPWxpbmtfMjE5ODkwMCZpdGVtaWQ9Mzk5MzA3JnZpZD0xMDA3NDQ/5fda5e75=
+6d9c757011061e98Ccf722534>
+
+Convert pressure to electrical output with Tecmark switches; range 2-inch w=
+.c. to 100 PSIG, 25 amps. Various fittings and diaphragms.
+
+View more <https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cu=
+Z2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w=
+9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkwMSZrZXl3b3JkPWxpbmtfMjE5ODkwMS=
+ZpdGVtaWQ9Mzk5MzA3JnZpZD0xMDA3NDQ/5fda5e756d9c757011061e98C0adfb60a>
+
+Maintained vs momentary? <https://link.globalspec.com/click/40396861.8827/a=
+HR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1o=
+PTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkyNiZrZXl3b3JkPWx=
+pbmtfMjE5ODkyNiZpdGVtaWQ9Mzk5ODEzJnZpZD05MzQxNg/5fda5e756d9c757011061e98C5c=
+3726fd> Linemaster Switch Corporation
+Maintained vs momentary? <https://link.globalspec.com/click/40396861.8827/a=
+HR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1o=
+PTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkyNyZrZXl3b3JkPWx=
+pbmtfMjE5ODkyNyZpdGVtaWQ9Mzk5ODEzJnZpZD05MzQxNg/5fda5e756d9c757011061e98C15=
+e36ab9>
+
+The two most common types are momentary and maintained. Choose the best typ=
+e for the equipment you're working with.
+
+Learn more <https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3c=
+uZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2=
+w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkyOCZrZXl3b3JkPWxpbmtfMjE5ODkyO=
+CZpdGVtaWQ9Mzk5ODEzJnZpZD05MzQxNg/5fda5e756d9c757011061e98C033db7de>
+
+Tadiran batteries <https://link.globalspec.com/click/40396861.8827/aHR0cHM6=
+Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZ=
+hNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODg5MyZrZXl3b3JkPWxpbmtfMj=
+E5ODg5MyZpdGVtaWQ9NDA1Njk0JnZpZD05MzA3OA/5fda5e756d9c757011061e98C7046301e>=
+ Tadiran U.S. Battery Division
+Tadiran batteries <https://link.globalspec.com/click/40396861.8827/aHR0cHM6=
+Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZ=
+hNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkwMiZrZXl3b3JkPWxpbmtfMj=
+E5ODkwMiZpdGVtaWQ9NDA1Njk0JnZpZD05MzA3OA/5fda5e756d9c757011061e98Cea85e5af>
+
+Tadiran bobbin-type lithium thionyl chloride (LiSOCl2) batteries power remo=
+te wireless devices up to 40 years, 4x longer than the competition.
+
+View more <https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cu=
+Z2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w=
+9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkwMyZrZXl3b3JkPWxpbmtfMjE5ODkwMy=
+ZpdGVtaWQ9NDA1Njk0JnZpZD05MzA3OA/5fda5e756d9c757011061e98C289ca1cb>
+
+Connect with us: Facebook <https://link.globalspec.com/click/40396861.8827/=
+aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1=
+oPTVmNmZhNyZrZXl3b3JkPWZiJlZvbD1Wb2wyMElzc3VlMTImUHViPTQ5/5fda5e756d9c75701=
+1061e98Cc734d9d3> Twitter <https://link.globalspec.com/click/40396861.8827/=
+aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1=
+oPTVmNmZhNyZrZXl3b3JkPXR3JlZvbD1Wb2wyMElzc3VlMTImUHViPTQ5/5fda5e756d9c75701=
+1061e98Cd82d36a2> Linkedin <https://link.globalspec.com/click/40396861.8827=
+/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm=
+1oPTVmNmZhNyZrZXl3b3JkPWxpJlZvbD1Wb2wyMElzc3VlMTImUHViPTQ5/5fda5e756d9c7570=
+11061e98Cfc39e805>
+
+Feedback on this issue? Tell us what you think <https://link.globalspec.com=
+/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_a2V5d2=
+9yZD1zdXJ2ZXlfc3QmdWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1Z=
+TEyJlB1Yj00OQ/5fda5e756d9c757011061e98Ca4ee885e> Join our team of Expert Co=
+ntributors <https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3c=
+uZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZrZX=
+l3b3JkPWV4cGVydGNvbnRyaWJ1dG9yJlZvbD1Wb2wyMElzc3VlMTImUHViPTQ5/5fda5e756d9c=
+757011061e98C8ee7ca8a>
+
+GlobalSpec publishes more than 60 free industry newsletters - browse our po=
+rtfolio <https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2=
+xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZrZXl3b=
+3JkPW5sc2lnbnVwJlZvbD1Wb2wyMElzc3VlMTImUHViPTQ5/5fda5e756d9c757011061e98Cb5=
+3b403b>.
+
+Want to reach industry executives with your message? Download our media kit=
+ <https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc=
+3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZrZXl3b3JkPW5s=
+bWVkaWFraXQmVm9sPVZvbDIwSXNzdWUxMiZQdWI9NDk/5fda5e756d9c757011061e98C6f8c1c=
+fb> or contact us directly at sales@globalspec.com <mailto:sales@globalspec=
+.com>.
+
+About this email: You are receiving this message as part of your compliment=
+ary newsletter subscription to Sensing & Data. If you no longer wish to rec=
+eive this newsletter, you can modify your preferences <https://link.globals=
+pec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28=
+_a2V5d29yZD1tYW5hZ2VzdWJzY3JpcHRpb25zJlZvbD1Wb2wyMElzc3VlMTImUHViPTQ5JnVpZD=
+0mdWg9JiZtZD0yNTA2MjQmbWg9NWY2ZmE3/5fda5e756d9c757011061e98C489b669a> or un=
+subscribe <https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cu=
+Z2xvYmFsc3BlYy5jb20vQ2xpY2svR28_a2V5d29yZD1uZXdzUmVtb3ZlJlZvbD1Wb2wyMElzc3V=
+lMTImUHViPTQ5JnVpZD0mdWg9JiZtZD0yNTA2MjQmbWg9NWY2ZmE3/5fda5e756d9c757011061=
+e98Ce3b8b1ad>.
+
+Copyright =C2=A9 2025 GlobalSpec LLC, Unless otherwise noted. All rights re=
+served. GlobalSpec LLC | 187 Wolf Road, Suite 300-022 | Albany, NY 12205
+
+If you believe this has been sent to you in error, please click <https://li=
+nk.globalspec.com/oc/5fda5e756d9c757011061e98o1uf1.6t7/d9491c63> to safely =
+unsubscribe.
+------=_Part_5797740_72088115.1750775405919
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www=
+.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"https://www.w3.org/1999/xhtml">
+<head>
+<title>Sensing &amp; Data - GlobalSpec</title>
+<meta http-equiv=3D"Content-Type" content=3D"text/html;charset=3DUTF-8" />
+<meta name=3D"subject" content=3D"Sensing &amp; Data: Take a look at this n=
+on-negotiable tool for monitoring process gases">
+<meta name=3D"keywords" content=3D"Explore  energy storage solutions; Ultra=
+-precise laser sensor for high-speed distance measurement; Selecting the ap=
+propriate sensors for rotating equipment condition monitoring; Pressure swi=
+tches for air, gas and liquids; Maintained vs momentary?; Batteries">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1,=
+ maximum-scale=3D1" />
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge" />
+<link href=3D"https://fonts.googleapis.com/css?family=3DOpen+Sans" rel=3D"s=
+tylesheet" type=3D"text/css" />
+<!-- CONDITIONAL CSS FOR OUTLOOK (PADDING % NOT COMPATIBLE) -->
+<!--[if (gte mso 9)|(IE)]>
+<style type=3D"text/css">
+.ms-padding {
+padding-left: 25px !important;
+padding-right: 25px !important;
+}
+</style>
+<![endif]-->
+<style type=3D"text/css">
+/* CLIENT-SPECIFIC STYLES */
+body,
+table,
+td,
+a {
+-webkit-text-size-adjust: 100%;
+-ms-text-size-adjust: 100%;
+}
+table,
+td {
+mso-table-lspace: 0pt;
+mso-table-rspace: 0pt;
+}
+img {
+-ms-interpolation-mode: bicubic;
+}
+/* RESET STYLES */
+img {
+border: 0;
+height: auto;
+line-height: 100%;
+outline: none;
+text-decoration: none;
+}
+table {
+border-collapse: collapse !important;
+}
+body {
+height: 100% !important;
+Margin: 0 !important;
+padding: 0 !important;
+width: 100% !important;
+}
+p {
+margin: 0 0 1.4em 0;
+}
+/* iOS BLUE LINKS */
+a[x-apple-data-detectors] {
+color: inherit !important;
+text-decoration: none !important;
+font-size: inherit !important;
+font-family: inherit !important;
+font-weight: inherit !important;
+line-height: inherit !important;
+}
+.drop-shadow {
+-webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+-moz-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+}
+a {
+color: #014A72;
+}
+/* MOBILE STYLES */
+@media screen and (max-width: 700px) {
+.img-max {
+width: 100% !important;
+max-width: 100% !important;
+height: auto !important;
+}
+.height-collapse {
+height: 100% !important;
+min-height: 100% !important;
+}
+.max-width {
+max-width: 100% !important;
+}
+.mobile-wrapper {
+width: 100% !important;
+max-width: 100% !important;
+}
+.mobile-padding {
+padding-left: 4% !important;
+padding-right: 4% !important;
+}
+.full-width {
+width: 100% !important;
+}
+.headline {
+font-size: 16px !important;
+line-height: 21px !important;
+}
+.no-padding {
+padding-left: 0 !important;
+padding-right: 0 !important;
+}
+.section-head {
+font-size: 18px !important;
+line-height: 24px !important;
+}
+.section-head-nav {
+font-size: 11px !important;
+line-height: 22px !important;
+text-align: center !important;
+}
+.hide {
+max-height: 0;
+display: none;
+mso-hide: all;
+overflow: hidden;
+}
+.mobile-text {
+font-size: 15px !important;
+line-height: 22px !important;
+}
+.show {
+display: block !important;
+overflow: visible !important;
+float: none !important;
+width: 100% !important;
+height: auto !important;
+}
+.full-width-footer {
+width: 100% !important;
+text-align: center !important;
+}
+}
+/* ANDROID CENTER FIX */
+div[style*=3D"Margin: 16px 0;"] {
+Margin: 0 !important;
+}
+.img-max {
+width: 100% !important;
+max-width: 100% !important;
+height: auto !important;
+}
+/* FONT OVERRIDE */
+[style*=3D'Open Sans'] {
+font-family: 'Open Sans', Arial, sans-serif !important;
+}
+.img-max1 {
+width: 100% !important;
+max-width: 100% !important;
+height: auto !important;
+}
+.img-max1 {
+width: 100% !important;
+max-width: 100% !important;
+height: auto !important;
+}
+</style>
+</head>
+<body style=3D"Margin: 0 !important; padding: 0 !important; background-colo=
+r: #DEE7E7;" bgcolor=3D"#DEE7E7"><a href=3D""><img src=3D"https://link.glob=
+alspec.com/img/5fda5e756d9c757011061e98o1uf1.6t7/9be6cbd5.gif" alt=3D"" bor=
+der=3D"0" /></a>
+<!-- HIDDEN PREHEADER TEXT -->
+<div style=3D"display: none; font-size: 1px; color: #fefefe; line-height: 1=
+px; font-family: 'Roboto', Helvetica, Arial, sans-serif; max-height: 0px; m=
+ax-width: 0px; opacity: 0; overflow: hidden; mso-hide:all">This compact and=
+ rugged binary gas analyzer is a non-negotiable tool for monitoring process=
+ gases</div>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+<tr>
+<td align=3D"center" height=3D"100%" valign=3D"top" width=3D"100%" bgcolor=
+=3D"#DEE7E7" style=3D"padding: 0;">
+<!-- BANNER AD TOP START -->=09 =20
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"700" class=3D"mobile-wrapper" style=3D"width:700px">
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"font-family: 'Roboto', Helveti=
+ca, Arial, sans-serif;">
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"700"  clas=
+s=3D"full-width">
+<tr>
+<td align=3D"center" bgcolor=3D"#DEE7E7" style=3D"padding-top: 20px; paddin=
+g-bottom: 20px">                           =20
+<a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cu=
+Z2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w=
+9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODg5MiZrZXl3b3JkPWxpbmtfMjE5ODg5Mi=
+ZpdGVtaWQ9NDA1NzE2JnZpZD0xODgyMjk/5fda5e756d9c757011061e98B9e6780e5"><img c=
+lass=3D"img-max" style=3D"display:block" src=3D"https://www.globalspec.com/=
+pix/verticalNewsletter/sd/MesseFrankfurtInc_BannerAd_1_26430_405716.jpg" bo=
+rder=3D"0" width=3D"700" height=3D"86" alt=3D"Messe Frankfurt, Inc." /></a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- BANNER AD TOP END -->=09=09 =20
+<table class=3D"mobile-wrapper hide" align=3D"center" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" width=3D"720" height=3D"25" style=3D"min-width:=
+350px !important; width:720px">
+<tr>
+<td width=3D"10" style=3D"width:10px;">&nbsp;</td>
+<td>
+<table width=3D"100%" style=3D"min-width:350px !important;">
+<tr>
+<td width=3D"50%" height=3D"25" align=3D"left" valign=3D"middle" style=3D"f=
+ont-family: 'Roboto', Helvetica, Arial, sans-serif; font-size:12px"><a styl=
+e=3D"color:#3B4D59" href=3D"https://link.globalspec.com/view/5fda5e756d9c75=
+7011061e98o1uf1.6t7/6180571c">View web version</a></td>
+<td width=3D"50%" height=3D"25" align=3D"right" valign=3D"middle" style=3D"=
+font-family: 'Roboto', Helvetica, Arial, sans-serif; font-size:12px;"><b>24=
+ June 2025</b> &#8212; Issue 12 | Vol 20</td>
+</tr>
+</table>
+</td>
+<td width=3D"10" style=3D"width:10px;">&nbsp;</td>
+</tr>
+</table>
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"700" class=3D"mobile-wrapper" style=3D"width:700px">
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"font-family: 'Roboto', Helveti=
+ca, Arial, sans-serif;">
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"700" class=
+=3D"full-width">
+<tr>
+<td align=3D"center" bgcolor=3D"#014A72"><img src=3D"https://www.globalspec=
+.com/pix/VerticalNewsletter/newsletterredesign/2025/SensingData.png" width=
+=3D"700" height=3D"67" style=3D"display: block; border: 0px;" border=3D"0" =
+alt=3D"Sensing &amp; Data - GlobalSpec" class=3D"hide img-max">
+<!-- MOBILE ONLY LOGO -->
+<!--[if !mso]><!-->
+<table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+<tr style=3D"overflow:hidden; float:left; display:none; mso-hide:all;" clas=
+s=3D"show">
+<td>
+<table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0">
+<tr>
+<td><img src=3D"https://www.globalspec.com/pix/VerticalNewsletter/newslette=
+rredesign/2025/SensingData_mobile.png" style=3D"display:block" width=3D"700=
+" height=3D"131" alt=3D"Sensing &amp; Data - GlobalSpec" border=3D"0" class=
+=3D"show img-max"></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!--<![endif]-->
+</td>
+</tr>
+<tr>
+<td align=3D"center" bgcolor=3D"#3B4D59" >
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"700" class=3D"full-width" style=3D"width:700px">
+<tr>
+<td bgcolor=3D"#3B4D59" align=3D"left" valign=3D"top" style=3D"font-family:=
+ 'Roboto', Helvetica, Arial, sans-serif;">
+<table width=3D"100%" style=3D"padding-bottom: 10px; padding-top:5px;">
+<tr>
+<td width=3D"4%" align=3D"left" valign=3D"bottom" style=3D"font-family: 'Ro=
+boto', Helvetica, Arial, sans-serif; color:#FFFFFF;" class=3D"hide">&nbsp;<=
+/td>
+<td width=3D"96%" align=3D"left" valign=3D"bottom" style=3D"font-family: 'R=
+oboto', Helvetica, Arial, sans-serif; color:#FFFFFF;">
+<p style=3D"font-size: 13px; line-height: 20px; Margin: 5px; color:#ffffff;=
+" class=3D"section-head-nav">
+<a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cu=
+Z2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZrZXl=
+3b3JkPXNvdXJjZXByb2R1Y3RzJlZvbD1Wb2wyMElzc3VlMTImUHViPTQ5/5fda5e756d9c75701=
+1061e98B6205de3a" style=3D"line-height: 18px; Margin: 5px; color:#ffffff; f=
+ont-weight: bold">Source Products</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href=3D"ht=
+tps://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlY=
+y5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZrZXl3b3JkPXdlYmlu=
+YXJsaWJyYXJ5JlZvbD1Wb2wyMElzc3VlMTImUHViPTQ5/5fda5e756d9c757011061e98B958ee=
+55c" style=3D"line-height: 18px; Margin: 5px; color:#ffffff; font-weight: b=
+old">Webinar Library</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href=3D"https://link.gl=
+obalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2=
+svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZrZXl3b3JkPXN0YW5kYXJkc25sJlZvb=
+D1Wb2wyMElzc3VlMTImUHViPTQ5/5fda5e756d9c757011061e98B42031f40" style=3D"lin=
+e-height: 18px; Margin: 5px; color:#ffffff; font-weight: bold">Standards</a=
+>
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"750" style=3D"width:750px" class=3D"mobile-wrapper">
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"font-family: 'Roboto', Helveti=
+ca, Arial, sans-serif;">
+<!-- Industry Trends Image START -->=09=09=09=09
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"700" class=3D"mobile-wrapper" style=3D"width:700px">
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"font-family: 'Roboto', Helveti=
+ca, Arial, sans-serif;">
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"700"  clas=
+s=3D"full-width">
+<tr>
+<td align=3D"center" bgcolor=3D"#FFFFFF" style=3D" padding-bottom: 10px">  =
+                         =20
+<a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cu=
+Z2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w=
+9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5OTA2NCZrZXl3b3JkPWxpbmtfMjE5OTA2NC=
+ZpdGVtaWQ9NDA3NDk3/5fda5e756d9c757011061e98B21bb606d"><img src=3D"https://w=
+ww.globalspec.com/pix/verticalNewsletter/sd/IndustryTrendsEvents_1_26430_40=
+7497.jpg" width=3D"700" border=3D"0" alt=3D"This compact and rugged binary =
+gas analyzer is a non-negotiable tool for monitoring process gases" style=
+=3D"border-radius: 3px; display: block; border: 0px;" class=3D"img-max"></a=
+>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- Industry Trends Image END -->=09
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"700" class=
+=3D"full-width" style=3D"width:700px">
+<tr>
+<td align=3D"center" bgcolor=3D"#FFFFFF"  class=3D"ms-padding ">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"650" class=3D"full-width" style=3D"width:650px">
+<!-- START INDUSTRY TRENDS CONTENT -->
+<tr>
+<td align=3D"center" valign=3D"top">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%" bgco=
+lor=3D"#ffffff">
+<tr>
+<td align=3D"left" valign=3D"top" style=3D"padding: 10px 0px 20px 0px; font=
+-family: 'Roboto', Helvetica, Arial, sans-serif; color:#222222;" class=3D"m=
+obilePadding">
+<h3 style=3D"Margin: 0 0 10px 0; padding: 0; display: block; font-size:24px=
+;  line-height: 30px; font-weight:bold"><a style=3D"text-decoration:none; c=
+olor:#222222;" href=3D"https://link.globalspec.com/click/40396861.8827/aHR0=
+cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTV=
+mNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5OTA2NSZrZXl3b3JkPWxpbm=
+tfMjE5OTA2NSZpdGVtaWQ9NDA3NDk3/5fda5e756d9c757011061e98Bf0c04933" target=3D=
+"_blank">This compact and rugged binary gas analyzer is a non-negotiable to=
+ol for monitoring process gases</a></h3>
+<p style=3D"color: #535353; font-size: 13px; line-height: 20px; margin-bott=
+om: : 25px" class=3D"mobile-text">Designed with the demands of the chemical=
+ process industry and the hydrogen economy in mind, Panametrics' newest gas=
+ analyzer, the XMTCpro is now available for measuring binary gas mixtures i=
+n concentrations from 0.1% to 100%. <a href=3D"https://link.globalspec.com/=
+click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ=
+1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9Mj=
+E5OTA2NiZrZXl3b3JkPWxpbmtfMjE5OTA2NiZpdGVtaWQ9NDA3NDk3/5fda5e756d9c75701106=
+1e98B2e2faa91" style=3D"color: #014A72; font-size: 13px; line-height: 20px;=
+" class=3D"mobile-text">Read&nbsp;more</a>&nbsp;&rarr;</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- END INDUSTRY TRENDS CONTENT -->
+<!-- START BANNER INDUSTRY TRENDS CONTENT -->
+<!-- END BANNER INDUSTRY TRENDS CONTENT -->
+<!-- START PROMO -->
+<!-- END PROMO -->
+<!-- START FEATURED 1 -->
+<tr>
+<td align=3D"center" valign=3D"top">
+<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" widt=
+h=3D"100%">
+<tr>
+<td align=3D"left" valign=3D"top" style=3D"font-family: 'Roboto', Helvetica=
+, Arial, sans-serif; padding: 20px 0; border-top: 1px solid #DFDFDF">
+<table valign=3D"middle" align=3D"left" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0" style=3D"height:145px" class=3D"height-collapse">
+<tr>
+<td style=3D"padding-right:15px; padding-bottom:10px"><a href=3D"https://li=
+nk.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ=
+2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1=
+Yj00OSZMaW5rSWQ9MjE5ODg4OSZrZXl3b3JkPWxpbmtfMjE5ODg4OSZpdGVtaWQ9NDAyNDkwJnZ=
+pZD0xMzg2NjI/5fda5e756d9c757011061e98Bb9f8c84f" style=3D"Margin: 0;padding:=
+ 0;"> <img src=3D"https://www.globalspec.com/pix/verticalNewsletter/sd/Digi=
+Key_Featured_1_26430_402490.jpg" align=3D"left" alt=3D"Explore onsemi energ=
+y storage solutions" width=3D"145" height=3D"145" style=3D"display: block; =
+border: 0px;" border=3D"0"> </a></td>
+</tr>
+</table>
+<h4 style=3D"font-size: 13px; line-height: 20px; Margin:0 0 3px 0; color:#5=
+35353; font-weight: normal">DigiKey</h4>
+<h3 style=3D"font-size: 17px; line-height: 22px; Margin: 0 0 10px 0;"><a hr=
+ef=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvY=
+mFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9s=
+MjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODg5NyZrZXl3b3JkPWxpbmtfMjE5ODg5NyZpdGV=
+taWQ9NDAyNDkwJnZpZD0xMzg2NjI/5fda5e756d9c757011061e98B1dd9947b" target=3D"_=
+blank" style=3D"text-decoration: none; color: #222222">Explore onsemi energ=
+y storage solutions</a></h3>
+<p style=3D"color: #535353; font-size: 13px; line-height: 20px; Margin: 0px=
+" class=3D"mobile-text">Energy <a href=3D"https://link.globalspec.com/click=
+/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0m=
+bWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODg=
+5NiZrZXl3b3JkPWxpbmtfMjE5ODg5NiZpdGVtaWQ9NDAyNDkwJnZpZD0xMzg2NjI/5fda5e756d=
+9c757011061e98Ba1eab6af">storage solutions</a> (ESS) store electricity from=
+ various sources &mdash; coal, nuclear, wind, solar &mdash; in forms like b=
+atteries, compressed air or molten salt. This guide focuses on solar batter=
+y systems.<br>&nbsp;</p>
+<!-- BUTTON START -->
+<table align=3D"right" width=3D"180" border=3D"0" cellspacing=3D"0" cellpad=
+ding=3D"0" style=3D"width:180px">
+<tr>
+<td style=3D"padding-right: 40px" align=3D"right">
+<table width=3D"130" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"130" align=3D"center" class=3D"text-button" style=3D"backgroun=
+d:#014A72; color:#ffffff; font-family: Helvetica, Arial, sans-serif, 'Open =
+Sans'; font-size:14px; line-height:18px; padding:10px 10px; text-align:cent=
+er;"><a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly9=
+3d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNy=
+ZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkwNCZrZXl3b3JkPWxpbmtfMjE5O=
+DkwNCZpdGVtaWQ9NDAyNDkwJnZpZD0xMzg2NjI/5fda5e756d9c757011061e98Bf01d7abb" t=
+arget=3D"_blank" style=3D"font-size: 15px; font-weight: bold; font-family: =
+'Roboto', Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: no=
+ne; text-decoration: none; -webkit-border-radius: 5px; -moz-border-radius: =
+5px; border-radius: 5px; padding: 4px 13px; border: 1px solid #014A72; disp=
+lay: inline-block;">View more</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- BUTTON END -->
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- END FEATURED 1 -->
+<!-- START FEATURED 2 -->
+<tr>
+<td align=3D"center" valign=3D"top">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+<tr>
+<td align=3D"left" valign=3D"top" style=3D"font-family: 'Roboto', Helvetica=
+, Arial, sans-serif; padding: 20px 0; border-top: 1px solid #DFDFDF">
+<table valign=3D"middle" align=3D"right" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0" style=3D"height:145px" class=3D"height-collapse">
+<tr>
+<td style=3D"padding-left:15px; padding-bottom:10px"><a href=3D"https://lin=
+k.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2=
+xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Y=
+j00OSZMaW5rSWQ9MjE5ODg5MCZrZXl3b3JkPWxpbmtfMjE5ODg5MCZpdGVtaWQ9NDA1MTc2JnZp=
+ZD0zNzE1OTc/5fda5e756d9c757011061e98B39bc0b4f" style=3D"Margin: 0;padding: =
+0;"> <img src=3D"https://www.globalspec.com/pix/verticalNewsletter/sd/Micro=
+EpsilonGroup_Featured_1_26430_405176.jpg" align=3D"left" alt=3D"Ultra-preci=
+se laser sensor for high-speed distance measurement" width=3D"145" height=
+=3D"145" style=3D"display: block; border: 0px;" border=3D"0"> </a></td>
+</tr>
+</table>
+<h4 style=3D"font-size: 13px; line-height: 20px; Margin:0 0 3px 0; color:#5=
+35353; font-weight: normal">Micro-Epsilon Group</h4>
+<h3 style=3D"font-size: 17px; line-height: 22px; Margin: 0 0 10px 0; color:=
+#222222"><a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM=
+6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNm=
+ZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODg5OSZrZXl3b3JkPWxpbmtfM=
+jE5ODg5OSZpdGVtaWQ9NDA1MTc2JnZpZD0zNzE1OTc/5fda5e756d9c757011061e98B67129f8=
+b" target=3D"_blank" style=3D"text-decoration: none; color: #222222">Ultra-=
+precise laser sensor for high-speed distance measurement</a></h3>
+<p style=3D"color: #535353; font-size: 13px; line-height: 20px; Margin: 0px=
+" class=3D"mobile-text">Discover the <b>optoNCDT 5500</b> &mdash; the ultim=
+ate laser sensor for ultra-precise and high-speed distance measurements. Bo=
+ost your efficiency with this cutting-edge technology. <a href=3D"https://l=
+ink.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20v=
+Q2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB=
+1Yj00OSZMaW5rSWQ9MjE5ODg5OCZrZXl3b3JkPWxpbmtfMjE5ODg5OCZpdGVtaWQ9NDA1MTc2Jn=
+ZpZD0zNzE1OTc/5fda5e756d9c757011061e98B0aa84369">Uncover details</a>! <br>&=
+nbsp;</p>
+<!-- BUTTON START -->
+<table width=3D"180" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=
+=3D"width:180px">
+<tr>
+<td>
+<table width=3D"130" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"130" align=3D"center" class=3D"text-button" style=3D"backgroun=
+d:#014A72; color:#ffffff; font-family: Helvetica, Arial, sans-serif, 'Open =
+Sans'; font-size:14px; line-height:18px; padding:10px 10px; text-align:cent=
+er;"><a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly9=
+3d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNy=
+ZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkwNSZrZXl3b3JkPWxpbmtfMjE5O=
+DkwNSZpdGVtaWQ9NDA1MTc2JnZpZD0zNzE1OTc/5fda5e756d9c757011061e98Bee597746" t=
+arget=3D"_blank" style=3D"font-size: 15px; font-weight: bold; font-family: =
+'Roboto', Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: no=
+ne; text-decoration: none; -webkit-border-radius: 5px; -moz-border-radius: =
+5px; border-radius: 5px; padding: 4px 13px; border: 1px solid #014A72; disp=
+lay: inline-block;">Learn more</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- BUTTON END -->
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- END FEATURED 2 -->
+<!-- START FEATURED 3 -->                      <!-- END FEATURED 3 -->
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- FEATURED VIDEO AD -->
+<!-- END FEATURED VIDEO AD -->=09=09
+<!--- WEBINARS ---> =20
+<!--- END WEBINARS --->
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"font-family: 'Roboto', Helveti=
+ca, Arial, sans-serif;">
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"700" class=
+=3D"full-width" style=3D"width:700px">
+<tr>
+<td align=3D"center" bgcolor=3D"#FFFFFF"  class=3D"ms-padding">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"650" class=3D"full-width" style=3D"width:650px">
+<tr>
+<td align=3D"center" valign=3D"top">
+<table align=3D"left" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" widt=
+h=3D"100%">
+<tr>
+<td align=3D"left" valign=3D"top" style=3D"font-family: 'Roboto', Helvetica=
+, Arial, sans-serif; padding: 20px 0; border-top: 1px solid #DFDFDF">
+<table valign=3D"middle" align=3D"left" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0">
+<tr>
+<td valign=3D"top" width=3D"145" style=3D"padding: 5px 15px 10px 0; width:1=
+45px"><a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly=
+93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhN=
+yZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5OTA2NyZrZXl3b3JkPWxpbmtfMjE5=
+OTA2NyZpdGVtaWQ9NDA3NDk4/5fda5e756d9c757011061e98B850d1811"><img src=3D"htt=
+ps://www.globalspec.com/pix/verticalNewsletter/sd/EditorialBlock1_1_26430_4=
+07498.jpg" width=3D"145" border=3D"0" alt=3D"Integrated photonics set to di=
+srupt traditional sensing tech" style=3D"border-radius: 3px; display: block=
+; border: 0px;"></a></td>
+</tr>
+</table>
+<h3 style=3D"font-size: 17px; line-height: 22px; Margin: 0 0 10px 0;"><a st=
+yle=3D"text-decoration:none; color:#222222;" href=3D"https://link.globalspe=
+c.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_d=
+WlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5r=
+SWQ9MjE5OTA2OCZrZXl3b3JkPWxpbmtfMjE5OTA2OCZpdGVtaWQ9NDA3NDk4/5fda5e756d9c75=
+7011061e98B07ee692e" target=3D"_blank">Integrated photonics set to disrupt =
+traditional sensing tech</a></h3>
+<p style=3D"color: #535353; font-size: 13px; line-height: 20px; Margin: 0" =
+class=3D"mobile-text">Advances in silicon photonics, AI and fiber optics ar=
+e driving down costs and expanding applications for light-based sensors acr=
+oss medicine, infrastructure and autonomous systems. <a href=3D"https://lin=
+k.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2=
+xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Y=
+j00OSZMaW5rSWQ9MjE5OTA2OSZrZXl3b3JkPWxpbmtfMjE5OTA2OSZpdGVtaWQ9NDA3NDk4/5fd=
+a5e756d9c757011061e98Bf292282b" style=3D"color: #014A72; font-size: 13px; l=
+ine-height: 20px;" class=3D"mobile-text">Read&nbsp;more</a>&nbsp;&rarr;</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td align=3D"center" valign=3D"top">
+<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" widt=
+h=3D"100%">
+<tr>
+<td align=3D"left" valign=3D"top" style=3D"font-family: 'Roboto', Helvetica=
+, Arial, sans-serif; padding-bottom: 20px">
+<table valign=3D"middle" align=3D"left" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0">
+<tr>
+<td valign=3D"top" width=3D"145" style=3D"padding: 5px 15px 10px 0; width:1=
+45px"><a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly=
+93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhN=
+yZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5OTA3MCZrZXl3b3JkPWxpbmtfMjE5=
+OTA3MCZpdGVtaWQ9NDA3NDk5/5fda5e756d9c757011061e98B5762c2b8"><img src=3D"htt=
+ps://www.globalspec.com/pix/verticalNewsletter/sd/EditorialBlock2_1_26430_4=
+07499.jpg" width=3D"145" border=3D"0" alt=3D"Conveyor technology for improv=
+ed order accuracy" style=3D"border-radius: 3px; display: block; border: 0px=
+;"></a></td>
+</tr>
+</table>
+<h3 style=3D"font-size: 17px; line-height: 22px; Margin: 0 0 10px 0;"><a st=
+yle=3D"text-decoration:none; color:#222222;" href=3D"https://link.globalspe=
+c.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_d=
+WlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5r=
+SWQ9MjE5OTA3MSZrZXl3b3JkPWxpbmtfMjE5OTA3MSZpdGVtaWQ9NDA3NDk5/5fda5e756d9c75=
+7011061e98B0d5f28c7" target=3D"_blank">Conveyor technology for improved ord=
+er accuracy</a></h3>
+<p style=3D"color: #535353; font-size: 13px; line-height: 20px; Margin: 0" =
+class=3D"mobile-text">Traditional methods of material handling struggle to =
+keep pace, often leading to mispicks, shipment errors and costly returns. C=
+onveyor technology plays a role in mitigating these challenges by integrati=
+ng automation, precision control and real-time tracking. <a href=3D"https:/=
+/link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb2=
+0vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJ=
+lB1Yj00OSZMaW5rSWQ9MjE5OTA3MiZrZXl3b3JkPWxpbmtfMjE5OTA3MiZpdGVtaWQ9NDA3NDk5=
+/5fda5e756d9c757011061e98B949abc92" style=3D"color: #014A72; font-size: 13p=
+x; line-height: 20px;" class=3D"mobile-text">Read&nbsp;more</a>&nbsp;&rarr;=
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+<tr>
+<td align=3D"center" height=3D"100%" valign=3D"top" width=3D"100%" bgcolor=
+=3D"#DEE7E7" style=3D" padding: 0 0 25px 0">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"750" class=3D"mobile-wrapper">
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"font-family: 'Roboto', Helveti=
+ca, Arial, sans-serif;">
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"700" class=
+=3D"full-width" style=3D"width:700px">
+<tr>
+<td align=3D"center" bgcolor=3D"#FFFFFF" class=3D"ms-padding">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"650" class=3D"full-width" style=3D"width:650px">
+<!-- START STANDARD 1 -->
+<tr>
+<td align=3D"center" valign=3D"top">
+<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" widt=
+h=3D"100%">
+<tr>
+<td align=3D"left" valign=3D"top" style=3D"font-family: 'Roboto', Helvetica=
+, Arial, sans-serif;  padding: 20px 0; border-top: 1px solid #DFDFDF">
+<table valign=3D"middle" align=3D"left" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0" style=3D"height:145px" class=3D"height-collapse">
+<tr>
+<td style=3D"padding-right:15px; padding-bottom:10px"><a href=3D"https://li=
+nk.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ=
+2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1=
+Yj00OSZMaW5rSWQ9MjE5ODkwNiZrZXl3b3JkPWxpbmtfMjE5ODkwNiZpdGVtaWQ9NDA3NDU2JnZ=
+pZD0zNTA1Mzk/5fda5e756d9c757011061e98Be6f4e02c" style=3D"Margin: 0;padding:=
+ 0;"> <img src=3D"https://www.globalspec.com/pix/verticalNewsletter/sd/TECo=
+nnectivity_Standard_1_26430_407456.jpg" align=3D"left" alt=3D"Selecting the=
+ appropriate sensors for rotating equipment condition monitoring" width=3D"=
+145" height=3D"145" style=3D"display: block; border: 0px;" border=3D"0"> </=
+a></td>
+</tr>
+</table>
+<h4 style=3D"font-size: 13px; line-height: 20px; Margin:0 0 3px 0; color:#5=
+35353; font-weight: normal">TE Connectivity&trade;</h4>
+<h3 style=3D"font-size: 17px; line-height: 22px; Margin: 0 0 10px 0;"><a hr=
+ef=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvY=
+mFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9s=
+MjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkwNyZrZXl3b3JkPWxpbmtfMjE5ODkwNyZpdGV=
+taWQ9NDA3NDU2JnZpZD0zNTA1Mzk/5fda5e756d9c757011061e98B9981f896" target=3D"_=
+blank" style=3D"text-decoration: none; color: #222222">Selecting the approp=
+riate sensors for rotating equipment condition monitoring</a></h3>
+<p style=3D"color: #535353; font-size: 13px; line-height: 20px; Margin: 0px=
+" class=3D"mobile-text">This white paper helps engineers and maintenance pr=
+ofessionals select the right sensors &mdash; vibration, temperature, oil qu=
+ality and more &mdash; for monitoring rotating equipment like motors, pumps=
+ and gearboxes.<br>&nbsp;</p>
+<!-- BUTTON START -->
+<table align=3D"right" width=3D"180" border=3D"0" cellspacing=3D"0" cellpad=
+ding=3D"0" style=3D"width:180px">
+<tr>
+<td style=3D"padding-right: 40px" align=3D"right">
+<table width=3D"130" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"130" align=3D"center" class=3D"text-button" style=3D"backgroun=
+d:#014A72; color:#ffffff; font-family: Helvetica, Arial, sans-serif, 'Open =
+Sans'; font-size:14px; line-height:18px; padding:10px 10px; text-align:cent=
+er;"><a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly9=
+3d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNy=
+ZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkwOCZrZXl3b3JkPWxpbmtfMjE5O=
+DkwOCZpdGVtaWQ9NDA3NDU2JnZpZD0zNTA1Mzk/5fda5e756d9c757011061e98B80be414d" t=
+arget=3D"_blank" style=3D"font-size: 15px; font-weight: bold; font-family: =
+'Roboto', Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: no=
+ne; text-decoration: none; -webkit-border-radius: 5px; -moz-border-radius: =
+5px; border-radius: 5px; padding: 4px 13px; border: 1px solid #014A72; disp=
+lay: inline-block;">View more</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- BUTTON END -->
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- END STANDARD 1 -->
+<!-- START STANDARD 2 -->                      <!-- END STANDARD 2 -->
+<!-- START STANDARD 3 -->                      <!-- END STANDARD 3 -->
+<!-- START STANDARD 4 -->                      <!-- END STANDARD 4 -->
+</table>
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"650" class=3D"full-width" style=3D"width:650px">
+<tr>
+<td align=3D"center" valign=3D"top">
+<table align=3D"left" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" widt=
+h=3D"100%">
+<tr>
+<td align=3D"left" valign=3D"top" style=3D"font-family: 'Roboto', Helvetica=
+, Arial, sans-serif; padding: 20px 0; border-top: 1px solid #DFDFDF">
+<table valign=3D"middle" align=3D"left" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0">
+<tr>
+<td valign=3D"top" width=3D"145" style=3D"padding: 5px 15px 10px 0; width:1=
+45px"><a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly=
+93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhN=
+yZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5OTA3MyZrZXl3b3JkPWxpbmtfMjE5=
+OTA3MyZpdGVtaWQ9NDA3NTAw/5fda5e756d9c757011061e98B410f4296"><img src=3D"htt=
+ps://www.globalspec.com/pix/verticalNewsletter/sd/EditorialBlock3_1_26430_4=
+07500.jpg" width=3D"145" border=3D"0" alt=3D"What is FLIR Nexus and why is =
+it important?" style=3D"border-radius: 3px; display: block; border: 0px;"><=
+/a></td>
+</tr>
+</table>
+<h3 style=3D"font-size: 17px; line-height: 22px; Margin: 0 0 10px 0;"><a st=
+yle=3D"text-decoration:none; color:#222222;" href=3D"https://link.globalspe=
+c.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_d=
+WlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5r=
+SWQ9MjE5OTA3NCZrZXl3b3JkPWxpbmtfMjE5OTA3NCZpdGVtaWQ9NDA3NTAw/5fda5e756d9c75=
+7011061e98Bb482b8b5" target=3D"_blank">What is FLIR Nexus and why is it imp=
+ortant?</a></h3>
+<p style=3D"color: #535353; font-size: 13px; line-height: 20px; Margin: 0" =
+class=3D"mobile-text">When combined with FLIR's camera analytics for detect=
+ion, this total security system can identify, locate and track targets all =
+at the edge. <a href=3D"https://link.globalspec.com/click/40396861.8827/aHR=
+0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPT=
+VmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5OTA3NSZrZXl3b3JkPWxpb=
+mtfMjE5OTA3NSZpdGVtaWQ9NDA3NTAw/5fda5e756d9c757011061e98B8f05169c" style=3D=
+"color: #014A72; font-size: 13px; line-height: 20px;" class=3D"mobile-text"=
+>Read&nbsp;more</a>&nbsp;&rarr;</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td align=3D"center" valign=3D"top">
+<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" widt=
+h=3D"100%">
+<tr>
+<td align=3D"left" valign=3D"top" style=3D"font-family: 'Roboto', Helvetica=
+, Arial, sans-serif; padding-bottom: 20px">
+<table valign=3D"middle" align=3D"left" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0">
+<tr>
+<td valign=3D"top" width=3D"145" style=3D"padding: 5px 15px 10px 0; width:1=
+45px"><a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly=
+93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhN=
+yZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5OTA3NiZrZXl3b3JkPWxpbmtfMjE5=
+OTA3NiZpdGVtaWQ9NDA3NTAx/5fda5e756d9c757011061e98Bab41c241"><img src=3D"htt=
+ps://www.globalspec.com/pix/verticalNewsletter/sd/EditorialBlock4_1_26430_4=
+07501.jpg" width=3D"145" border=3D"0" alt=3D"New dental flosser doubles as =
+at-home stress monitor" style=3D"border-radius: 3px; display: block; border=
+: 0px;"></a></td>
+</tr>
+</table>
+<h3 style=3D"font-size: 17px; line-height: 22px; Margin: 0 0 10px 0;"><a st=
+yle=3D"text-decoration:none; color:#222222;" href=3D"https://link.globalspe=
+c.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_d=
+WlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5r=
+SWQ9MjE5OTA3NyZrZXl3b3JkPWxpbmtfMjE5OTA3NyZpdGVtaWQ9NDA3NTAx/5fda5e756d9c75=
+7011061e98Bf18bcbae" target=3D"_blank">New dental flosser doubles as at-hom=
+e stress monitor</a></h3>
+<p style=3D"color: #535353; font-size: 13px; line-height: 20px; Margin: 0" =
+class=3D"mobile-text">The dental pick features floss that collects saliva a=
+nd is connected to a microfluidic thread that then carries saliva to a flex=
+ible electrochemical sensor located within the handle. <a href=3D"https://l=
+ink.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20v=
+Q2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB=
+1Yj00OSZMaW5rSWQ9MjE5OTA3OCZrZXl3b3JkPWxpbmtfMjE5OTA3OCZpdGVtaWQ9NDA3NTAx/5=
+fda5e756d9c757011061e98B7e30ddef" style=3D"color: #014A72; font-size: 13px;=
+ line-height: 20px;" class=3D"mobile-text">Read&nbsp;more</a>&nbsp;&rarr;</=
+p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- START LAST SECTION -->
+<tr>
+<td align=3D"center" valign=3D"top" style=3D"font-family: 'Roboto', Helveti=
+ca, Arial, sans-serif;">
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"700" class=
+=3D"full-width" style=3D"width:700px">
+<tr>
+<td align=3D"center" bgcolor=3D"#FFFFFF" class=3D"ms-padding">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"650" class=3D"full-width" style=3D"width:650px;">
+<!-- START BASIC 1 -->
+<tr>
+<td align=3D"center" valign=3D"top">
+<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" widt=
+h=3D"100%">
+<tr>
+<td align=3D"left" valign=3D"top" style=3D"font-family: 'Roboto', Helvetica=
+, Arial, sans-serif; padding-bottom: 20px; padding: 20px 0; border-top: 1px=
+ solid #DFDFDF">
+<table valign=3D"middle" align=3D"left" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0" style=3D"height:145px" class=3D"height-collapse">
+<tr>
+<td style=3D"padding-right:15px; padding-bottom:10px"><a href=3D"https://li=
+nk.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ=
+2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1=
+Yj00OSZMaW5rSWQ9MjE5ODg5MSZrZXl3b3JkPWxpbmtfMjE5ODg5MSZpdGVtaWQ9Mzk5MzA3JnZ=
+pZD0xMDA3NDQ/5fda5e756d9c757011061e98B1f5fa7ff" style=3D"Margin: 0;padding:=
+ 0;"> <img src=3D"https://www.globalspec.com/pix/verticalNewsletter/sd/Tecm=
+arkCorporation_Basic_1_26430_399307.jpg" align=3D"left" alt=3D"Pressure swi=
+tches for air, gas and liquids" width=3D"145" height=3D"145" style=3D"displ=
+ay: block; border: 0px;" border=3D"0"> </a></td>
+</tr>
+</table>
+<h4 style=3D"font-size: 13px; line-height: 20px; Margin:0 0 3px 0; color:#5=
+35353; font-weight: normal">Tecmark Corporation</h4>
+<h3 style=3D"font-size: 17px; line-height: 22px; Margin: 0 0 10px 0;"><a hr=
+ef=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvY=
+mFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9s=
+MjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkwMCZrZXl3b3JkPWxpbmtfMjE5ODkwMCZpdGV=
+taWQ9Mzk5MzA3JnZpZD0xMDA3NDQ/5fda5e756d9c757011061e98Bcf722534" target=3D"_=
+blank" style=3D"text-decoration: none; color: #222222">Pressure switches fo=
+r air, gas and liquids</a></h3>
+<p style=3D"color: #535353; font-size: 13px; line-height: 20px; Margin: 0px=
+" class=3D"mobile-text">Convert pressure to electrical output with Tecmark =
+switches; range 2-inch w.c. to 100 PSIG, 25 amps. Various fittings and diap=
+hragms.<br>&nbsp;</p>
+<!-- BUTTON START -->
+<table align=3D"right" width=3D"180" border=3D"0" cellspacing=3D"0" cellpad=
+ding=3D"0" style=3D"width:180px">
+<tr>
+<td style=3D"padding-right: 40px" align=3D"right">
+<table width=3D"130" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"130" align=3D"center" class=3D"text-button" style=3D"backgroun=
+d:#014A72; color:#ffffff; font-family: Helvetica, Arial, sans-serif, 'Open =
+Sans'; font-size:14px; line-height:18px; padding:10px 10px; text-align:cent=
+er;"><a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly9=
+3d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNy=
+ZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkwMSZrZXl3b3JkPWxpbmtfMjE5O=
+DkwMSZpdGVtaWQ9Mzk5MzA3JnZpZD0xMDA3NDQ/5fda5e756d9c757011061e98B0adfb60a" t=
+arget=3D"_blank" style=3D"font-size: 15px; font-weight: bold; font-family: =
+'Roboto', Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: no=
+ne; text-decoration: none; -webkit-border-radius: 5px; -moz-border-radius: =
+5px; border-radius: 5px; padding: 4px 13px; border: 1px solid #014A72; disp=
+lay: inline-block;">View more</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- BUTTON END -->
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- END BASIC 1 -->
+<!-- START BASIC 2 -->
+<tr>
+<td align=3D"center" valign=3D"top">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+<tr>
+<td align=3D"left" valign=3D"top" style=3D"font-family: 'Roboto', Helvetica=
+, Arial, sans-serif; padding: 20px 0; border-top: 1px solid #DFDFDF">
+<table valign=3D"middle" align=3D"right" border=3D"0" cellspacing=3D"0" cel=
+lpadding=3D"0" style=3D"height:145px" class=3D"height-collapse">
+<tr>
+<td style=3D"padding-left:15px; padding-bottom:10px"><a href=3D"https://lin=
+k.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2=
+xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Y=
+j00OSZMaW5rSWQ9MjE5ODkyNiZrZXl3b3JkPWxpbmtfMjE5ODkyNiZpdGVtaWQ9Mzk5ODEzJnZp=
+ZD05MzQxNg/5fda5e756d9c757011061e98B5c3726fd" style=3D"Margin: 0;padding: 0=
+;"> <img src=3D"https://www.globalspec.com/pix/verticalNewsletter/sd/Linema=
+sterSwitchCorporation_Basic_1_26430_399813.jpg" align=3D"left" alt=3D"Maint=
+ained vs momentary?" width=3D"145" height=3D"145" style=3D"display: block; =
+border: 0px;" border=3D"0"> </a></td>
+</tr>
+</table>
+<h4 style=3D"font-size: 13px; line-height: 20px; Margin:0 0 3px 0; color:#5=
+35353; font-weight: normal">Linemaster Switch Corporation</h4>
+<h3 style=3D"font-size: 17px; line-height: 22px; Margin: 0 0 10px 0; color:=
+#222222"><a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM=
+6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNm=
+ZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkyNyZrZXl3b3JkPWxpbmtfM=
+jE5ODkyNyZpdGVtaWQ9Mzk5ODEzJnZpZD05MzQxNg/5fda5e756d9c757011061e98B15e36ab9=
+" target=3D"_blank" style=3D"text-decoration: none; color: #222222">Maintai=
+ned vs momentary?</a></h3>
+<p style=3D"color: #535353; font-size: 13px; line-height: 20px; Margin: 0px=
+" class=3D"mobile-text">The two most common types are <b>momentary</b> and =
+<b>maintained</b>. Choose the best type for the equipment you're working wi=
+th. <br>&nbsp;</p>
+<!-- BUTTON START -->
+<table width=3D"180" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=
+=3D"width:180px">
+<tr>
+<td>
+<table width=3D"130" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"130" align=3D"center" class=3D"text-button" style=3D"backgroun=
+d:#014A72; color:#ffffff; font-family: Helvetica, Arial, sans-serif, 'Open =
+Sans'; font-size:14px; line-height:18px; padding:10px 10px; text-align:cent=
+er;"><a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly9=
+3d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNy=
+ZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkyOCZrZXl3b3JkPWxpbmtfMjE5O=
+DkyOCZpdGVtaWQ9Mzk5ODEzJnZpZD05MzQxNg/5fda5e756d9c757011061e98B033db7de" ta=
+rget=3D"_blank" style=3D"font-size: 15px; font-weight: bold; font-family: '=
+Roboto', Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: non=
+e; text-decoration: none; -webkit-border-radius: 5px; -moz-border-radius: 5=
+px; border-radius: 5px; padding: 4px 13px; border: 1px solid #014A72; displ=
+ay: inline-block;">Learn more</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- BUTTON END -->
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- END BASIC 2 -->
+<!-- START BASIC 3 -->
+<tr>
+<td align=3D"center" valign=3D"top">
+<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" widt=
+h=3D"100%">
+<tr>
+<td align=3D"left" valign=3D"top" style=3D"font-family: 'Roboto', Helvetica=
+, Arial, sans-serif; padding-bottom: 20px; padding: 20px 0; border-top: 1px=
+ solid #DFDFDF">
+<table valign=3D"middle" align=3D"left" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0" style=3D"height:145px" class=3D"height-collapse">
+<tr>
+<td style=3D"padding-right:15px; padding-bottom:10px"><a href=3D"https://li=
+nk.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ=
+2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1=
+Yj00OSZMaW5rSWQ9MjE5ODg5MyZrZXl3b3JkPWxpbmtfMjE5ODg5MyZpdGVtaWQ9NDA1Njk0JnZ=
+pZD05MzA3OA/5fda5e756d9c757011061e98B7046301e" style=3D"Margin: 0;padding: =
+0;"> <img src=3D"https://www.globalspec.com/pix/verticalNewsletter/sd/Tadir=
+anUSBatteryDivision_Basic_1_26430_405694.jpg" align=3D"left" alt=3D"Tadiran=
+ batteries" width=3D"145" height=3D"145" style=3D"display: block; border: 0=
+px;" border=3D"0"> </a></td>
+</tr>
+</table>
+<h4 style=3D"font-size: 13px; line-height: 20px; Margin:0 0 3px 0; color:#5=
+35353; font-weight: normal">Tadiran U.S. Battery Division</h4>
+<h3 style=3D"font-size: 17px; line-height: 22px; Margin: 0 0 10px 0;"><a hr=
+ef=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvY=
+mFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9s=
+MjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkwMiZrZXl3b3JkPWxpbmtfMjE5ODkwMiZpdGV=
+taWQ9NDA1Njk0JnZpZD05MzA3OA/5fda5e756d9c757011061e98Bea85e5af" target=3D"_b=
+lank" style=3D"text-decoration: none; color: #222222">Tadiran batteries</a>=
+</h3>
+<p style=3D"color: #535353; font-size: 13px; line-height: 20px; Margin: 0px=
+" class=3D"mobile-text">Tadiran bobbin-type lithium thionyl chloride (LiSOC=
+l<sub>2</sub>) batteries power remote wireless devices up to 40 years, 4x l=
+onger than the competition.<br>&nbsp;</p>
+<!-- BUTTON START -->
+<table align=3D"right" width=3D"180" border=3D"0" cellspacing=3D"0" cellpad=
+ding=3D"0" style=3D"width:180px">
+<tr>
+<td style=3D"padding-right: 40px" align=3D"right">
+<table width=3D"130" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tr>
+<td width=3D"130" align=3D"center" class=3D"text-button" style=3D"backgroun=
+d:#014A72; color:#ffffff; font-family: Helvetica, Arial, sans-serif, 'Open =
+Sans'; font-size:14px; line-height:18px; padding:10px 10px; text-align:cent=
+er;"><a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly9=
+3d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNy=
+ZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OSZMaW5rSWQ9MjE5ODkwMyZrZXl3b3JkPWxpbmtfMjE5O=
+DkwMyZpdGVtaWQ9NDA1Njk0JnZpZD05MzA3OA/5fda5e756d9c757011061e98B289ca1cb" ta=
+rget=3D"_blank" style=3D"font-size: 15px; font-weight: bold; font-family: '=
+Roboto', Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: non=
+e; text-decoration: none; -webkit-border-radius: 5px; -moz-border-radius: 5=
+px; border-radius: 5px; padding: 4px 13px; border: 1px solid #014A72; displ=
+ay: inline-block;">View more</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- BUTTON END -->
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- END BASIC 3 -->
+<!-- START BASIC 4 -->                      <!-- END BASIC 4 -->
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- END LAST SECTION -->
+</table>
+</td>
+</tr>
+<tr>
+<td align=3D"center" height=3D"100%" valign=3D"top" width=3D"100%" bgcolor=
+=3D"#005f97">
+<table width=3D"100%" border=3D"0">
+<tr>
+<td bgcolor=3D"#3B4D59" align=3D"center" valign=3D"top" style=3D"padding: 1=
+0px 0; background: #3B4D59" class=3D"mobile-padding">
+<table class=3D"mobile-wrapper" align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"700" style=3D"min-width:320px !important;=
+ width:700px">
+<tr>
+<td width=3D"25" style=3D"width:25px;" class=3D"hide">&nbsp;</td>
+<td>
+<table width=3D"200" valign=3D"middle" align=3D"left" border=3D"0" cellspac=
+ing=3D"0" cellpadding=3D"0" style=3D"width:200px" class=3D"full-width-foote=
+r">
+<tr>
+<td width=3D"100%" align=3D"left" valign=3D"top" style=3D"font-family: 'Rob=
+oto', Helvetica, Arial, sans-serif;" class=3D"full-width-footer">
+<p  style=3D"margin: 5px 0 0 0; font-size: 13px; color: #ffffff; line-heigh=
+t: 24px">
+Connect with us:
+<br>
+<a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cu=
+Z2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZrZXl=
+3b3JkPWZiJlZvbD1Wb2wyMElzc3VlMTImUHViPTQ5/5fda5e756d9c757011061e98Bc734d9d3=
+" style=3D"color: #ffffff"><img src=3D"https://www.globalspec.com/pix/Verti=
+calNewsletter/newsletterredesign/2022/2022_Social_FB.png" alt=3D"Facebook" =
+width=3D"35" height=3D"28" style=3D"display: inline; border: 0px;" border=
+=3D"0"></a>
+<a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cu=
+Z2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZrZXl=
+3b3JkPXR3JlZvbD1Wb2wyMElzc3VlMTImUHViPTQ5/5fda5e756d9c757011061e98Bd82d36a2=
+" style=3D"color: #ffffff"><img src=3D"https://www.globalspec.com/pix/Verti=
+calNewsletter/newsletterredesign/2022/2022_Social_TW.png" alt=3D"Twitter" w=
+idth=3D"35" height=3D"28" style=3D"display: inline; border: 0px;" border=3D=
+"0"></a>
+<a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cu=
+Z2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZrZXl=
+3b3JkPWxpJlZvbD1Wb2wyMElzc3VlMTImUHViPTQ5/5fda5e756d9c757011061e98Bfc39e805=
+" style=3D"color: #ffffff"><img src=3D"https://www.globalspec.com/pix/Verti=
+calNewsletter/newsletterredesign/2022/2022_Social_LI.png" alt=3D"Linkedin" =
+width=3D"35" height=3D"28" style=3D"display: inline; border: 0px;" border=
+=3D"0"></a>
+</p>
+</td>
+</tr>
+</table> =20
+<table width=3D"400" valign=3D"middle" align=3D"right" border=3D"0" cellspa=
+cing=3D"0" cellpadding=3D"0" style=3D"width:400px" class=3D"full-width-foot=
+er">
+<tr>
+<td width=3D"100%" align=3D"right" valign=3D"top" style=3D"font-family: 'Ro=
+boto', Helvetica, Arial, sans-serif; color:#FFFFFF; font-size:12px; line-he=
+ight:18px" class=3D"full-width-footer">
+<p style=3D"margin: 5px 0 0 0; font-size: 13px; line-height: 24px">
+Feedback on this issue? <a href=3D"https://link.globalspec.com/click/403968=
+61.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_a2V5d29yZD1zdXJ2ZXl=
+fc3QmdWlkPSZ1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZWb2w9Vm9sMjBJc3N1ZTEyJlB1Yj00OQ=
+/5fda5e756d9c757011061e98Ba4ee885e" style=3D"color:#FFFFFF; text-decoration=
+:underline;">Tell us what you think</a><br>
+Join our team of <a href=3D"https://link.globalspec.com/click/40396861.8827=
+/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9MjUwNjI0Jm=
+1oPTVmNmZhNyZrZXl3b3JkPWV4cGVydGNvbnRyaWJ1dG9yJlZvbD1Wb2wyMElzc3VlMTImUHViP=
+TQ5/5fda5e756d9c757011061e98B8ee7ca8a" style=3D"color:#FFFFFF; text-decorat=
+ion:underline;">Expert Contributors</a><br>
+</p>
+</td>
+</tr>
+</table>=20
+</td>
+<td width=3D"25" style=3D"width:25px;" class=3D"hide">&nbsp;</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"700" class=3D"mobile-wrapper" style=3D"width:700px">
+<tr>
+<td align=3D"left" valign=3D"top" style=3D"padding: 0; font-family: 'Roboto=
+', Helvetica, Arial, sans-serif; color: #FFFFFF; padding:20px 25px" class=
+=3D"mobile-padding">
+<p style=3D"font-size: 12px; line-height: 15px;">GlobalSpec publishes more =
+than 60 free industry newsletters - <a href=3D"https://link.globalspec.com/=
+click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ=
+1aD0mbWQ9MjUwNjI0Jm1oPTVmNmZhNyZrZXl3b3JkPW5sc2lnbnVwJlZvbD1Wb2wyMElzc3VlMT=
+ImUHViPTQ5/5fda5e756d9c757011061e98Bb53b403b" style=3D"color: #ffffff">brow=
+se our portfolio</a>.</p>
+<p style=3D"font-size: 12px; line-height: 15px;">Want to reach industry exe=
+cutives with your message? <a href=3D"https://link.globalspec.com/click/403=
+96861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_dWlkPSZ1aD0mbWQ9=
+MjUwNjI0Jm1oPTVmNmZhNyZrZXl3b3JkPW5sbWVkaWFraXQmVm9sPVZvbDIwSXNzdWUxMiZQdWI=
+9NDk/5fda5e756d9c757011061e98B6f8c1cfb" style=3D"color: #ffffff">Download o=
+ur media kit</a> or contact us directly at <a href=3D"mailto:sales@globalsp=
+ec.com" style=3D"color: #ffffff">sales@globalspec.com</a>.</p>
+<p style=3D"font-size: 12px; line-height: 15px;">
+<span class=3D"fs11lh14"><b>About this email:</b> You are receiving this me=
+ssage as part of your complimentary newsletter subscription to Sensing &amp=
+; Data. If you no longer wish to receive this newsletter, you can</span>=20
+<a href=3D"https://link.globalspec.com/click/40396861.8827/aHR0cHM6Ly93d3cu=
+Z2xvYmFsc3BlYy5jb20vQ2xpY2svR28_a2V5d29yZD1tYW5hZ2VzdWJzY3JpcHRpb25zJlZvbD1=
+Wb2wyMElzc3VlMTImUHViPTQ5JnVpZD0mdWg9JiZtZD0yNTA2MjQmbWg9NWY2ZmE3/5fda5e756=
+d9c757011061e98B489b669a" style=3D"color:#FFFFFF; text-decoration:underline=
+;"><span style=3D"color:#FFFFFF; text-decoration:underline;" class=3D"fs11l=
+h14">modify your preferences</span></a> or <a href=3D"https://link.globalsp=
+ec.com/click/40396861.8827/aHR0cHM6Ly93d3cuZ2xvYmFsc3BlYy5jb20vQ2xpY2svR28_=
+a2V5d29yZD1uZXdzUmVtb3ZlJlZvbD1Wb2wyMElzc3VlMTImUHViPTQ5JnVpZD0mdWg9JiZtZD0=
+yNTA2MjQmbWg9NWY2ZmE3/5fda5e756d9c757011061e98Be3b8b1ad" style=3D"color:#FF=
+FFFF; text-decoration:underline;"><span style=3D"color:#FFFFFF; text-decora=
+tion:underline;" class=3D"fs11lh14">unsubscribe</span></a>.</p>
+<hr style=3D"color: #ffffff">
+<p align=3D"center" style=3D"font-size: 12px; line-height: 15px;">
+<span class=3D"fs11lh14"> Copyright &copy; 2025 GlobalSpec LLC, Unless othe=
+rwise noted. All rights reserved. <br>GlobalSpec LLC | 187 Wolf Road, Suite=
+ 300-022 | Albany, NY 12205</span>
+<!-- <span class=3D"fs11lh14"> Copyright &copy; 2025 GlobalSpec LLC, Unless=
+ otherwise noted. All rights reserved, <br>GlobalSpec LLC | 187 Wolf Road, =
+Suite 300-022 | Albany, NY 12205</span> -->
+</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<!-- Open Tracking -->
+<!--<a href=3D"https://link.globalspec.com/oc/5fda5e756d9c757011061e98o1uf1=
+.6t7/d9491c63">Unsubscribe from all mailings</a>--></body>
+</html>
+
+------=_Part_5797740_72088115.1750775405919--

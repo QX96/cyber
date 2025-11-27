@@ -1,0 +1,964 @@
+Delivered-To: buxoler@gmail.com
+Received: by 2002:a59:8084:0:b0:553:da9c:489e with SMTP id q4csp239702vqg;
+        Wed, 12 Nov 2025 07:40:00 -0800 (PST)
+X-Forwarded-Encrypted: i=4; AJvYcCVFqDg/5ygzbq9niiPv2s1zPKohvL/QryxSdaSSnNKu6VDmJv/4PwgrnWzQ4sXabQddrS2RWsKo@gmail.com
+X-Received: by 2002:a05:6e02:3e89:b0:433:3487:ea1d with SMTP id e9e14a558f8ab-43473cfe7f5mr42072815ab.7.1762961999851;
+        Wed, 12 Nov 2025 07:39:59 -0800 (PST)
+ARC-Seal: i=3; a=rsa-sha256; t=1762961999; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=jss/OXfoW3vE5jJDPZZG/vyDVtS8Sk8vZMxoRYzOGPHa/yV7i0Q0WbVYXIA1kY3Mwt
+         4WJNqyBZBuibDReUBdeKAAQ+i5OnHQfoNxTgmc+zK1SeJ/PGoZ+qk3Fj6ydiH6kcbuyP
+         GhRKS81lFHKCftYxe+ybWCwJDk7n+pCdm5SB6TAz8Kh/Y0ByhnlIUQ7psGCfR62R92Ax
+         jYmmfpz+B0HwJMm3OVUgOZ1xGzeEvgfpeQf9RIfHRwQvZzqknRMjPYxm9m1ujIUpfL7T
+         aFL8UHXLRaHstDCFz51LodJIO5oCO18UyYK03ZJBnHL2s4AhJR8j0RVXaG7RkJo/iTQi
+         rpDg==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=amq-delivery-message-id:pp-correlation-id:subject:to:from
+         :mime-version:message-id:date:content-transfer-encoding
+         :dkim-signature;
+        bh=aFG3PPux63uJXX3cM1nMbp46xCe+wKMZGTNAV9pB/Go=;
+        fh=35/5x4smKk5pPn7GvLTY9WEPJ1rtEDLcuUCQuPdpaK4=;
+        b=EgZbtE8Og/3PFVxMfT/25YI6U4XyPXqmwBgZM6gauofRNZrNlem95BLycqGJqx0DpC
+         lD9XSKoAeY5qrOEn8ZWQR7WEWgxU54Hn6iSL6UEWGHeMxFETcPycfA/mphBh5PkbC8CN
+         z3PvMFiBS1cqYEXAQT8GvxuhOiZy2PfCmOob6DYfHPhocQbiEXVKbOGomJWkHkyU4wZ1
+         POTWC2igyPtafYpDhzWNRQz/yh0Hjc/Sq0OxFhpvc7MfTHjamgmqHlg36Gb8VBzltCjK
+         XkFEizI/yrT3J6G5npBDhmM2BW9RTFRzhobo+QjTIFKITfsPGBeXxMP7RF3xzr/WaeDL
+         e4Tw==;
+        dara=google.com
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@paypal.com header.s=pp-dkim1 header.b=kZKtIXyO;
+       arc=pass (i=2 spf=pass spfdomain=paypal.com dkim=pass dkdomain=paypal.com dmarc=pass fromdomain=paypal.com);
+       spf=softfail (google.com: domain of transitioning service@paypal.com does not designate 209.85.220.69 as permitted sender) smtp.mailfrom=service@paypal.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=paypal.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <service@paypal.com>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id ca18e2360f4ac-948c40c1b12sor156155439f.12.2025.11.12.07.39.59
+        for <buxoler@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Nov 2025 07:39:59 -0800 (PST)
+Received-SPF: softfail (google.com: domain of transitioning service@paypal.com does not designate 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@paypal.com header.s=pp-dkim1 header.b=kZKtIXyO;
+       arc=pass (i=2 spf=pass spfdomain=paypal.com dkim=pass dkdomain=paypal.com dmarc=pass fromdomain=paypal.com);
+       spf=softfail (google.com: domain of transitioning service@paypal.com does not designate 209.85.220.69 as permitted sender) smtp.mailfrom=service@paypal.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=paypal.com;
+       dara=pass header.i=@gmail.com
+ARC-Seal: i=2; a=rsa-sha256; t=1762961999; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=WRcdFer8XdqJDnZjtglNake0+l0hwCx0ViBNSnSL8UdmCbGmpb3SwTuBd9pscG78zV
+         wrGV+ESYIrFq9iJr00NmEYvSc3k9rcDIc2iEj5HRl8utXhY65cc5OmebPXcT2poNI8DP
+         UXO73Dtaw7FUx5hrAGDuBUIFH6lkhVoDSUtbJD4SU+QoD81WPi3ptYjcHC+PUmgpio9M
+         8sG1Ju+8CZio3Rccji+1E6kfugZyTJZ6n9cMlbxHVRTEAWXM+mwP1l1Q8Ku9DArLAhYX
+         TUxIp6cnuSnRDBubyuqAvrJ+XTK5PEzM0+VIPtYFFkkKLtBvWyB1v0IGZRbjOok3nh00
+         F7bQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=amq-delivery-message-id:pp-correlation-id:subject:to:from
+         :mime-version:message-id:date:content-transfer-encoding
+         :dkim-signature;
+        bh=aFG3PPux63uJXX3cM1nMbp46xCe+wKMZGTNAV9pB/Go=;
+        fh=35/5x4smKk5pPn7GvLTY9WEPJ1rtEDLcuUCQuPdpaK4=;
+        b=Z1Q6vElNPKyi5EpwMzEI4pRJG2NzQv61EiVrZv6aewO992FywQc1YozoZPGAmWkytJ
+         0eJEoV1678uZZaeWtotugW3f/Vbqhlutv56uw2Fl3CX5iUGDbSK7cP+2MAoJk3UFdO/U
+         0/xWCO15C7DOibHPjDU9xcptl7VxXU4rVpAj2uOCg+6xuG64XsNjbwgtZ+JLJk20ukd+
+         xDQxMyJLXgEGMEjTs8tcWTH3YKdcaVOLvtjhDt1eg4MjylNoWbznG3frWK43WWEtF6K8
+         1IoTidZ2N9QDipqECVR0GAXFxPmBMY44NJf1sYJlnqCaQG0zVvxc77c7z4ief+lH2mbT
+         FmDw==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@paypal.com header.s=pp-dkim1 header.b=kZKtIXyO;
+       spf=pass (google.com: domain of service@paypal.com designates 173.0.84.226 as permitted sender) smtp.mailfrom=service@paypal.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=paypal.com
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1762961999; x=1763566799;
+        h=amq-delivery-message-id:pp-correlation-id:subject:to:from
+         :mime-version:message-id:date:content-transfer-encoding
+         :dkim-signature:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=aFG3PPux63uJXX3cM1nMbp46xCe+wKMZGTNAV9pB/Go=;
+        b=JpLPXeJKC8krLDDnEsQSqsh47jsEmy0MBU14Mc6N/S4+EFXHDkIGA56j7ecvI9dPpe
+         N2CtISS2iALONGtq4q/XEdp5wFYHhjNmt3+MvHkhaiDIN0ANvYYBKadRw5KQfyoXaGtb
+         TA/qAlz6bNvQSA8MYm3bfDuF70WaDsG2foW9ymdYqrTR5U892rTij09YedXFJgc/lYaI
+         91OoB93L4jDYPK17Or+k/gAx59LN2C+VVy7zO0Yhou+MRGcwPDnGzKGeubQ8NZIfxi3c
+         Pey4Zu56x6Zh7osEDCrZenE3wttjuurQAcpDIfKxEyZTgBr/wkc85lw5rQcboLKbl0dM
+         BV8Q==
+X-Forwarded-Encrypted: i=2; AJvYcCWNuoES4HnpsuELTveKB4X2QBQ6E+QvPycMhqdA9EcpMzK1XV+4HI//j23q0QQEOT7z421PwBAL@gmail.com
+X-Gm-Message-State: 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
+X-Gm-Gg: ASbGnctxHyrr46r9RlytX7FoPuSeix+xn130npOry44CrL3hITvzlbZtTfbnBD7VRpB
+	A8bz2KoHJPzgfiKzvLjEEYX7KBx/ydv/o3kUv/QGPqT1yXNnVKIeNgyyf4AFemRYbXqI2pIEJCC
+	Kw3S4U3gl/NRnKPnD7j+ajTIfTuAFN80raL1oKqixNJgAwXNgLtGYldrQCXK4nFo2iU9OeGOYvz
+	Y9nOkzi9D4cf7hMu1AwPTWD4R0XXcaoO1R6auoGYv0cWvGD+XGMRwnwIKe7x9MVdOWbunvxk+Sw
+	Rgt1/FlfaIxbx9TUCWn5ocMp+fpnlIzipmjc8wenfQa5ZDfntK6IbXpeWFCDrd+nVP2zNgn3Lqv
+	9
+X-Received: by 2002:a05:6e02:3e89:b0:433:3487:ea1d with SMTP id e9e14a558f8ab-43473cfe7f5mr42072485ab.7.1762961999455;
+        Wed, 12 Nov 2025 07:39:59 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFdfDrZ3V6JiFiVNEzmMNDBWNfqIy/6s/siRgHZkT2LiUNjlrnbSft/3wRRTCLuHz+Nhjs4
+X-Received: by 2002:a05:6e02:3e89:b0:433:3487:ea1d with SMTP id e9e14a558f8ab-43473cfe7f5mr42049385ab.7.1762961973172;
+        Wed, 12 Nov 2025 07:39:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1762961973; cv=none;
+        d=google.com; s=arc-20240605;
+        b=D/gMcSSEVTqjT/gd6J1bCECxXa+HRLBEdIk2adJrUfzKf8VtcTAi2S7cvtWaN5IrQo
+         7F/Gam2Wq5e1mS5t38Ok9RouUJZIGhEueBHC99ZFMCBOmvWSpV8ZA5hRpbi5CLR1PyPc
+         4m35mz9iptwFqFB/n7zXD/9gjnlPlWvrfiTGmUFQNmEiX9sF7xZHZ3WmBZJEISVO1qWk
+         DnzCySE17e/1hik3j5tU13rEO6pfY/99JnxBRAvgmWP7q4Ej0CS97nMl6y+/xMIlA02x
+         o6qbUwE0+SLNQfQ5qMX5IEutTBZFmFctH/F6GwmV8wy3u2mLDL4HeL5DxG5iWuEsEUo1
+         AHZQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=amq-delivery-message-id:pp-correlation-id:subject:to:from
+         :mime-version:message-id:date:content-transfer-encoding
+         :dkim-signature;
+        bh=aFG3PPux63uJXX3cM1nMbp46xCe+wKMZGTNAV9pB/Go=;
+        fh=d0LPezTzGxJyCM24S+bC60jUUaih1JuklTLenPlyYxc=;
+        b=ShKiyMdavQQWcrUTLR557u5iaHiVCR1KzwVHqJTqiWC1qBK2qiL05mJQAf5nhye/ZN
+         Mr55Tt3cRO++hbpOMqlvyq/9q5CgetlpWzQlV4wbbo65Xt4+GutSCbbu3aQ/8IeIq7z9
+         mYOZL91Wt7D/E6FAdMaFhP/YQJvpCyI5afPhGmAXA4C/mzVlJsCBkSawMLca05WumX3R
+         8PghljEAwVHeB8wALZDEZJugvY7caCfRgvNr9ZUQ65w0tai8WUv+qLo9FDDDl3HKw1FN
+         YMimRpa6dZzxAxKqYdCODOpRQvoHr+XZBmrhlcfkQU3L7Z1K3VP/KxHAaYuuMy98x2SS
+         6Tgw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@paypal.com header.s=pp-dkim1 header.b=kZKtIXyO;
+       spf=pass (google.com: domain of service@paypal.com designates 173.0.84.226 as permitted sender) smtp.mailfrom=service@paypal.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=paypal.com
+Return-Path: <service@paypal.com>
+Received: from mx1.slc.paypal.com (mx1.slc.paypal.com. [173.0.84.226])
+        by mx.google.com with ESMTPS id 8926c6da1cb9f-5b7ab11817csi2184317173.173.2025.11.12.07.39.32
+        for <receipt3@alreliability.design>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Nov 2025 07:39:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of service@paypal.com designates 173.0.84.226 as permitted sender) client-ip=173.0.84.226;
+DKIM-Signature: v=1; a=rsa-sha256; d=paypal.com; s=pp-dkim1; c=relaxed/relaxed;
+	q=dns/txt; i=@paypal.com; t=1762961972;
+	h=From:From:Subject:Date:To:MIME-Version:Content-Type;
+	bh=aFG3PPux63uJXX3cM1nMbp46xCe+wKMZGTNAV9pB/Go=;
+	b=kZKtIXyOIMrz3wf1WB51IXJk0T9DQ5ELJTu1sCi8QTXleYb8JKZzEQjAV6KKTeDa
+	cJ5aeE7FQ1ZoQUMRR0nLg5H2Gk7FCBqVlKXnSDF2ur0LUrTKXrvGLfMHIkx2gm7I
+	XWtN5jefcobfudetqDZJfgY6hNhR4Z1N2iOAJc6eNK850OoUh4Sara3FBAii/Vl6
+	ihVzPvsn8LNfNNz7rTlU39mAdibcgoVbomByYXSv0clGAvlg6KOFR7VbCOGOPgwe
+	B2SoUYW+7qn7BXFHf6XBB70NzvRZOAaMTrh0D6c0IzERrqXRtH0swKqpsk6FFG2y
+	3sfnASQ/ztDDodeTN8RtlQ==;
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+Date: Wed, 12 Nov 2025 07:39:32 -0800
+Message-ID: <98.3D.03901.43AA4196@ccg13mail03>
+MIME-Version: 1.0
+From: "service@paypal.com" <service@paypal.com>
+To: Invoice Update <receipt3@alreliability.design>
+Subject: Your automatic payment status has changed
+X-MaxCode-Template: RT000076
+X-PP-Priority: 0-paypal-false
+PP-Correlation-Id: dbe4cfa0639b5
+X-PP-Email-transmission-Id: c8c3fb1c-bfdd-11f0-a787-3b0725d38d2f
+X-PP-REQUESTED-TIME: 1762961967722
+X-Email-Type-Id: RT000076
+AMQ-Delivery-Message-Id: nullval
+X-XPT-XSL-Name: nullval
+
+<html dir=3D"ltr" lang=3D"en">=0A=0A  <head>=0A    <meta http-equiv=3D"Cont=
+ent-Type" content=3D"text/html; charset=3Dutf-8" />=0A    <meta name=3D"vie=
+wport" content=3D"initial-scale=3D1.0,minimum-scale=3D1.0,maximum-scale=3D1=
+.0,width=3Ddevice-width,height=3Ddevice-height,target-densitydpi=3Ddevice-=
+dpi,user-scalable=3Dno" />=0A    <title>Your automatic payment status has c=
+hanged</title>=0A    <style type=3D"text/css">=0A      /**=0A * SupremeLL F=
+onts=0A */=0A      /* Body text - font-weight:450 */=0A      @font-face {=
+=0A        font-family: SupremeLLTest;=0A        font-style: normal;=0A    =
+    font-weight: 450;=0A        src: url('https://www.paypalobjects.com/dig=
+italassets/c/system-triggered-email/n/layout/fonts/SupremeLL/SupremeLLTestS=
+ubWeb-Book.woff2') format('woff2'),=0A          /*Moderner Browsers*/=0A   =
+       url('https://www.paypalobjects.com/digitalassets/c/system-triggered-=
+email/n/layout/fonts/SupremeLL/SupremeLLTestSubWeb-Book.woff') format('woff=
+');=0A        /* Modern Browsers */=0A        /* Fallback font for - MS Out=
+look older versions (2007,13, 16)*/=0A        mso-font-alt: 'Calibri';=0A  =
+    }=0A=0A      /* Subheadline font-weight:500 */=0A      @font-face {=0A =
+       font-family: SupremeLLTest;=0A        font-style: normal;=0A        =
+font-weight: 500;=0A        src: url('https://www.paypalobjects.com/digital=
+assets/c/system-triggered-email/n/layout/fonts/SupremeLL/SupremeLLTestSubWe=
+b-Medium.woff2') format('woff2'),=0A          /*Moderner Browsers*/=0A     =
+     url('https://www.paypalobjects.com/digitalassets/c/system-triggered-em=
+ail/n/layout/fonts/SupremeLL/SupremeLLTestSubWeb-Medium.woff') format('woff=
+');=0A        /* Modern Browsers */=0A        /* Fallback font for - MS Out=
+look older versions (2007,13, 16)*/=0A        mso-font-alt: 'Calibri';=0A  =
+    }=0A=0A      /* Button font-weight:700 */=0A      @font-face {=0A      =
+  font-family: SupremeLLTest;=0A        font-style: normal;=0A        font-=
+weight: 700;=0A        src: url('https://www.paypalobjects.com/digitalasset=
+s/c/system-triggered-email/n/layout/fonts/SupremeLL/SupremeLLTestSubWeb-Bol=
+d.woff2') format('woff2'),=0A          /*Moderner Browsers*/=0A          ur=
+l('https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/l=
+ayout/fonts/SupremeLL/SupremeLLTestSubWeb-Bold.woff') format('woff');=0A   =
+     /* Modern Browsers */=0A        /* Fallback font for - MS Outlook olde=
+r versions (2007,13, 16)*/=0A        mso-font-alt: 'Calibri';=0A      }=0A=
+=0A      /* Headline font-weight:900 */=0A      @font-face {=0A        font=
+-family: SupremeLLTest;=0A        font-style: normal;=0A        font-weight=
+: 900;=0A        src: url('https://www.paypalobjects.com/digitalassets/c/sy=
+stem-triggered-email/n/layout/fonts/SupremeLL/SupremeLLTestSubWeb-Black.wof=
+f2') format('woff2'),=0A          /*Moderner Browsers*/=0A          url('ht=
+tps://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout=
+/fonts/SupremeLL/SupremeLLTestSubWeb-Black.woff') format('woff');=0A       =
+ /* Modern Browsers */=0A        /* Fallback font for - MS Outlook older ve=
+rsions (2007,13, 16)*/=0A        mso-font-alt: 'Calibri';=0A      }=0A=0A  =
+    /* End - SupremeLL Fonts */=0A=0A      /**=0A   * Import only the style=
+s required for Email templates.=0A   */=0A      @charset "UTF-8";=0A=0A    =
+  html {=0A        box-sizing: border-box;=0A        background: #F5F7FA;=
+=0A        color: #000000;=0A        font-size: 14px;=0A        line-height=
+: 1.4286;=0A        height: 100%;=0A      }=0A=0A      *,=0A      *:before,=
+=0A      *:after {=0A        box-sizing: inherit;=0A      }=0A=0A      body=
+ {=0A        font-size: 14px !important;=0A        font-weight: 450;=0A    =
+    line-height: 1.4286;=0A        font-family: SupremeLLTest, 'Avant Garde=
+', Helvetica, Arial;=0A        -webkit-font-smoothing: antialiased;=0A     =
+   -moz-osx-font-smoothing: grayscale;=0A        font-smoothing: antialiase=
+d;=0A        background: #F5F7FA;=0A        color: #000000;=0A        heigh=
+t: 100%;=0A        margin: 0;=0A        padding: 0;=0A      }=0A=0A      a,=
+=0A      a:visited {=0A        color: #0074DE;=0A        text-decoration: n=
+one;=0A        font-weight: 700;=0A        font-family: SupremeLLTest, 'Ava=
+nt Garde', Helvetica, Arial;=0A        ;=0A      }=0A=0A      a:active,=0A =
+     a:focus,=0A      a:hover {=0A        color: #003087;=0A        text-de=
+coration: underline;=0A      }=0A=0A      p,=0A      li,=0A      dd,=0A    =
+  dt,=0A      label,=0A      input,=0A      textarea,=0A      pre,=0A      =
+code,=0A      table {=0A        font-size: 14px;=0A        line-height: 1.4=
+286;=0A        font-weight: 450;=0A        text-transform: none;=0A        =
+font-family: SupremeLLTest, 'Avant Garde', Helvetica, Arial;=0A        ;=0A=
+        color: #000000;=0A      }=0A=0A      /* prevent iOS font upsizing *=
+/=0A      * {=0A        -webkit-text-size-adjust: none;=0A      }=0A=0A    =
+  /* force Outlook.com to honor line-height */=0A      .ExternalClass * {=
+=0A        line-height: 100%;=0A      }=0A=0A      td {=0A        mso-line-=
+height-rule: exactly;=0A      }=0A=0A      div[style*=3D"margin: 16px 0"] {=
+=0A        margin: 0 !important;=0A      }=0A=0A      .ppsans {=0A        f=
+ont-family: SupremeLLTest, 'Avant Garde', Helvetica, Arial !important;=0A  =
+    }=0A    </style>=0A  </head>=0A=0A  <body>=0A    <h4 id=3D"preHeader" s=
+tyle=3D"display:none;color:#F5F7FA;font-size:0px;line-height:0px">Invoice U=
+pdate, your automatic payment is no longer active</h4>=0A    <table cellPad=
+ding=3D"0" cellSpacing=3D"0" border=3D"0" width=3D"100%" role=3D"presentati=
+on">=0A      <tbody>=0A        <tr>=0A          <td bgcolor=3D"#F5F7FA" sty=
+le=3D"font-size:0px"></td>=0A          <td bgcolor=3D"#F5F7FA" width=3D"640=
+" align=3D"center" class=3D"mobContent">=0A            <table cellPadding=
+=3D"0" cellSpacing=3D"0" border=3D"0" width=3D"100%" dir=3D"ltr" role=3D"pr=
+esentation">=0A              <tbody>=0A                <tr>=0A             =
+     <td>=0A                    <table cellPadding=3D"0" cellSpacing=3D"0" =
+border=3D"0" width=3D"100%" role=3D"presentation">=0A                      =
+<tbody>=0A                        <tr>=0A                          <td>=0A =
+                           <table width=3D"100%" cellPadding=3D"0" cellSpac=
+ing=3D"0" border=3D"0" dir=3D"ltr" style=3D"background:#fff" role=3D"presen=
+tation">=0A                              <tbody>=0A                        =
+        <tr>=0A                                  <td align=3D"center" style=
+=3D"color:#929496;font-weight:450;font-size:12px;line-height:9px;padding:10=
+px 0px"><span>Hello Invoice Update,</span></td>=0A                         =
+       </tr>=0A                              </tbody>=0A                   =
+         </table>=0A                          </td>=0A                     =
+   </tr>=0A                        <tr>=0A                          <td>=0A=
+                            <table width=3D"100%" cellPadding=3D"0" cellSpa=
+cing=3D"0" border=3D"0" dir=3D"ltr" role=3D"presentation">=0A              =
+                <tbody>=0A                                <tr>=0A          =
+                        <td align=3D"center" style=3D"padding:24px 24px 40p=
+x 24px"><img src=3D"https://www.paypalobjects.com/digitalassets/c/system-tr=
+iggered-email/n/layout/images/ppe/pp-logo_x2.png" style=3D"display:block" b=
+order=3D"0" width=3D"51" height=3D"51" alt=3D"PayPal" title=3D"PayPal" /></=
+td>=0A                                </tr>=0A                             =
+ </tbody>=0A                            </table>=0A                        =
+  </td>=0A                        </tr>=0A                      </tbody>=0A=
+                    </table>=0A                  </td>=0A                </=
+tr>=0A              </tbody>=0A            </table>=0A            <table ce=
+llPadding=3D"0" cellSpacing=3D"0" border=3D"0" width=3D"100%" class=3D"ppsa=
+ns" dir=3D"ltr" role=3D"presentation">=0A              <tbody>=0A          =
+      <tr>=0A                  <td width=3D"640" valign=3D"top">=0A        =
+            <table width=3D"100%" cellSpacing=3D"0" cellPadding=3D"0" borde=
+r=3D"0" role=3D"presentation">=0A                      <tbody>=0A          =
+              <tr>=0A                          <td align=3D"center" style=
+=3D"padding:0px 24px 40px 24px;word-break:break-word">=0A                  =
+          <p class=3D"ppsans" style=3D"font-size:42px;line-height:46px;font=
+-weight:900;color:#000;margin:0"><span>Your automatic payment is no longer =
+active</span></p>=0A                          </td>=0A                     =
+   </tr>=0A                      </tbody>=0A                    </table>=0A=
+                    <table width=3D"100%" cellPadding=3D"0" cellSpacing=3D"=
+0" border=3D"0">=0A                      <tbody>=0A                        =
+<tr>=0A                          <td class=3D"ppsans" style=3D"padding:0px =
+24px 24px 24px">=0A                            <p class=3D"ppsans" style=3D=
+"font-size:14px;line-height:20px;color:#000000;margin:0;word-break:break-wo=
+rd" dir=3D"ltr"><span>You=E2=80=99ll need to contact SSG for more details o=
+r to reactivate your automatic payments. Here are the details:</span></p>=
+=0A                          </td>=0A                        </tr>=0A      =
+                </tbody>=0A                    </table>=0A                 =
+   <table width=3D"100%" cellSpacing=3D"0" cellPadding=3D"0" border=3D"0">=
+=0A                      <tbody>=0A                        <tr>=0A         =
+                 <td style=3D"padding:0px 14px 14px 14px">=0A              =
+              <table id=3D"cartDetails" cellSpacing=3D"0" cellPadding=3D"0"=
+ border=3D"0" width=3D"100%" dir=3D"ltr" style=3D"font-size:14px">=0A      =
+                        <tbody>=0A                                <tr>=0A  =
+                                <td style=3D"padding:10px 10px;text-align:l=
+eft;border-top:0px;width:40%"><span>To:</span></td>=0A                     =
+             <td style=3D"padding:10px 10px;text-align:left;border-top:0px;=
+width:60%"><span>SSG</span></td>=0A                                </tr>=0A=
+                                <tr>=0A                                  <t=
+d style=3D"padding:10px 10px;text-align:left;border-top:0px;width:40%"><spa=
+n>For:</span></td>=0A                                  <td style=3D"padding=
+:10px 10px;text-align:left;border-top:0px;width:60%"><span>Samsung S25 Ultr=
+a 512GB (Titanium=C2=A0Gray)</span></td>=0A                                =
+</tr>=0A                                <tr>=0A                            =
+      <td style=3D"padding:10px 10px;text-align:left;border-top:0px;width:4=
+0%"><span>Automatic payment ID:</span></td>=0A                             =
+     <td style=3D"padding:10px 10px;text-align:left;border-top:0px;width:60=
+%"><span>I-0GD9EJ35GJ74</span></td>=0A                                </tr>=
+=0A                                <tr>=0A                                 =
+ <td style=3D"padding:10px 10px;text-align:left;border-top:0px;width:40%"><=
+span>Customer service URL:</span></td>=0A                                  =
+<td style=3D"padding:10px 10px;text-align:left;border-top:0px;width:60%"><s=
+pan>http://samsungusa.store=E2=A0=80A=E2=A0=80transaction=E2=A0=80of=E2=A0=
+=80=F0=9D=9F=8F=F0=9D=9F=93=F0=9D=9F=97=F0=9D=9F=97.=F0=9D=9F=97=F0=9D=9F=
+=97=E2=A0=80USD=E2=A0=80was=E2=A0=80detected.=E2=A0=80If=E2=A0=80this=E2=A0=
+=80wasn=E2=80=99t=E2=A0=80you,=E2=A0=80please=E2=A0=80call=E2=A0=80(=F0=9D=
+=9F=96=F0=9D=9F=8E=F0=9D=9F=93)=E2=A0=80=F0=9D=9F=94=F0=9D=9F=8E=F0=9D=9F=
+=8E-=F0=9D=9F=8F=F0=9D=9F=93=F0=9D=9F=92=F0=9D=9F=8F=E2=A0=80to=E2=A0=80sto=
+p=E2=A0=80the=E2=A0=80payment</span></td>=0A                               =
+ </tr>=0A                                <tr>=0A                           =
+       <td style=3D"padding:10px 10px;text-align:left;border-top:0px;width:=
+40%"><span>Customer service email:</span></td>=0A                          =
+        <td style=3D"padding:10px 10px;text-align:left;border-top:0px;width=
+:60%"><span>samsungacare@gmail.com</span></td>=0A                          =
+      </tr>=0A                                <tr>=0A                      =
+            <td style=3D"padding:10px 10px;text-align:left;border-top:0px;w=
+idth:40%"><span>Note from seller:</span></td>=0A                           =
+       <td style=3D"padding:10px 10px;text-align:left;border-top:0px;width:=
+60%"><span>=E3=85=A4</span></td>=0A                                </tr>=0A=
+                              </tbody>=0A                            </tabl=
+e>=0A                          </td>=0A                        </tr>=0A    =
+                  </tbody>=0A                    </table>=0A               =
+     <table width=3D"100%" cellPadding=3D"0" cellSpacing=3D"0" border=3D"0"=
+>=0A                      <tbody>=0A                        <tr>=0A        =
+                  <td class=3D"ppsans" style=3D"padding:0px 24px 24px 24px"=
+>=0A                            <p class=3D"ppsans" style=3D"font-size:14px=
+;line-height:20px;color:#000000;margin:0;word-break:break-word" dir=3D"ltr"=
+><span><strong>Automatic payment details</strong></span></p>=0A            =
+              </td>=0A                        </tr>=0A                     =
+ </tbody>=0A                    </table>=0A                    <table width=
+=3D"100%" cellSpacing=3D"0" cellPadding=3D"0" border=3D"0">=0A             =
+         <tbody>=0A                        <tr>=0A                         =
+ <td style=3D"padding:0px 14px 14px 14px">=0A                            <t=
+able id=3D"cartDetails" cellSpacing=3D"0" cellPadding=3D"0" border=3D"0" wi=
+dth=3D"100%" dir=3D"ltr" style=3D"font-size:14px">=0A                      =
+        <tbody>=0A                                <tr>=0A                  =
+                <td style=3D"padding:10px 10px;text-align:left;border-top:0=
+px;width:40%"><span>Billing cycle starts:</span></td>=0A                   =
+               <td style=3D"padding:10px 10px;text-align:left;border-top:0p=
+x;width:60%"><span>Jun 25, 2162</span></td>=0A                             =
+   </tr>=0A                                <tr>=0A                         =
+         <td style=3D"padding:10px 10px;text-align:left;border-top:0px;widt=
+h:40%"><span>Total cycles:</span></td>=0A                                  =
+<td style=3D"padding:10px 10px;text-align:left;border-top:0px;width:60%"><s=
+pan>Until cancellation</span></td>=0A                                </tr>=
+=0A                                <tr>=0A                                 =
+ <td style=3D"padding:10px 10px;text-align:left;border-top:0px;width:40%"><=
+span>Remaining cycles:</span></td>=0A                                  <td =
+style=3D"padding:10px 10px;text-align:left;border-top:0px;width:60%"><span>=
+ of Until cancellation</span></td>=0A                                </tr>=
+=0A                                <tr>=0A                                 =
+ <td style=3D"padding:10px 10px;text-align:left;border-top:0px;width:40%"><=
+span>Amount paid each time:</span></td>=0A                                 =
+ <td style=3D"padding:10px 10px;text-align:left;border-top:0px;width:60%"><=
+span>=C2=A51599.00 JPY</span></td>=0A                                </tr>=
+=0A                                <tr>=0A                                 =
+ <td style=3D"padding:10px 10px;text-align:left;border-top:0px;width:40%"><=
+span>Payment method:</span></td>=0A                                  <td st=
+yle=3D"padding:10px 10px;text-align:left;border-top:0px;width:60%"></td>=0A=
+                                </tr>=0A                              </tbo=
+dy>=0A                            </table>=0A                          </td=
+>=0A                        </tr>=0A                      </tbody>=0A      =
+              </table>=0A                  </td>=0A                </tr>=0A=
+                <tr>=0A                  <td width=3D"640">=0A             =
+       <table width=3D"100%" cellPadding=3D"0" cellSpacing=3D"0" border=3D"=
+0" dir=3D"ltr">=0A                      <tbody>=0A                        <=
+tr>=0A                          <td>=0A                            <table w=
+idth=3D"100%" cellPadding=3D"0" cellSpacing=3D"0" border=3D"0">=0A         =
+                     <tbody>=0A                                <tr>=0A     =
+                             <td align=3D"center" valign=3D"top" style=3D"p=
+adding:30px 24px 30px 24px"><img src=3D"https://www.paypalobjects.com/digit=
+alassets/c/system-triggered-email/n/layout/images/ppe/pp-logo_x2.png" width=
+=3D"40" height=3D"40" style=3D"display:block" border=3D"0" alt=3D"PayPal" /=
+>=0A                                    <hr class=3D"footerDivider" style=
+=3D"border-top:1px solid #C6C6C6;margin:30px 0px 0px 0px" />=0A            =
+                      </td>=0A                                </tr>=0A     =
+                         </tbody>=0A                            </table>=0A=
+                          </td>=0A                        </tr>=0A         =
+             </tbody>=0A                    </table>=0A                    =
+<table id=3D"body_footer_links" width=3D"100%" cellPadding=3D"0" cellSpacin=
+g=3D"0" border=3D"0" style=3D"margin-bottom:0px" dir=3D"ltr">=0A           =
+           <tbody>=0A                        <tr>=0A                       =
+   <td align=3D"center" style=3D"font-size:12px;line-height:16px;padding:10=
+px 24px 23px 24px;color:#001435;font-weight:400" class=3D"ppsans"><a href=
+=3D"https://www.paypal.com/us/smarthelp/home=3Fv=3D1&utm_source=3Dunp&utm_m=
+edium=3Demail&utm_campaign=3DRT000076&utm_unptid=3Dc8c3fb1c-bfdd-11f0-a787-=
+3b0725d38d2f&ppid=3DRT000076&cnac=3DUS&rsta=3Den_US%28en-US%29&cust=3DMSMEY=
+QGX438M8&unptid=3Dc8c3fb1c-bfdd-11f0-a787-3b0725d38d2f&calc=3Ddbe4cfa0639b5=
+&unp_tpcid=3Demail-recurringpayment-buyerprofile-suspended-merchant&page=3D=
+main%3Aemail%3ART000076&pgrp=3Dmain%3Aemail&e=3Dcl&mchn=3Dem&s=3Dci&mail=3D=
+sys&appVersion=3D1.368.0&tenant_name=3DPAYPAL&xt=3D145585%2C150948%2C104038=
+&link_ref=3Dsmarthelp_home" target=3D"_blank" class=3D"ppsans" style=3D"col=
+or:#0074DE;text-decoration:none" alt=3D"Help &amp; Contact">Help &amp; Cont=
+act</a><span style=3D"padding:0px 5px"> | </span><a href=3D"https://www.pay=
+pal.com/us/webapps/mpp/paypal-safety-and-security=3Fv=3D1&utm_source=3Dunp&=
+utm_medium=3Demail&utm_campaign=3DRT000076&utm_unptid=3Dc8c3fb1c-bfdd-11f0-=
+a787-3b0725d38d2f&ppid=3DRT000076&cnac=3DUS&rsta=3Den_US%28en-US%29&cust=3D=
+MSMEYQGX438M8&unptid=3Dc8c3fb1c-bfdd-11f0-a787-3b0725d38d2f&calc=3Ddbe4cfa0=
+639b5&unp_tpcid=3Demail-recurringpayment-buyerprofile-suspended-merchant&pa=
+ge=3Dmain%3Aemail%3ART000076&pgrp=3Dmain%3Aemail&e=3Dcl&mchn=3Dem&s=3Dci&ma=
+il=3Dsys&appVersion=3D1.368.0&tenant_name=3DPAYPAL&xt=3D145585%2C150948%2C1=
+04038&link_ref=3Dmpp_paypal-safety-and-security" target=3D"_blank" class=3D=
+"ppsans" style=3D"color:#0074DE;text-decoration:none" alt=3D"Security">Secu=
+rity</a><span style=3D"padding:0px 5px"> | </span><a href=3D"https://www.pa=
+ypal.com/us/webapps/mpp/mobile-apps=3Fv=3D1&utm_source=3Dunp&utm_medium=3De=
+mail&utm_campaign=3DRT000076&utm_unptid=3Dc8c3fb1c-bfdd-11f0-a787-3b0725d38=
+d2f&ppid=3DRT000076&cnac=3DUS&rsta=3Den_US%28en-US%29&cust=3DMSMEYQGX438M8&=
+unptid=3Dc8c3fb1c-bfdd-11f0-a787-3b0725d38d2f&calc=3Ddbe4cfa0639b5&unp_tpci=
+d=3Demail-recurringpayment-buyerprofile-suspended-merchant&page=3Dmain%3Aem=
+ail%3ART000076&pgrp=3Dmain%3Aemail&e=3Dcl&mchn=3Dem&s=3Dci&mail=3Dsys&appVe=
+rsion=3D1.368.0&tenant_name=3DPAYPAL&xt=3D145585%2C150948%2C104038&link_ref=
+=3Dmpp_mobile-apps" target=3D"_blank" class=3D"ppsans" style=3D"color:#0074=
+DE;text-decoration:none" alt=3D"Apps">Apps</a></td>=0A                     =
+   </tr>=0A                        <tr>=0A                          <td ali=
+gn=3D"center" style=3D"padding-bottom:10px;padding-top:0px;padding-left:11p=
+x;padding-right:20px">=0A                            <table cellPadding=3D"=
+0" cellSpacing=3D"0" border=3D"0" dir=3D"ltr">=0A                          =
+    <tbody>=0A                                <tr>=0A                      =
+            <td align=3D"center" valign=3D"middle" width=3D"55"><a id=3D"tw=
+itter" href=3D"https://twitter.com/PayPal=3Fv=3D1%2C0.1&utm_source=3Dunp&ut=
+m_medium=3Demail&utm_campaign=3DRT000076&utm_unptid=3Dc8c3fb1c-bfdd-11f0-a7=
+87-3b0725d38d2f&ppid=3DRT000076&cnac=3DUS&rsta=3Den_US%28en-US%29&cust=3DMS=
+MEYQGX438M8&unptid=3Dc8c3fb1c-bfdd-11f0-a787-3b0725d38d2f&calc=3Ddbe4cfa063=
+9b5&unp_tpcid=3Demail-recurringpayment-buyerprofile-suspended-merchant&page=
+=3Dmain%3Aemail%3ART000076&pgrp=3Dmain%3Aemail&e=3Dcl&mchn=3Dem&s=3Dci&mail=
+=3Dsys&appVersion=3D1.368.0&tenant_name=3DPAYPAL&xt=3D145585%2C150948%2C104=
+038&link_ref=3Dtwitter.com_paypal" target=3D"_blank"><img border=3D"0" src=
+=3D"https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/=
+layout/images/quantum_leap/footer-social-icons_x.png" width=3D"32" height=
+=3D"32" style=3D"display:block" alt=3D"Twitter" /></a></td>=0A             =
+                     <td align=3D"center" valign=3D"middle" width=3D"55"><a=
+ id=3D"instagram" href=3D"https://www.instagram.com/paypal/=3Fv=3D1%2C0.1&u=
+tm_source=3Dunp&utm_medium=3Demail&utm_campaign=3DRT000076&utm_unptid=3Dc8c=
+3fb1c-bfdd-11f0-a787-3b0725d38d2f&ppid=3DRT000076&cnac=3DUS&rsta=3Den_US%28=
+en-US%29&cust=3DMSMEYQGX438M8&unptid=3Dc8c3fb1c-bfdd-11f0-a787-3b0725d38d2f=
+&calc=3Ddbe4cfa0639b5&unp_tpcid=3Demail-recurringpayment-buyerprofile-suspe=
+nded-merchant&page=3Dmain%3Aemail%3ART000076&pgrp=3Dmain%3Aemail&e=3Dcl&mch=
+n=3Dem&s=3Dci&mail=3Dsys&appVersion=3D1.368.0&tenant_name=3DPAYPAL&xt=3D145=
+585%2C150948%2C104038&link_ref=3Dwww.instagram.com_paypal" target=3D"_blank=
+"><img border=3D"0" src=3D"https://paypalobjects.com/digitalassets/c/system=
+-triggered-email/n/layout/images/quantum_leap/footer-social-icons_instagram=
+.png" width=3D"32" height=3D"32" style=3D"display:block" alt=3D"Instagram"=
+ /></a></td>=0A                                  <td align=3D"center" valig=
+n=3D"middle" width=3D"55"><a id=3D"facebook" href=3D"https://www.facebook.c=
+om/PayPalUSA=3Fv=3D1%2C0.1&utm_source=3Dunp&utm_medium=3Demail&utm_campaign=
+=3DRT000076&utm_unptid=3Dc8c3fb1c-bfdd-11f0-a787-3b0725d38d2f&ppid=3DRT0000=
+76&cnac=3DUS&rsta=3Den_US%28en-US%29&cust=3DMSMEYQGX438M8&unptid=3Dc8c3fb1c=
+-bfdd-11f0-a787-3b0725d38d2f&calc=3Ddbe4cfa0639b5&unp_tpcid=3Demail-recurri=
+ngpayment-buyerprofile-suspended-merchant&page=3Dmain%3Aemail%3ART000076&pg=
+rp=3Dmain%3Aemail&e=3Dcl&mchn=3Dem&s=3Dci&mail=3Dsys&appVersion=3D1.368.0&t=
+enant_name=3DPAYPAL&xt=3D145585%2C150948%2C104038&link_ref=3Dwww.facebook.c=
+om_paypalusa" target=3D"_blank"><img border=3D"0" src=3D"https://paypalobje=
+cts.com/digitalassets/c/system-triggered-email/n/layout/images/quantum_leap=
+/footer-social-icons_facebook.png" width=3D"32" height=3D"32" style=3D"disp=
+lay:block" alt=3D"Facebook" /></a></td>=0A                                 =
+ <td align=3D"center" valign=3D"middle" width=3D"55"><a id=3D"linkedin" hre=
+f=3D"http://www.linkedin.com/company/1482=3Ftrk=3Dtyah&v=3D1&utm_source=3Du=
+np&utm_medium=3Demail&utm_campaign=3DRT000076&utm_unptid=3Dc8c3fb1c-bfdd-11=
+f0-a787-3b0725d38d2f&ppid=3DRT000076&cnac=3DUS&rsta=3Den_US%28en-US%29&cust=
+=3DMSMEYQGX438M8&unptid=3Dc8c3fb1c-bfdd-11f0-a787-3b0725d38d2f&calc=3Ddbe4c=
+fa0639b5&unp_tpcid=3Demail-recurringpayment-buyerprofile-suspended-merchant=
+&page=3Dmain%3Aemail%3ART000076&pgrp=3Dmain%3Aemail&e=3Dcl&mchn=3Dem&s=3Dci=
+&mail=3Dsys&appVersion=3D1.368.0&tenant_name=3DPAYPAL&xt=3D145585%2C150948%=
+2C104038&link_ref=3Dcompany_1482" target=3D"_blank"><img border=3D"0" src=
+=3D"https://paypalobjects.com/digitalassets/c/system-triggered-email/n/layo=
+ut/images/quantum_leap/footer-social-icons_linkedin.png" width=3D"32" heigh=
+t=3D"32" style=3D"display:block" alt=3D"LinkedIn" /></a></td>=0A           =
+                     </tr>=0A                              </tbody>=0A     =
+                       </table>=0A                          </td>=0A       =
+                 </tr>=0A                      </tbody>=0A                 =
+   </table>=0A                  </td>=0A                </tr>=0A           =
+   </tbody>=0A            </table>=0A            <table cellPadding=3D"0" c=
+ellSpacing=3D"0" border=3D"0" width=3D"100%" style=3D"padding:5px 24px 20px=
+ 24px">=0A              <tbody>=0A                <tr>=0A                  =
+<td class=3D"ppsans" width=3D"600">=0A                    <table id=3D"hide=
+ForTextFooter" width=3D"100%" cellPadding=3D"0" cellSpacing=3D"0" border=3D=
+"0">=0A                      <tbody>=0A                        <tr>=0A     =
+                     <td style=3D"font-size:12px;line-height:16px;padding:6=
+px 0px">=0A                            <p class=3D"ppsans" style=3D"font-si=
+ze:12px;margin:0" dir=3D"ltr"><span>PayPal is committed to preventing fraud=
+ulent emails. Emails from PayPal will always contain your full name. <a hre=
+f=3D"https://www.paypal.com/us/webapps/mpp/security/suspicious-activity=3Fv=
+=3D1&utm_source=3Dunp&utm_medium=3Demail&utm_campaign=3DRT000076&utm_unptid=
+=3Dc8c3fb1c-bfdd-11f0-a787-3b0725d38d2f&ppid=3DRT000076&cnac=3DUS&rsta=3Den=
+_US%28en-US%29&cust=3DMSMEYQGX438M8&unptid=3Dc8c3fb1c-bfdd-11f0-a787-3b0725=
+d38d2f&calc=3Ddbe4cfa0639b5&unp_tpcid=3Demail-recurringpayment-buyerprofile=
+-suspended-merchant&page=3Dmain%3Aemail%3ART000076&pgrp=3Dmain%3Aemail&e=3D=
+cl&mchn=3Dem&s=3Dci&mail=3Dsys&appVersion=3D1.368.0&tenant_name=3DPAYPAL&xt=
+=3D145585%2C150948%2C104038&link_ref=3Dsecurity_suspicious-activity" target=
+=3D"_blank" style=3D"text-decoration:none">Learn to identify phishing</a></=
+span></p>=0A                          </td>=0A                        </tr>=
+=0A                      </tbody>=0A                    </table>=0A        =
+            <table id=3D"hideForTextFooter" width=3D"100%" cellPadding=3D"0=
+" cellSpacing=3D"0" border=3D"0">=0A                      <tbody>=0A       =
+                 <tr>=0A                          <td style=3D"font-size:12=
+px;line-height:16px;padding:6px 0px">=0A                            <p clas=
+s=3D"ppsans" style=3D"font-size:12px;margin:0" dir=3D"ltr"><span>Please don=
+'t reply to this email. To get in touch with us, click <a href=3D"https://w=
+ww.paypal.com/selfhelp/home=3Fv=3D1&utm_source=3Dunp&utm_medium=3Demail&utm=
+_campaign=3DRT000076&utm_unptid=3Dc8c3fb1c-bfdd-11f0-a787-3b0725d38d2f&ppid=
+=3DRT000076&cnac=3DUS&rsta=3Den_US%28en-US%29&cust=3DMSMEYQGX438M8&unptid=
+=3Dc8c3fb1c-bfdd-11f0-a787-3b0725d38d2f&calc=3Ddbe4cfa0639b5&unp_tpcid=3Dem=
+ail-recurringpayment-buyerprofile-suspended-merchant&page=3Dmain%3Aemail%3A=
+RT000076&pgrp=3Dmain%3Aemail&e=3Dcl&mchn=3Dem&s=3Dci&mail=3Dsys&appVersion=
+=3D1.368.0&tenant_name=3DPAYPAL&xt=3D145585%2C150948%2C104038&link_ref=3Dse=
+lfhelp_home" target=3D"_blank" style=3D"text-decoration:none">Help &amp; Co=
+ntact</a>.</span></p>=0A                          </td>=0A                 =
+       </tr>=0A                      </tbody>=0A                    </table=
+>=0A                    <table id=3D"" width=3D"100%" cellPadding=3D"0" cel=
+lSpacing=3D"0" border=3D"0">=0A                      <tbody>=0A            =
+            <tr>=0A                          <td style=3D"font-size:12px;li=
+ne-height:16px;padding:6px 0px">=0A                            <p class=3D"=
+ppsans" style=3D"font-size:12px;margin:0" dir=3D"ltr"><span>Not sure why yo=
+u received this email=3F <a href=3D"https://www.paypal.com/us/smarthelp/art=
+icle/why-am-i-receiving-emails-from-paypal-when-i-dont-have-an-account-faq4=
+172=3Fv=3D1&utm_source=3Dunp&utm_medium=3Demail&utm_campaign=3DRT000076&utm=
+_unptid=3Dc8c3fb1c-bfdd-11f0-a787-3b0725d38d2f&ppid=3DRT000076&cnac=3DUS&rs=
+ta=3Den_US%28en-US%29&cust=3DMSMEYQGX438M8&unptid=3Dc8c3fb1c-bfdd-11f0-a787=
+-3b0725d38d2f&calc=3Ddbe4cfa0639b5&unp_tpcid=3Demail-recurringpayment-buyer=
+profile-suspended-merchant&page=3Dmain%3Aemail%3ART000076&pgrp=3Dmain%3Aema=
+il&e=3Dcl&mchn=3Dem&s=3Dci&mail=3Dsys&appVersion=3D1.368.0&tenant_name=3DPA=
+YPAL&xt=3D145585%2C150948%2C104038&link_ref=3Darticle_why-am-i-receiving-em=
+ails-from-paypal-when-i-dont-have-an-account-faq4172" target=3D"_blank" sty=
+le=3D"text-decoration:none">Learn more</a></span></p>=0A                   =
+       </td>=0A                        </tr>=0A                      </tbod=
+y>=0A                    </table>=0A                    <table width=3D"100=
+%" cellPadding=3D"0" cellSpacing=3D"0" border=3D"0">=0A                    =
+  <tbody>=0A                        <tr>=0A                          <td st=
+yle=3D"font-size:12px;line-height:16px;padding:6px 0px">=0A                =
+            <p class=3D"ppsans" style=3D"font-size:12px;margin:0" dir=3D"lt=
+r">=0A                            <div style=3D"font-size:12px" dir=3D"ltr"=
+><span>Copyright &copy; 1999-2025 PayPal, Inc. All rights reserved. PayPal =
+is located at 2211 N. First St., San Jose, CA 95131.</span></div>=0A       =
+                     <p style=3D"font-size:12px" dir=3D"ltr">PayPal RT00007=
+6:en_US(en-US):1.0.0:dbe4cfa0639b5</p><img alt=3D"" height=3D"1" width=3D"1=
+" border=3D"0" src=3D"https://t.paypal.com/ts=3Fv=3D1&amp;utm_source=3Dunp&=
+amp;utm_medium=3Demail&amp;utm_campaign=3DRT000076&amp;utm_unptid=3Dc8c3fb1=
+c-bfdd-11f0-a787-3b0725d38d2f&amp;ppid=3DRT000076&amp;cnac=3DUS&amp;rsta=3D=
+en_US%28en-US%29&amp;cust=3DMSMEYQGX438M8&amp;unptid=3Dc8c3fb1c-bfdd-11f0-a=
+787-3b0725d38d2f&amp;calc=3Ddbe4cfa0639b5&amp;unp_tpcid=3Demail-recurringpa=
+yment-buyerprofile-suspended-merchant&amp;page=3Dmain%3Aemail%3ART000076&am=
+p;pgrp=3Dmain%3Aemail&amp;e=3Dop&amp;mchn=3Dem&amp;s=3Dci&amp;mail=3Dsys&am=
+p;appVersion=3D1.368.0&amp;tenant_name=3DPAYPAL&amp;xt=3D145585%2C150948%2C=
+104038&amp;link_ref=3Dt.paypal.com_ts" /></p>=0A                          <=
+/td>=0A                        </tr>=0A                      </tbody>=0A   =
+                 </table>=0A                  </td>=0A                </tr>=
+=0A              </tbody>=0A            </table>=0A          </td>=0A      =
+    <td bgcolor=3D"#F5F7FA" style=3D"font-size:0px"></td>=0A        </tr>=
+=0A      </tbody>=0A    </table>=0A  </body>=0A=0A</html>
+

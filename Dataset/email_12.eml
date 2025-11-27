@@ -1,0 +1,991 @@
+Delivered-To: buxoler@gmail.com
+Received: by 2002:a59:dd18:0:b0:553:da9c:489e with SMTP id n24csp720797vqa;
+        Tue, 25 Nov 2025 08:55:31 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFsaOIn4HhACjFvkRhM5hfaK1MW3kTlZUMw+4FI9lUWNKSLaH4ekwTnZJ0fcJgOsuvqogUv
+X-Received: by 2002:a05:690e:1589:10b0:63f:9f7d:904a with SMTP id 956f58d0204a3-643293b95ccmr2246926d50.61.1764089731715;
+        Tue, 25 Nov 2025 08:55:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1764089731; cv=none;
+        d=google.com; s=arc-20240605;
+        b=b+t1N/uRe7D8fRq6q/POaTb1suFkiQK7Wz/xL8280FHcXRY2e63+6vNTrgvmtKIskg
+         oXZxmRN5mAQVA/0TGaTEadZhS+zf23Tfqh9FWPP7iwZ98SXBruiVbMaLMJag2lGCyQJw
+         Nwxpp5mvcxufGZqnsWkD1QMQDx+rImDvrWX2vKlEZ8kk5v3IkT3pNzhBZMq/XA0pPtUy
+         XV8J73463lyV3ciBgfhJ/cBGWKM3TmU3JFdj8h3aoWrEMu3uDAXZM6P6Enb72x51PKwy
+         f2drmAYC7rgSw+S5XlIrDemJgEmSC7yPzz+LGAag8OOKpCSLc6IrIA4geCrX3L6ITuhQ
+         aH6g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:mime-version:date:to:from:list-unsubscribe-post:message-id
+         :list-unsubscribe:dkim-signature;
+        bh=SyTOVfrjcbkkvv9X/gLgQPvPwVwwvuv1/zmGtZrVtyo=;
+        fh=AUT2eja3bQszFw2taNJQ06FPZIVrWKp11VtsJqegGrM=;
+        b=E2GA5DckuvmrcnDSw5B2wxqDkiYvRTIDA6JZU8xtZWf4jtDTMH4SKS7WwfJ39BfaT4
+         uRRrIwOdSLgrfvljwCyvtsHvO56q7e/ciPrmF4giOwE89iv8hVB9iSpSO5FW6g9lUpnK
+         Ok2t6B5Ehvvv4gAwCR3Qbr49daEQObvBGu/c9E1ui7TTsUU9Dsp71W9/lURjXXWNE1/Y
+         v1qXCDjwcKxOqzz/MRyetE8K1ocXjWWyBoH7EU3xqpIFxmjJIFExsHhr9lD/rxp/eTYV
+         TFoswxXLn+VcTPzcmXz3Si/w7k/qM6aeYhpAi485V6zXzJoVCQpot6YdFqtW6CErZaLA
+         9ugA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@marketing.messari.io header.s=scph0225 header.b=mjSITGfq;
+       spf=pass (google.com: domain of msprvs1=20424gino5yov=bounces-266693-1538@marketing.messari.io designates 137.22.237.46 as permitted sender) smtp.mailfrom="msprvs1=20424Gino5yoV=bounces-266693-1538@marketing.messari.io";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=messari.io
+Return-Path: <msprvs1=20424Gino5yoV=bounces-266693-1538@marketing.messari.io>
+Received: from znlxtjbj.marketing.messari.io (znlxtjbj.marketing.messari.io. [137.22.237.46])
+        by mx.google.com with ESMTPS id 00721157ae682-78a799c4fd9si80988147b3.761.2025.11.25.08.55.31
+        for <buxoler@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 25 Nov 2025 08:55:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of msprvs1=20424gino5yov=bounces-266693-1538@marketing.messari.io designates 137.22.237.46 as permitted sender) client-ip=137.22.237.46;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@marketing.messari.io header.s=scph0225 header.b=mjSITGfq;
+       spf=pass (google.com: domain of msprvs1=20424gino5yov=bounces-266693-1538@marketing.messari.io designates 137.22.237.46 as permitted sender) smtp.mailfrom="msprvs1=20424Gino5yoV=bounces-266693-1538@marketing.messari.io";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=messari.io
+Return-Path: <msprvs1=20424Gino5yoV=bounces-266693-1538@marketing.messari.io>
+X-MSFBL: UPMEQ7yIvLIIjXbKLfson4uO2IHnKdPJaZH69zFHp44=|eyJzdWJhY2NvdW50X2l
+	kIjoiMTUzOCIsIm1lc3NhZ2VfaWQiOiI2OTIwODBkZjI1NjlmYTg2N2UxYiIsInI
+	iOiJidXhvbGVyQGdtYWlsLmNvbSIsImN1c3RvbWVyX2lkIjoiMjY2NjkzIiwidGV
+	uYW50X2lkIjoic3BjIn0=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=marketing.messari.io; s=scph0225; t=1764089728;
+	i=@marketing.messari.io;
+	bh=SyTOVfrjcbkkvv9X/gLgQPvPwVwwvuv1/zmGtZrVtyo=;
+	h=List-Unsubscribe:Message-ID:List-Unsubscribe-Post:From:To:Date:
+	 Content-Type:Subject:From:To:Cc:Subject;
+	b=mjSITGfq4LEVYVuaLbA4qTfVdgqrWuqswFhxjea37LbkUTE91MrSHsTixn2XNSdTW
+	 tnR19Mjjg4fPkLC0l+6P2ZgQWeoHh8QZkH8KYZoh9SnlE2XJ2kD6t7RhnXoKS9ICnp
+	 eEc6OZnC1KMYzfB786YpIXoXfNGtBp2UOJqDsqgINVsA0FPv4Y6XgiiogD4MBAyMEe
+	 TCSolbf7k1Gjqu96EFCVnHJups6gWCvGbAMKcj4hguw4u8TD4+lwyV7Yj4RSxBRBLE
+	 dR09yHymnpAyu+HFUD16cn4vH9WrzHlLlKVXb9vDp1kgHGaXlSCgGrfzRjfWKzwnm2
+	 ht/etsUOb1izg==
+Received: from [10.90.33.175] ([10.90.33.175])
+	by i-00b61ebee7c916e0f.mta1vrest.sd.prd.sparkpost (ecelerity 5.1.0.74691 r(msys-ecelerity:tags/5.1.0.19)) with REST
+	id B1/E7-62650-08FD5296; Tue, 25 Nov 2025 16:55:28 +0000
+List-Unsubscribe: <https://07.emailinboundprocessing.com/enc_user/list_unsubscribe?d=%241%245iKly6WfXMch0Gg4OIXK%2BQ%3D%3D%24OrR9Vild0B7eX7Umb%2ButnhElzkrCW4IXHktoP%2BGEuIncAvXMFcfcYLjNTCzD%0AsJStMOfKqy0je8y4bXi99e93fOSqd3wyoxSa6DFZJdScW5rYZleZ3eou%2B%2Bex%0ASkWfhfHbsFXie1gahDkMBjZR9PlgF7NgIaJHv6jUjb6iaNT9n7PDgVz49NV1%0AEKzI6eJss%2B%2BJpkQo7bPL3zD7SCh4n4YJL1Mr9bN%2BCKFLkJ7OSamw7jBhpDW7%0AyJp59L0QcxK1QCqRBUIm7x%2FxyrJ8qAZ2loZtn2sI9XAnj3W8le71LzKWBjI5%0A%2Bwq%2FVVUGXLoHeeiVc67S&1=1>,<mailto:4_psuzgypi7ijy4aemxdtxisbjsk0h7miqc0eg00w295qxystkvn8i1n@unsubscribe-07.emailinboundprocessing.com?subject=Unsubscribe%20pnrcgsq15g83ermkvh6flrjmmjbwp83pf1nwovcfd&body=DO_NOT_DELETE-14ew161kuwza24ym18cb4o0j6kxp86m52sfj0igwt9qigh04qq27pelsgpxchf8uo5m1ydjfe0m0inii5-DO_NOT_DELETE>
+Message-ID: <B1.E7.62650.08FD5296@i-00b61ebee7c916e0f.mta1vrest.sd.prd.sparkpost>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+From: "Messari Team" <unqualified.opinions@marketing.messari.io>
+To: buxoler@gmail.com
+Date: Tue, 25 Nov 2025 16:55:27 +0000
+Content-Type: multipart/alternative; boundary="_----fJy44DQYXj+AW511DVHhYQ===_CB/D7-62650-F7FD5296"
+MIME-Version: 1.0
+Subject: gMonad Arrives: MON Token Debuts With $3B+ Valuation
+
+--_----fJy44DQYXj+AW511DVHhYQ===_CB/D7-62650-F7FD5296
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+
+$244M Raised and 74 Apps at Launch    Presented by=0A=0A( https://clicks.me=
+ssari.io/f/a/k-bvY7CAc9M3zsi0g6c5Ig~~/AAQRxRA~/L9OlndlgkGn1l6KGTBT4bfE85hnN=
+rAGZ_w48anb6qMb9QBUy7VlCwQkz6PD3GvjvKQ1F-fdHtyIh_aWvs54AnjFIDp0rcf41byePmKm=
+0CW1jtnmVDmlAYBKfrJGFCmsP )   =0A( https://clicks.messari.io/f/a/yvI1G_6DuD=
+X0A97IjpLTnQ~~/AAQRxRA~/RVaOhka4L4lHqvwfdjJ7nTEtW7keBu8NW7IrTzRbDPjHwvmqEMZ=
+z2bsFa9F9xduuDq3hpTYt2o4kcoqEO-0OiUHP7jOtAiElnkuo-ppVnp2v8uLhdb7UN1kPM3-ojB=
+kr )   =0A( https://clicks.messari.io/f/a/bsWc7LhaXJXxpSt4IwJQaw~~/AAQRxRA~=
+/gb7zwQKsusNWpoQPf1QM8JmiyCMDOxDVpDy1ecBKZpVjMbp6ZgqkOGTr2CRtchw0soH3IfMP0T=
+V0iUdgXKzpDSEdnIEf-H2RPzq_HNmOFuA_hJCQGQ5UyvSVOsRw3XvH )   Klarna Stablecoi=
+n -=0ASwedish buy now, pay later giant, Klarna. rolling out stablecoin=0A=
+=0A( https://clicks.messari.io/f/a/RJJ4j6kN8rCcOkfPmTyZ7w~~/AAQRxRA~/QmXy3g=
+8FHN4iY7Z1-9scYNBkjb8p_F4Xi8ev9Um4B0xCvTPMSQAdjDEb_Iglh5sIGAeNpepiKBhVRFwwI=
+p3Eu8AXcfa01Nq5LA7y8i9biwSA_9bhShk15qhN6YZ6KqI0fjuPizEGraS9HYfByRXwHyMQhFrh=
+4UIBZOXZsYlW4ae6UiOmsY7tAO3F0Ysp_zZ2 )=0A with Stripe's Bridge.=0A=0AInstit=
+utional Expansion - Flow Traders opens new institutional=0Agateway =0A( htt=
+ps://clicks.messari.io/f/a/xO93ZNU9mON_ylM6ioyfgg~~/AAQRxRA~/QmXy3g8FHN4iY7=
+Z1-9scYNBkjb8p_F4Xi8ev9Um4B0wLo22oLzKhiIcfqdwAfxqHvr0oI2VyUDUA8D1U4J39eVMTz=
+Tk56kkgmNWnet4SrgPj2PityXNZ1l1lEe5qLHwac3GdCbl81fNXeqAfUp_epOfaWCvQ4tvXekCJ=
+DaHl_k9G6rv9ghx1sXM3EYdset3V )=0A to DeFi with Cap and EigenLayer.=0A=0AMon=
+ad Moment - Monad=E2=80=99s debut shows why FDV forecasts broke =0A( https:=
+//clicks.messari.io/f/a/vW3J7YX2Ie5ZnhmE-gWT8A~~/AAQRxRA~/QmXy3g8FHN4iY7Z1-=
+9scYNBkjb8p_F4Xi8ev9Um4B0x91JnTMOC-NRUH1wcwBv1t6c2CoOvq4mPeOxyE0eD5VmWHkDB3=
+PEd9QJrPlvy1o_wyYe6OhmPvlKu8gp80QxrRbKbgB1a9eonJ_ZCDCF8h0YVUHM6FOxfGK-4BrCZ=
+B0QeYxHwxptzywkdCpxZ7YFvg )=0A as bitcoin fell.=0A=0AFull News Recap  =0A( =
+https://clicks.messari.io/f/a/8gM-vfKg60K0dVZkWTHo_Q~~/AAQRxRA~/wRPsBw4MNYv=
+WwLzhUucq8v7aCwhLkT-CJI3wQ5uGCIzv1FjMQotpEj5NhE0yVLItkFc6BYErtYbrf1oSr3SrXE=
+Qe1bXdfTEE13LZOaFqplRpGG8vvn-b_veC1RY4zXzt_6ufhWJxHWEM0CQDndIVcoUOvRWo5YAgM=
+3XXQ6GzMketHeViEvFehe5CsS9l1BHNvFts53dfcZB95Voy8Y9pyw~~ )=0A New here=3F As=
+k Copilot =0A( https://clicks.messari.io/f/a/XcoVx9zDXHihAJtNWs2mlA~~/AAQRx=
+RA~/1cP78Hr4u7IMfV00yRkm8lIep3hsRPMCEpVzzuG_0dMwLUP9ikDgg69qjQomlGAnNDzn0t4=
+TRBTr9McCYcMgUWWnd7FhJ6bnb4dINFvH9jU4VSwH7EY3eLcbS8JJm_CwWss3OLuxuO6SQVZDCw=
+vohupsV1KGHRd50c6JU8_E9Dfni5GmBB_aLDELPrgi_8LkFLTMHyh1eAEHf55GVTpS0w~~ )=0A=
+ up to 5 free queries per day with Messari Basic.=0A=0A=0A( https://clicks.=
+messari.io/f/a/VQ56CJ4XA-gj-zFlMBbw6w~~/AAQRxRA~/XsH0T2SuPDnVMxjt-T-ArhjNcB=
+0V3hKDuDm3pAWbvuyNXT6nJ3H399xlm-JbCOjj0RLqJ_6_yXUun94LOUAyMFe7pOsmHl0d84DW5=
+SdC0tENORvkP3FZM9DmhmZejmwCojREkUp1lA02BIBjhrM78ohvJG867f-XVlSAAHG7yN6_TaiE=
+75ICifZZlofkeN94N_2y4DlDhzngHzQevKb85PHtNMmQ7pGcxhqOJHqw2mN30JTECRZdqLrIAsC=
+vu_6b )=0A        Full Market Overview  =0A( https://clicks.messari.io/f/a/=
+EtAj7NEEZrCv62qrxlEa4Q~~/AAQRxRA~/XsH0T2SuPDnVMxjt-T-ArhjNcB0V3hKDuDm3pAWbv=
+uyNXT6nJ3H399xlm-JbCOjj0RLqJ_6_yXUun94LOUAyMFe7pOsmHl0d84DW5SdC0tENORvkP3FZ=
+M9DmhmZejmwCojREkUp1lA02BIBjhrM78ohvJG867f-XVlSAAHG7yN4Dw99fCHc-LbHAHsVwba-=
+Mpl8mqNnSt7q7IarVDyuOG5mWXHasIn10y8n-pA3CHvanQFPri95rIN7OfpvZzcIV )=0A     =
+=0A( https://clicks.messari.io/f/a/qK4DlBTL5wWtFOI3OkSwzw~~/AAQRxRA~/7Xxscm=
+i534guDgvEwANTXOnBOECKYPRlOCUSTscS_j593ZtgNNULqncwmRfwsnHNNnoNgHlt2H1UW8Ld8=
+PV7OgHHlfMzoyk1s6N5EgcmxQutpI5iPq0dF7WVdir_OvohUDd06ifnVZQRidBUWMwObszHpBkb=
+oXhZZdDg-Si0ozw~ )=0AMessari's protocol reports give you a deep dive on the=
+ foundation=0Aand state of top crypto protocols, including key metrics and=
+=0Anotable events. See the complete list of protocol reports here =0A( http=
+s://clicks.messari.io/f/a/_qiyWuwbJILBUOpaVzSzIg~~/AAQRxRA~/7Xxscmi534guDgv=
+EwANTXOnBOECKYPRlOCUSTscS_j593ZtgNNULqncwmRfwsnHNYbtVppowQtTVIGyoHcjpXwL1q5=
+qVxYDo5iZ2GkEd8Pa4rMxezKgJIsoateTERIDFP1BgQx9cfUByxHR1IFUZ94hiW_4yog3nJPuem=
+qkjSiY~ )=0A and get a preview of our latest report below.=0A=0A=0A( https:=
+//clicks.messari.io/f/a/LZiU7gionep-AWlMRTUfcg~~/AAQRxRA~/kbvT1shh00pvGPib5=
+fBD4n6Jz5bnfDR9itNQ8yLYPs4L4-0q47vNbnzw8Br6Gnfku2hgPNuX5DRqwpibwX4qosfUoHCi=
+Pf236KhZq6gBMZ_8Hy-ZBnm_2Zu6_Py9VgXrll4OD6M3JTpYQ__jursMtGMXtadHCtjXm3VTdfx=
+mhxk~ )=0A   State of FLock Q3 2025 =0A( https://clicks.messari.io/f/a/LkSz=
+aB2Uc6Acpbts1wfedQ~~/AAQRxRA~/kbvT1shh00pvGPib5fBD4n6Jz5bnfDR9itNQ8yLYPs4L4=
+-0q47vNbnzw8Br6GnfkAaCpoGfmUXHBrFp94VIkb_w_p0L7QckjtNJPiE-9s4oJHeKik9uT2bFE=
+AF0D7ke0W4LUJOlh0yvPWg17SJ8LK12MXhO3afWqU3O-FSU9InA~ )=0A=0A=0A* Combines p=
+rivacy-preserving federated learning with onchain=0Aincentives to let commu=
+nities collaboratively train AI models=0Awithout sharing raw data=0A* Marke=
+t cap more than doubled QoQ (+104%) as exchange listings=0A(Coinbase, Upbit=
+) boosted awareness and liquidity=0A* Training nodes (+6%), validators (+5%=
+), and delegators (+10%)=0Aall increased, signaling healthy contributor gro=
+wth=0A* New long-term staking model aligns incentives, boosts yield for=0Al=
+onger lockups, and reduces mining-and-dumping behavior=0A=0A( https://click=
+s.messari.io/f/a/_1Jppk3gbJaYHWduVStxHQ~~/AAQRxRA~/5o36ygtEZoEm9b6Wc-NkK7sY=
+I9VnOCB6CSk2u5AxhD1Q1zHeZgbXOoddH_r1IqWarDlpT8TRQglLFE_CmSqBqfUNVz_acdLbR8b=
+Gfy_kjHv36LW-KtxOfkD7lQdRBTxO510Gd6bjww-hwNYq7-QHbqNurTGyF7IYLzpIUCg8_MQ~ )=
+=0A     =0A( https://clicks.messari.io/f/a/GwFjgKIQqpR6f2vkOzr-ww~~/AAQRxRA=
+~/YtcILdsxDvAlo_WP4J5u92oKy0IDQTWAGMw89iT9mAu8iDgaE8V-KWkVCXl9_Ju7-pARRj14u=
+GJ_shLSsYH8eKTyForcs6L5JouI58jvY7YKXNeZA7gtREnv0lBaXY-lewGZFfxfMNxDEMSkiUzr=
+KaVlSiQkILXrFd-kDB0L6KI~ )=0AState of Mantle Q3 2025 =0A( https://clicks.me=
+ssari.io/f/a/KVoMHRCG532l_LHW-GHzfw~~/AAQRxRA~/5o36ygtEZoEm9b6Wc-NkK7sYI9Vn=
+OCB6CSk2u5AxhD1Q1zHeZgbXOoddH_r1IqWakcYpQ0OG5a9yLFzUTE1l0pn7EXtASvNO-SyLwbe=
+OL_aBvTyZ6kBYzuEB_rTrNHZwU4DWcyGIo0lz9BijX98LF94854qnu_5nCZ9nFCf0nRk~ )=0A=
+=0A=0A* Modular Layer-2 that separates execution, data availability=0A(DA),=
+ and settlement to improve scalability and reduce costs=0A* MNT governs Man=
+tle=E2=80=99s treasury, roadmap, and key protocol=0Aparameters=0A* MNT=E2=
+=80=99s price rose 199.8% to $1.8, aided by deeper Bybit=0Aintegration=0A* =
+Circulating market cap surged 189.8% QoQ to $5.7B=0A=0A( https://clicks.mes=
+sari.io/f/a/uonhjefEJHyGYGndGLnuuw~~/AAQRxRA~/Q80gQVWoBVX4wyhRATuytV2w-1t_S=
+_FMMywjjVT2AMLNZVJ1--Kp8QsJw_8hQ_tvdT7_-EUS6W0X4LTQHW1j07xL_xzRWR-fr3zBN4iV=
+gvQbLvfM-fEy7cZ20-aW6qUEhH7HkVAQQ5Bi7xQFl4k6bXP0VBC-pVM4DfH8WksBeHpIghZvpJX=
+vKxa16YuDPGYHiZ7JY7Hbj8P3IX8kjDYYkM3naVoZwmTzM8nlrufHdnrG2EdfBYESJCetE_DXQI=
+f5pOYx_onTef6vmqHsjUBBWRH1IqcgDeHX19zL174a_io~ )=0A   State of peaq Q3 2025=
+ =0A( https://clicks.messari.io/f/a/lNuPCfX_jSkPanUig4Y0SA~~/AAQRxRA~/Q80gQ=
+VWoBVX4wyhRATuytV2w-1t_S_FMMywjjVT2AMLNZVJ1--Kp8QsJw_8hQ_tvdT7_-EUS6W0X4LTQ=
+HW1j07xL_xzRWR-fr3zBN4iVgvQbLvfM-fEy7cZ20-aW6qUEhH7HkVAQQ5Bi7xQFl4k6bXP0VBC=
+-pVM4DfH8WksBeHpIghZvpJXvKxa16YuDPGYHUSYNHSQPxT8HOvfb475zELwCRkLqzbjjIB3WvH=
+xCybLiB58poyQVijl35vh-xTDSLnu9_MnY44rUrPxl9AA7X7-a4eE7Vnv2C3jZ9H09d4Y~ )=0A=
+=0A=0A* Public Layer-1 blockchain focused on the Machine Economy =E2=80=93=
+=0Aenabling robots, devices, vehicles, and other machines to act as=0Aoncha=
+in economic agents=0A* Positioning as a leading chain for robotics + machin=
+e RWAs=0A(e.g., tokenized robo-farm in Hong Kong, Combinder energy=0Adevice=
+s, Silencio audio DePIN, XMAQUINA physical-AI DAO, Teneo=0AAI-agent network=
+)=0A* Market cap up ~69% to ~$129M, 5.6M transactions (+19% QoQ)=0A* Multip=
+le CEX listings improve PEAQ liquidity and reach=0A=0A****************=0AFr=
+om Our Sponsor=0A****************=0A=0A( https://clicks.messari.io/f/a/AeCN=
+lgbqtB6XPARMQBWOrw~~/AAQRxRA~/L9OlndlgkGn1l6KGTBT4bfE85hnNrAGZ_w48anb6qMb6S=
+DKBvGQx23ydNMOmkCVVZoqB1FYfD3ndiAMOnhwCypt0aRTaAU6ywyfbnxRmNzKoEjUGBhoDHj16=
+1EJaWryf ) Quantus is Quantum=0ASecure Money. Join the Testnet Now!=0A=0AJo=
+in Now  ( https://clicks.messari.io/f/a/r-m4Wx3J5hcH0kRrhZJ91Q~~/AAQRxRA~/L=
+9OlndlgkGn1l6KGTBT4bfE85hnNrAGZ_w48anb6qMY7ba_hxa8yF3HzO7dZ4jvJ-iCy7FwbtxGE=
+EibX2C2ymqnzF7n6WeKLlOrwYjO7X2EinjuS4Jt-BP1q7mkADgUf )  =0A( https://clicks=
+.messari.io/f/a/iXbifeXQrrkistCah0yj8Q~~/AAQRxRA~/vhQW9ofSdWf-4AcPiuU7H29l=
+-v2GODzCb25cBfRQ23XyYJ6GVB6bGmu06MZ736Hzn3hpzJt0AicGETBplAsaICj0h0tHStI2O3c=
+wrPgcN_cuvuV4s_xFmU_KWmMnStAdLQKLGTcaU7F042zJ-Q1JuA~~ )  Yesterday, the=0Al=
+ong-awaited TGE and mainnet for Monad went live. Before launch,=0AMonad had=
+ raised =0A( https://clicks.messari.io/f/a/2jKgnFOKqzP0-dgl_u-jOA~~/AAQRxRA=
+~/hq17dQabqYnnmd6LCvrtfV9KciMLA8xD3XGL50p_8UlFsnpeKuE5qoLRqoSKVKRgl6QRk_enP=
+IMLSeWsGx4bT_fujiBazIQLmM-6mZQABNaLoVs9sUFnP2RkjjEDyVAqsaOwQF95Sy2s_lriM6em=
+Dd-UseDG_j09MxgmWTnpF2I~ )=0A $244 million since its first round in Feb. 20=
+23. Last week, the=0Ateam raised an additional $187.5 million through Coinb=
+ase=E2=80=99s new=0AICO mechanism =0A( https://clicks.messari.io/f/a/roTY2W=
+Vn7FWwbV2ttvV9nQ~~/AAQRxRA~/9S1kCqrAsKmNm0ABNVxSHWDzAFJnnhAQfCaNiWlsuA4QTp8=
+do0Dr6B77H-wRIyOtEPxKGBdhxp94wV8RlSlcpRrJPZSG0Olg9uCPatyBs8VOKRQaHgVBu9mwRM=
+m_3rwJoY0fUYQkq1lhd8H0wf0uQQ~~ ) for=0Athe MON token. The MON token serves =
+as the native currency of the=0AMonad blockchain, enabling transaction fee =
+payments and staking=0Ato secure the network. At mainnet launch, MON=E2=80=
+=99s total initial=0Asupply will be set at 100 billion tokens, of which 7.5=
+% was=0Aoffered during the ICO at a $2.5 billion valuation. There was=0Asuf=
+ficient demand for the token, as the sale was 1.47 times=0Aoversubscribed, =
+with Coinbase users requesting over $276 million=0Ain just a five-day perio=
+d.=0A=0AThe token began trading around the pre-sale price of $2.5=0Abillion=
+, but by the end of the day had reclaimed $3 billion,=0Awhere it stayed thr=
+oughout the night. One of the most interesting=0Aaspects of the Monad mainn=
+et launch is the size of its ecosystem=0A( https://clicks.messari.io/f/a/Au=
+UH9tRxHZmbaBNRXtjOXw~~/AAQRxRA~/gb7zwQKsusNWpoQPf1QM8BCoevP9YO9A1gSS32IkgmL=
+Wo2myQAvf90BvvXKlSt8lC3_oj7DSM6H0hagObJaofSknflUH4BscuMx8jj6Rj5ne4v52545zLL=
+oS1hAbapfX ). There are already 74=0Aapps live ( https://clicks.messari.io/=
+f/a/_Cz3jJiIKvVttlzwjJPcLQ~~/AAQRxRA~/nBxCHnQzN-zhY6q6AuniuTvSaiIE2_dFIc9s9=
+kdhRbJqXDxVpPO1jCXgIA1U2elBo1L-Rag23D-ER_88rpiWraGIseJWTOFnYFBXIDTUhKVZ7swx=
+qz9QNOmrdr4N7zgawFHUqTg-e5KuQFgp4tPJVQ~~ ),=0Aincluding ones users are fami=
+liar with, such as Uniswap, Curve,=0AMorpho, and many Monad-exclusive apps.=
+=0A=0AOver the next few months, the Monad Foundation will support=0Aecosyst=
+em projects in accelerating user acquisition through Monad=0AMomentum ( htt=
+ps://clicks.messari.io/f/a/-yvAGmi3Bc0-kw5yriU8zg~~/AAQRxRA~/dQOrXWnU-eeOhn=
+iGFMlnDTXZcwk281drKkuJj4GaqASz2Rg98YJMQHUZIIdI3RfObeHAruIRLFYgBQhPVXyUBp24E=
+WehBCYSyi8gHOocbCYO0MaiYL2JVKgrMH_TpAiF ). These=0Aincentives vary from boo=
+sted jackpots to higher referral trading=0Arewards for users. A full list o=
+f the apps in Wave 1 can be found=0Ahere ( https://clicks.messari.io/f/a/bb=
+UMpBtlqjdXGuK7O_OTOw~~/AAQRxRA~/nBxCHnQzN-zhY6q6AuniuV9zEWmetryYl8T7elnFKIm=
+oJnwH_1LnoGAftVwnANF3522I-tg9Ak_KGNw6ncQREmhnfg_iIUSsFf4UjdCvGw1KAZJcg7TDs7=
+bMhwCe62Muin3brqr9_Sl2mc8n53ecOA~~ ), and a=0Abrief description of each is =
+available here =0A( https://clicks.messari.io/f/a/Tsg3sfcRSDI14wOB3cmRaQ~~/=
+AAQRxRA~/_EKFPmCmLRQpI2LYn03-VarXyF-lzdBD5xDLiXNNFzY6RF2yjpTYr42a1-e6V45MoJ=
+QNJT-rCHkpDXNUn_atfHlMRrY_8aDxPXmq1z7VNbshLVVOsI_mfAgroFs1yA5GeXglY5Yn565Zl=
+txWsf71BN3Avh7C3IRJbljFQBYzT2a7N3mruwqMj3yxhUu-Qgds )=0A.=0A=0AFor now, I w=
+ill see you in the Monad blockspace exploring all=0Athe new apps!=0A=0AUnsu=
+bscribe ( https://clicks.messari.io/f/a/VdhMluaz1euaEpdqLKKXBw~~/AAQRxRA~/x=
+-Dx69f2LPNDa_df1NjN3ANSlHySMTr35YQqnltiIAxBvBpE3ZUf9QQ-d4CWsQ490JuOXo2tr1_M=
+VHf1uMgrAgbxP94eqcitRb4VDRJRqKHYKu-m3lK07A853iOY7rHXWIsh2VpyU9Bvf0ZNc1kePdE=
+xNy4l__Wb-7svBa6NsK38HtjkzNsCCWIp4CMPHFkJTkMgz0pvZD0cv0-stZrN7wc3KkTCosjiKA=
+vUM7_pc0AU07f01k5kHFDzbiS9i9_5mafCYKitUPfMholqJALHd4WJwFOAXd9TpcSryeAUnPqXs=
+e9Xd2bOOzrVnvd3CK-SeFq5U8q3TvqpusJDsKHEhZzfTZ2l7kCB5igcKVxmhMgmWxCN9_yWq7j8=
+WxjVlyOA616t8-X0mFpd5UsHQNZCrVy5G5Urb3Y1ceAPaGQmjmOO6tCchqD2Fyh8NcEZbkzlb4S=
+lPuUPifoitfoHVLGRowzXiLKe2HqqlrRG8G090XZk7SWr0zq0pS3RE-ZkK1AoxYc46HKPPFvTJW=
+2lHGHVKd20TrRaDCdsdQqTlK9tNMlnrJlk1z2xX05ozr1KACg8BulISKjp_em4ZcS-ufPaiBeSQ=
+XYbrbeELipLn_eEAQ91bDRNQKsT_EpyD_K7lKEX )=0A=0AX ( https://clicks.messari.i=
+o/f/a/Uc8LqunQaKzm3nqS9fV7PA~~/AAQRxRA~/dQOrXWnU-eeOhniGFMlnDdaExQxMkyO24Bw=
+r2zT-3XAmm4JloCiY7Uj7KaYSgnU2frgPFakZBUJxx_KHAOAKyJSt_bGej41J4daJ4VLlQeAkc0=
+YNE1R-BDZt0S5FUCyM )  LinkedIn=0A( https://clicks.messari.io/f/a/QcvUPODy01=
+hyEcnTG5opyg~~/AAQRxRA~/MX3U8J2qlInl8GFtyetjDnUDVyCYDcaWw4pm1Rxg_LWHy0qTLPC=
+gwjNAk1dlSrjAIVtJ3dGX9rwHfOcnxt7C6sV08VPFfv0pLFIp-dRRGRJK23zYlncKepOMwlCqaS=
+upLt6tOajwUzE7wBEKwrG6Zg~~ )=0AYouTube ( https://clicks.messari.io/f/a/8_n1=
+KRZUmr1r4VQMtOpBmQ~~/AAQRxRA~/FjlZhxazJSqVTgRPYHLL4PXVvg7_BkcfJwZ-14YwgUnk8=
+0Gi7E_pS-V3CUbqmCuNOoM87fI0GH9igkf8-0pppAVaeM0lSW4X-bptmQVMbB26ZM7U-BYQRyT-=
+g2K9InnZ2qgOWZhwhC2EljqJVDfapg~~ )=0ADisclosure: Authors may own cryptoasse=
+ts named in this=0Anewsletter. For more information, please visit messari.i=
+o =0A( https://clicks.messari.io/f/a/sQ7eAfw7JGYTMyrIdF0OfA~~/AAQRxRA~/rxSs=
+rzdcIWgQV2Z3Wuq71sMKNmQsW80NOC1bqejL-4g8FDWi6VlL0w1Wjgckv-9-VqMXuYFRuT8EaSe=
+NnLCC-hEuopiRc6JeT78OmM8qFAjl6EDv_Ogdrs9WUXrB_PSlNGNRhfjXiHP6lzBCXyKlB3KmDO=
+ZhIbO7I8381YBdGckymkKdJFbj2kHJRtxEOOA3OxB0LhHssNkOHqbwWRou0Jff2h0jqeGiNlCCK=
+dt3dZwFnamVjYNVTjbybX680AETHltM4sdGzJ_iszmwrwxju3KWJMjCNSJypwKiMijGCblfZlFC=
+114btzYJdNteOLhbXGHKFVDDzkSgNf6LyO6HpFYGE3srBvAOqd1GnWkYvDbeCYbqnjX2UmAmO74=
+9U3ZgRr_je6WXwTcer7yqAj52hBPp8WE8jk4ktJdkw4v0evOzFnX4N6X9NG4AvwV3O1FEZD79s0=
+UbRlfu_4N2dRq9ik81CQLMYciahwhX_NiQy-2hDFDKJ0rOIYTG9OhhYq891Q-P9b9hDy0wZN9nA=
+ugpiSir3qwjlj8ntr2R7EmLK7NHxi3yPqXk12qb8pW9KrWym7uf0C6qp3qYjIHQZolgthYRpj6-=
+BPpLR0MZO3XWqYQuGWQMFN-J9w31ONiBQ9xUDhrl_Wnv2yqgW0wSQFppV0VbXp1E7QztT8W3q7c=
+hE39Ck-c5Vmq9P6GiM3LNJPU7Yq_18_BOB4Osj6bC1lP8Z8iWZmnP-mdUV2ZFTDndozv4wycqt-=
+kAtM2QXPCvkhBP )=0A.=0A=0AUnqualified Opinions, a Messari newsletter, is me=
+ant for=0Ainformational purposes only. It is not meant to serve as=0Ainvest=
+ment advice. Please consult with your investment, tax, or=0Alegal advisor b=
+efore making any investment decisions.=0A=0AAdvertising and sponsorship do =
+not influence editorial=0Adecisions or content. Third party advertisements =
+and links to=0Aother sites where products or services are advertised are no=
+t=0Aendorsements or recommendations by Messari. Messari is not=0Aresponsibl=
+e for the content of the ads, promises made, or the=0Aquality or reliabilit=
+y of the products or services offered in any=0Athird party advertisement.=
+=0A=0ACopyright =C2=A9 2024 Messari, All rights reserved.=0A=0AMessari=0A22=
+8 Park Ave S PMB 52631=0ANew York, New York 10003
+--_----fJy44DQYXj+AW511DVHhYQ===_CB/D7-62650-F7FD5296
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html>=0A<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=
+=3D"urn:schemas-microsoft-com:office:office" lang=3D"en">=0A<head>=0A<title=
+></title>=0A<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Dutf-8">=0A<meta name=3D"viewport" content=3D"width=3Ddevice-width,initia=
+l-scale=3D1">=0A<!--[if mso]>=0A<xml><w:WordDocument xmlns:w=3D"urn:schemas=
+-microsoft-com:office:word"><w:DontUseAdvancedTypographyReadingMail/></w:Wo=
+rdDocument>=0A<o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInc=
+h><o:AllowPNG/></o:OfficeDocumentSettings></xml>=0A<![endif]--><!--[if !mso=
+]><!--><link href=3D"https://fonts.googleapis.com/css2=3Ffamily=3DRoboto:it=
+al,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900" rel=3D=
+"stylesheet" type=3D"text/css">=0A<link href=3D"https://fonts.googleapis.co=
+m/css=3Ffamily=3DOpen+Sans" rel=3D"stylesheet" type=3D"text/css">=0A<!--<![=
+endif]--><style>=0A*{box-sizing:border-box}body{margin:0;padding:0}a[x-appl=
+e-data-detectors]{color:inherit!important;text-decoration:inherit!important=
+}#MessageViewBody a{color:inherit;text-decoration:none}p{line-height:inheri=
+t}.desktop_hide,.desktop_hide table{mso-hide:all;display:none;max-height:0;=
+overflow:hidden}.image_block img+div{display:none}sub,sup{font-size:75%;lin=
+e-height:0}#converted-body .list_block ol,#converted-body .list_block ul,.b=
+ody [class~=3Dx_list_block] ol,.body [class~=3Dx_list_block] ul,u+.body .li=
+st_block ol,u+.body .list_block ul{padding-left:20px} @media (max-width:620=
+px){.social_block.desktop_hide .social-table{display:inline-block!important=
+}.mobile_hide{display:none}.row-content{width:100%!important}.stack .column=
+{width:100%;display:block}.mobile_hide{min-height:0;max-height:0;max-width:=
+0;overflow:hidden;font-size:0}.desktop_hide,.desktop_hide table{display:tab=
+le!important;max-height:none!important}}=0A</style>=0A<!--[if mso ]><style>=
+sup, sub { font-size: 100% !important; } sup { mso-text-raise:10% } sub { m=
+so-text-raise:-10% }</style> <![endif]-->=0A</head>=0A<body class=3D"body" =
+style=3D"margin:0;padding:0;-webkit-text-size-adjust:none;text-size-adjust:=
+none;background-color:#fff">=0A<div style=3D"display:none !important;visibi=
+lity:hidden;mso-hide:all;font-size:1px;color:#ffffff;line-height:1px;max-he=
+ight:0px;max-width:0px;opacity:0;overflow:hidden;">$244M Raised and 74 Apps=
+ at Launch</div>=0A<table class=3D"nl-container" width=3D"100%" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-ta=
+ble-lspace:0;mso-table-rspace:0;background-color:#fff"><tbody><tr><td>=0A<t=
+able class=3D"row row-1" align=3D"center" width=3D"100%" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lsp=
+ace:0;mso-table-rspace:0"><tbody><tr><td><table class=3D"row-content stack"=
+ align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"=
+presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;color:#000;wid=
+th:600px;margin:0 auto" width=3D"600"><tbody><tr><td class=3D"column column=
+-1" width=3D"100%" style=3D"mso-table-lspace:0;mso-table-rspace:0;font-weig=
+ht:400;text-align:left;padding-top:5px;vertical-align:top">=0A<table class=
+=3D"image_block block-1" width=3D"100%" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-r=
+space:0"><tr><td class=3D"pad" style=3D"width:100%"><div class=3D"alignment=
+" align=3D"center"><div style=3D"max-width:600px"><img src=3D"https://braze=
+-images.com/appboy/communication/assets/image_assets/images/68cc3e4f81f1260=
+06558805a/original.png=3F1758215759" style=3D"display:block;height:auto;bor=
+der:0;width:100%;border-radius:15px" width=3D"600" alt title height=3D"auto=
+"></div></div></td></tr></table>=0A<table class=3D"paragraph_block block-2"=
+ width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pr=
+esentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;word-break:break=
+-word"><tr><td class=3D"pad" style=3D"padding-left:5px;padding-right:5px;pa=
+dding-top:5px"><div style=3D"color:#000;direction:ltr;font-family:Roboto,Ar=
+ial,Sans-serif;font-size:12px;font-weight:400;letter-spacing:0;line-height:=
+NaN;text-align:center;mso-line-height-alt:NaNpx"><p style=3D"margin:0">Pres=
+ented by</p></div></td></tr></table>=0A</td></tr></tbody></table></td></tr>=
+</tbody></table>=0A<table class=3D"row row-2" align=3D"center" width=3D"100=
+%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" s=
+tyle=3D"mso-table-lspace:0;mso-table-rspace:0">=0A<tbody><tr><td><table cla=
+ss=3D"row-content stack" align=3D"center" border=3D"0" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table=
+-rspace:0;background-color:#fff;color:#000;width:600px;margin:0 auto" width=
+=3D"600"><tbody><tr><td class=3D"column column-1" width=3D"100%" style=3D"m=
+so-table-lspace:0;mso-table-rspace:0;font-weight:400;text-align:left;vertic=
+al-align:top">=0A<table class=3D"image_block block-1" width=3D"100%" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"m=
+so-table-lspace:0;mso-table-rspace:0"><tr><td class=3D"pad" style=3D"paddin=
+g-bottom:5px;padding-left:5px;padding-right:5px;width:100%"><div class=3D"a=
+lignment" align=3D"center"><div style=3D"max-width:180px"><a href=3D"https:=
+//clicks.messari.io/f/a/k-bvY7CAc9M3zsi0g6c5Ig~~/AAQRxRA~/L9OlndlgkGn1l6KGT=
+BT4bfE85hnNrAGZ_w48anb6qMb9QBUy7VlCwQkz6PD3GvjvKQ1F-fdHtyIh_aWvs54AnjFIDp0r=
+cf41byePmKm0CW1jtnmVDmlAYBKfrJGFCmsP" target=3D"_blank"><img src=3D"https:/=
+/braze-images.com/appboy/communication/assets/image_assets/images/6908bf091=
+d465800637e4a84/original.png=3F1762180873" style=3D"display:block;height:au=
+to;border:0;width:100%;border-radius:0" width=3D"180" alt title height=3D"a=
+uto"></a></div></div></td></tr></table>=0A<table class=3D"image_block block=
+-2" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tr><td clas=
+s=3D"pad" style=3D"padding-left:5px;padding-right:5px;padding-top:5px;width=
+:100%"><div class=3D"alignment" align=3D"center"><div style=3D"max-width:59=
+0px">=0A<a href=3D"https://clicks.messari.io/f/a/yvI1G_6DuDX0A97IjpLTnQ~~/A=
+AQRxRA~/RVaOhka4L4lHqvwfdjJ7nTEtW7keBu8NW7IrTzRbDPjHwvmqEMZz2bsFa9F9xduuDq3=
+hpTYt2o4kcoqEO-0OiUHP7jOtAiElnkuo-ppVnp2v8uLhdb7UN1kPM3-ojBkr" target=3D"_b=
+lank"><img src=3D"https://braze-images.com/appboy/communication/assets/imag=
+e_assets/images/68d3f0e63b9fc000760e0e6c/original.png=3F1758720229" style=
+=3D"display:block;height:auto;border:0;width:100%;border-radius:0" width=3D=
+"590" alt title height=3D"auto"></a>=0A</div></div></td></tr></table>=0A<ta=
+ble class=3D"image_block block-3" width=3D"100%" border=3D"0" cellpadding=
+=3D"5" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;=
+mso-table-rspace:0"><tr><td class=3D"pad"><div class=3D"alignment" align=3D=
+"left"><div style=3D"max-width:120px"><a href=3D"https://clicks.messari.io/=
+f/a/bsWc7LhaXJXxpSt4IwJQaw~~/AAQRxRA~/gb7zwQKsusNWpoQPf1QM8JmiyCMDOxDVpDy1e=
+cBKZpVjMbp6ZgqkOGTr2CRtchw0soH3IfMP0TV0iUdgXKzpDSEdnIEf-H2RPzq_HNmOFuA_hJCQ=
+GQ5UyvSVOsRw3XvH" target=3D"_blank"><img src=3D"https://braze-images.com/ap=
+pboy/communication/assets/image_assets/images/67aa5e2f96b631006546db1e/orig=
+inal.png=3F1739218479" style=3D"display:block;height:auto;border:0;width:10=
+0%" width=3D"120" alt title height=3D"auto"></a></div></div></td></tr></tab=
+le>=0A<table class=3D"paragraph_block block-4" width=3D"100%" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-tabl=
+e-lspace:0;mso-table-rspace:0;word-break:break-word"><tr><td class=3D"pad" =
+style=3D"padding-left:10px;padding-right:5px;padding-top:5px"><div style=3D=
+"color:#000;direction:ltr;font-family:Roboto,Arial,Sans-serif;font-size:14p=
+x;font-weight:400;letter-spacing:0;line-height:NaN;text-align:left;mso-line=
+-height-alt:NaNpx">=0A<p style=3D"margin:0;margin-bottom:0">=0A<strong>Klar=
+na Stablecoin </strong><strong>-</strong> Swedish buy now, pay later giant,=
+ Klarna. <a href=3D"https://clicks.messari.io/f/a/RJJ4j6kN8rCcOkfPmTyZ7w~~/=
+AAQRxRA~/QmXy3g8FHN4iY7Z1-9scYNBkjb8p_F4Xi8ev9Um4B0xCvTPMSQAdjDEb_Iglh5sIGA=
+eNpepiKBhVRFwwIp3Eu8AXcfa01Nq5LA7y8i9biwSA_9bhShk15qhN6YZ6KqI0fjuPizEGraS9H=
+YfByRXwHyMQhFrh4UIBZOXZsYlW4ae6UiOmsY7tAO3F0Ysp_zZ2" target=3D"_blank" styl=
+e=3D"text-decoration: underline; color: #0068a5;" data-mce-attribute-name-1=
+ data-mce-attribute-value-1 rel=3D"noopener">rolling out stablecoin</a> wit=
+h Stripe's Bridge.</p>=0A<p style=3D"margin:0;margin-bottom:0">&nbsp;</p>=
+=0A<p style=3D"margin:0;margin-bottom:0">=0A<strong>Institutional Expansion=
+ -</strong> Flow Traders <a href=3D"https://clicks.messari.io/f/a/xO93ZNU9m=
+ON_ylM6ioyfgg~~/AAQRxRA~/QmXy3g8FHN4iY7Z1-9scYNBkjb8p_F4Xi8ev9Um4B0wLo22oLz=
+KhiIcfqdwAfxqHvr0oI2VyUDUA8D1U4J39eVMTzTk56kkgmNWnet4SrgPj2PityXNZ1l1lEe5qL=
+Hwac3GdCbl81fNXeqAfUp_epOfaWCvQ4tvXekCJDaHl_k9G6rv9ghx1sXM3EYdset3V" target=
+=3D"_blank" style=3D"text-decoration: underline; color: #0068a5;" data-mce-=
+attribute-name-1 data-mce-attribute-value-1 rel=3D"noopener">opens new inst=
+itutional gateway</a> to DeFi with Cap and EigenLayer.</p>=0A<p style=3D"ma=
+rgin:0"><strong><br>=0AMonad Moment -</strong> Monad=E2=80=99s debut <a hre=
+f=3D"https://clicks.messari.io/f/a/vW3J7YX2Ie5ZnhmE-gWT8A~~/AAQRxRA~/QmXy3g=
+8FHN4iY7Z1-9scYNBkjb8p_F4Xi8ev9Um4B0x91JnTMOC-NRUH1wcwBv1t6c2CoOvq4mPeOxyE0=
+eD5VmWHkDB3PEd9QJrPlvy1o_wyYe6OhmPvlKu8gp80QxrRbKbgB1a9eonJ_ZCDCF8h0YVUHM6F=
+OxfGK-4BrCZB0QeYxHwxptzywkdCpxZ7YFvg" target=3D"_blank" style=3D"text-decor=
+ation: underline; color: #0068a5;" data-mce-attribute-name-1 data-mce-attri=
+bute-value-1 rel=3D"noopener">shows why FDV forecasts broke</a> as bitcoin =
+fell.</p>=0A</div></td></tr></table>=0A<table class=3D"button_block block-5=
+" width=3D"100%" border=3D"0" cellpadding=3D"10" cellspacing=3D"0" role=3D"=
+presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tr><td class=
+=3D"pad"><div class=3D"alignment" align=3D"center"><a href=3D"https://click=
+s.messari.io/f/a/8gM-vfKg60K0dVZkWTHo_Q~~/AAQRxRA~/wRPsBw4MNYvWwLzhUucq8v7a=
+CwhLkT-CJI3wQ5uGCIzv1FjMQotpEj5NhE0yVLItkFc6BYErtYbrf1oSr3SrXEQe1bXdfTEE13L=
+ZOaFqplRpGG8vvn-b_veC1RY4zXzt_6ufhWJxHWEM0CQDndIVcoUOvRWo5YAgM3XXQ6GzMketHe=
+ViEvFehe5CsS9l1BHNvFts53dfcZB95Voy8Y9pyw~~" target=3D"_blank" style=3D"colo=
+r:#FFFFFF;text-decoration:none;"><!--[if mso]>=0A<v:roundrect xmlns:v=3D"ur=
+n:schemas-microsoft-com:vml" xmlns:w=3D"urn:schemas-microsoft-com:office:wo=
+rd"  href=3D"https://clicks.messari.io/f/a/8gM-vfKg60K0dVZkWTHo_Q~~/AAQRxRA=
+~/wRPsBw4MNYvWwLzhUucq8v7aCwhLkT-CJI3wQ5uGCIzv1FjMQotpEj5NhE0yVLItkFc6BYErt=
+Ybrf1oSr3SrXEQe1bXdfTEE13LZOaFqplRpGG8vvn-b_veC1RY4zXzt_6ufhWJxHWEM0CQDndIV=
+coUOvRWo5YAgM3XXQ6GzMketHeViEvFehe5CsS9l1BHNvFts53dfcZB95Voy8Y9pyw~~"  styl=
+e=3D"height:38px;width:123px;v-text-anchor:middle;" arcsize=3D"32%" fillcol=
+or=3D"#0092ff">=0A<v:stroke dashstyle=3D"Solid" weight=3D"0px" color=3D"#18=
+71D8"/>=0A<w:anchorlock/>=0A<v:textbox inset=3D"0px,0px,0px,0px">=0A<center=
+ dir=3D"false" style=3D"color:#FFFFFF;font-family:sans-serif;font-size:14px=
+">=0A<![endif]-->=0A<span class=3D"button" style=3D"background-color: #0092=
+ff; mso-shading: transparent; border-bottom: 0px solid #1871D8; border-left=
+: 0px solid #1871D8; border-radius: 12px; border-right: 0px solid #1871D8; =
+border-top: 0px solid #1871D8; color: #FFFFFF; display: inline-block; font-=
+family: 'Roboto', 'Arial', Sans-serif; font-size: 14px; font-weight: 700; m=
+so-border-alt: none; padding-bottom: 5px; padding-top: 5px; padding-left: 1=
+0px; padding-right: 10px; text-align: center; width: auto; word-break: keep=
+-all; letter-spacing: normal;"><span style=3D"word-break: break-word; line-=
+height: 28px;">Full News Recap</span></span>=0A<!--[if mso]></center></v:te=
+xtbox></v:roundrect><![endif]--></a></div></td></tr></table>=0A<table class=
+=3D"paragraph_block block-6" width=3D"100%" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-tab=
+le-rspace:0;word-break:break-word"><tr><td class=3D"pad" style=3D"padding-b=
+ottom:10px;padding-left:5px;padding-right:5px;padding-top:10px"><div style=
+=3D"color:#000;direction:ltr;font-family:Roboto,Arial,Sans-serif;font-size:=
+14px;font-weight:400;letter-spacing:0;line-height:NaN;text-align:left;mso-l=
+ine-height-alt:NaNpx"><p style=3D"margin:0"><em>New here=3F <a href=3D"http=
+s://clicks.messari.io/f/a/XcoVx9zDXHihAJtNWs2mlA~~/AAQRxRA~/1cP78Hr4u7IMfV0=
+0yRkm8lIep3hsRPMCEpVzzuG_0dMwLUP9ikDgg69qjQomlGAnNDzn0t4TRBTr9McCYcMgUWWnd7=
+FhJ6bnb4dINFvH9jU4VSwH7EY3eLcbS8JJm_CwWss3OLuxuO6SQVZDCwvohupsV1KGHRd50c6JU=
+8_E9Dfni5GmBB_aLDELPrgi_8LkFLTMHyh1eAEHf55GVTpS0w~~" target=3D"_blank" rel=
+=3D"noopener" style=3D"text-decoration: underline; color: #0068a5;">Ask Cop=
+ilot</a> up to 5 free queries per day with Messari Basic.</em></p></div></t=
+d></tr></table>=0A</td></tr></tbody></table></td></tr></tbody>=0A</table>=
+=0A<table class=3D"row row-3" align=3D"center" width=3D"100%" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-tabl=
+e-lspace:0;mso-table-rspace:0"><tbody><tr><td><table class=3D"row-content s=
+tack" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" rol=
+e=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;backgroun=
+d-color:#fff;color:#000;width:600px;margin:0 auto" width=3D"600"><tbody><tr=
+><td class=3D"column column-1" width=3D"100%" style=3D"mso-table-lspace:0;m=
+so-table-rspace:0;font-weight:400;text-align:left;padding-bottom:5px;paddin=
+g-top:5px;vertical-align:top">=0A<table class=3D"image_block block-1" width=
+=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tr><td class=3D"pad"=
+ style=3D"padding-left:5px;padding-right:5px;padding-top:5px;width:100%"><d=
+iv class=3D"alignment" align=3D"center"><div style=3D"max-width:590px"><img=
+ src=3D"https://braze-images.com/appboy/communication/assets/image_assets/i=
+mages/68d3f1013b9fc000660e1e91/original.png=3F1758720256" style=3D"display:=
+block;height:auto;border:0;width:100%" width=3D"590" alt title height=3D"au=
+to"></div></div></td></tr></table>=0A<table class=3D"image_block block-2" w=
+idth=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
+entation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tr><td class=3D"=
+pad" style=3D"padding-left:5px;padding-right:5px;padding-top:10px;width:100=
+%"><div class=3D"alignment" align=3D"center"><div style=3D"max-width:590px"=
+><a href=3D"https://clicks.messari.io/f/a/VQ56CJ4XA-gj-zFlMBbw6w~~/AAQRxRA~=
+/XsH0T2SuPDnVMxjt-T-ArhjNcB0V3hKDuDm3pAWbvuyNXT6nJ3H399xlm-JbCOjj0RLqJ_6_yX=
+Uun94LOUAyMFe7pOsmHl0d84DW5SdC0tENORvkP3FZM9DmhmZejmwCojREkUp1lA02BIBjhrM78=
+ohvJG867f-XVlSAAHG7yN6_TaiE75ICifZZlofkeN94N_2y4DlDhzngHzQevKb85PHtNMmQ7pGc=
+xhqOJHqw2mN30JTECRZdqLrIAsCvu_6b" target=3D"_blank"><img src=3D"https://bra=
+ze-images.com/appboy/communication/assets/image_assets/images/6925cf021506d=
+a0063d6ca6d/original.png=3F1764085506" style=3D"display:block;height:auto;b=
+order:0;width:100%" width=3D"590" alt title height=3D"auto"></a></div></div=
+></td></tr></table>=0A<table class=3D"button_block block-3" width=3D"100%" =
+border=3D"0" cellpadding=3D"10" cellspacing=3D"0" role=3D"presentation" sty=
+le=3D"mso-table-lspace:0;mso-table-rspace:0"><tr><td class=3D"pad"><div cla=
+ss=3D"alignment" align=3D"center"><a href=3D"https://clicks.messari.io/f/a/=
+EtAj7NEEZrCv62qrxlEa4Q~~/AAQRxRA~/XsH0T2SuPDnVMxjt-T-ArhjNcB0V3hKDuDm3pAWbv=
+uyNXT6nJ3H399xlm-JbCOjj0RLqJ_6_yXUun94LOUAyMFe7pOsmHl0d84DW5SdC0tENORvkP3FZ=
+M9DmhmZejmwCojREkUp1lA02BIBjhrM78ohvJG867f-XVlSAAHG7yN4Dw99fCHc-LbHAHsVwba-=
+Mpl8mqNnSt7q7IarVDyuOG5mWXHasIn10y8n-pA3CHvanQFPri95rIN7OfpvZzcIV" target=
+=3D"_blank" style=3D"color:#FFFFFF;text-decoration:none;"><!--[if mso]>=0A<=
+v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schema=
+s-microsoft-com:office:word"  href=3D"https://clicks.messari.io/f/a/EtAj7NE=
+EZrCv62qrxlEa4Q~~/AAQRxRA~/XsH0T2SuPDnVMxjt-T-ArhjNcB0V3hKDuDm3pAWbvuyNXT6n=
+J3H399xlm-JbCOjj0RLqJ_6_yXUun94LOUAyMFe7pOsmHl0d84DW5SdC0tENORvkP3FZM9DmhmZ=
+ejmwCojREkUp1lA02BIBjhrM78ohvJG867f-XVlSAAHG7yN4Dw99fCHc-LbHAHsVwba-Mpl8mqN=
+nSt7q7IarVDyuOG5mWXHasIn10y8n-pA3CHvanQFPri95rIN7OfpvZzcIV"  style=3D"heigh=
+t:38px;width:152px;v-text-anchor:middle;" arcsize=3D"32%" fillcolor=3D"#009=
+2ff">=0A<v:stroke dashstyle=3D"Solid" weight=3D"0px" color=3D"#0092ff"/>=0A=
+<w:anchorlock/>=0A<v:textbox inset=3D"0px,0px,0px,0px">=0A<center dir=3D"fa=
+lse" style=3D"color:#FFFFFF;font-family:sans-serif;font-size:14px">=0A<![en=
+dif]-->=0A<span class=3D"button" style=3D"background-color: #0092ff; mso-sh=
+ading: transparent; border-bottom: 0px solid #0092ff; border-left: 0px soli=
+d #0092ff; border-radius: 12px; border-right: 0px solid #0092ff; border-top=
+: 0px solid #0092ff; color: #FFFFFF; display: inline-block; font-family: 'R=
+oboto', 'Arial', Sans-serif; font-size: 14px; font-weight: 700; mso-border-=
+alt: none; padding-bottom: 5px; padding-top: 5px; padding-left: 10px; paddi=
+ng-right: 10px; text-align: center; width: auto; word-break: keep-all; lett=
+er-spacing: normal;"><span style=3D"word-break: break-word; line-height: 28=
+px;">Full Market Overview</span></span>=0A<!--[if mso]></center></v:textbox=
+></v:roundrect><![endif]--></a></div></td></tr></table>=0A</td></tr></tbody=
+></table></td></tr></tbody></table>=0A<table class=3D"row row-4" align=3D"c=
+enter" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0">=0A<tbody=
+><tr><td><table class=3D"row-content stack" align=3D"center" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table=
+-lspace:0;mso-table-rspace:0;background-color:#fff;border-radius:0;color:#0=
+00;width:600px;margin:0 auto" width=3D"600"><tbody><tr><td class=3D"column =
+column-1" width=3D"100%" style=3D"mso-table-lspace:0;mso-table-rspace:0;fon=
+t-weight:400;text-align:left;padding-bottom:5px;padding-top:5px;vertical-al=
+ign:top">=0A<table class=3D"image_block block-1" width=3D"100%" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-ta=
+ble-lspace:0;mso-table-rspace:0"><tr><td class=3D"pad" style=3D"padding-lef=
+t:5px;padding-right:5px;padding-top:10px;width:100%"><div class=3D"alignmen=
+t" align=3D"center"><div style=3D"max-width:590px"><a href=3D"https://click=
+s.messari.io/f/a/qK4DlBTL5wWtFOI3OkSwzw~~/AAQRxRA~/7Xxscmi534guDgvEwANTXOnB=
+OECKYPRlOCUSTscS_j593ZtgNNULqncwmRfwsnHNNnoNgHlt2H1UW8Ld8PV7OgHHlfMzoyk1s6N=
+5EgcmxQutpI5iPq0dF7WVdir_OvohUDd06ifnVZQRidBUWMwObszHpBkboXhZZdDg-Si0ozw~" =
+target=3D"_blank"><img src=3D"https://braze-images.com/appboy/communication=
+/assets/image_assets/images/68d3f10932c4be0067a4b934/original.png=3F1758720=
+265" style=3D"display:block;height:auto;border:0;width:100%" width=3D"590" =
+alt title height=3D"auto"></a></div></div></td></tr></table>=0A<table class=
+=3D"paragraph_block block-2" width=3D"100%" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-tab=
+le-rspace:0;word-break:break-word"><tr><td class=3D"pad" style=3D"padding-b=
+ottom:10px;padding-left:5px;padding-right:5px;padding-top:10px"><div style=
+=3D"color:#000;direction:ltr;font-family:Roboto,Arial,Sans-serif;font-size:=
+14px;font-weight:400;letter-spacing:0;line-height:1.2;text-align:left;mso-l=
+ine-height-alt:17px"><p style=3D"margin:0">=0AMessari's&nbsp;<strong>protoc=
+ol reports</strong>&nbsp;give you a deep dive on the foundation and state o=
+f top crypto protocols, including key metrics and notable events. See the c=
+omplete list of protocol reports&nbsp;<a href=3D"https://clicks.messari.io/=
+f/a/_qiyWuwbJILBUOpaVzSzIg~~/AAQRxRA~/7Xxscmi534guDgvEwANTXOnBOECKYPRlOCUST=
+scS_j593ZtgNNULqncwmRfwsnHNYbtVppowQtTVIGyoHcjpXwL1q5qVxYDo5iZ2GkEd8Pa4rMxe=
+zKgJIsoateTERIDFP1BgQx9cfUByxHR1IFUZ94hiW_4yog3nJPuemqkjSiY~" target=3D"_bl=
+ank" rel=3D"noopener" style=3D"text-decoration: underline; color: #0068a5;"=
+>here</a>&nbsp;and get a preview of our latest report below.</p></div></td>=
+</tr></table>=0A</td></tr></tbody></table></td></tr></tbody>=0A</table>=0A<=
+table class=3D"row row-5" align=3D"center" width=3D"100%" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-ls=
+pace:0;mso-table-rspace:0"><tbody><tr><td><table class=3D"row-content" alig=
+n=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"mso-table-lspace:0;mso-table-rspace:0;background-color:#f=
+ff;border-radius:0;color:#000;width:600px;margin:0 auto" width=3D"600"><tbo=
+dy><tr>=0A<td class=3D"column column-1" width=3D"25%" style=3D"mso-table-ls=
+pace:0;mso-table-rspace:0;font-weight:400;text-align:left;padding-bottom:5p=
+x;padding-top:5px;vertical-align:middle"><table class=3D"image_block block-=
+1" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"=
+presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tr><td class=
+=3D"pad" style=3D"padding-bottom:5px;padding-left:30px;padding-right:30px;p=
+adding-top:5px;width:100%"><div class=3D"alignment" align=3D"center"><div s=
+tyle=3D"max-width:75px">=0A<a href=3D"https://clicks.messari.io/f/a/LZiU7gi=
+onep-AWlMRTUfcg~~/AAQRxRA~/kbvT1shh00pvGPib5fBD4n6Jz5bnfDR9itNQ8yLYPs4L4-0q=
+47vNbnzw8Br6Gnfku2hgPNuX5DRqwpibwX4qosfUoHCiPf236KhZq6gBMZ_8Hy-ZBnm_2Zu6_Py=
+9VgXrll4OD6M3JTpYQ__jursMtGMXtadHCtjXm3VTdfxmhxk~" target=3D"_blank"><img s=
+rc=3D"https://braze-images.com/appboy/communication/assets/image_assets/ima=
+ges/6925cc3bd3bd8c006349604e/original.png=3F1764084795" style=3D"display:bl=
+ock;height:auto;border:0;width:100%;border-radius:200px" width=3D"75" alt t=
+itle height=3D"auto"></a>=0A</div></div></td></tr></table></td>=0A<td class=
+=3D"column column-2" width=3D"75%" style=3D"mso-table-lspace:0;mso-table-rs=
+pace:0;font-weight:400;text-align:left;padding-bottom:5px;padding-top:5px;v=
+ertical-align:middle">=0A<table class=3D"paragraph_block block-1" width=3D"=
+100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation=
+" style=3D"mso-table-lspace:0;mso-table-rspace:0;word-break:break-word"><tr=
+><td class=3D"pad" style=3D"padding-left:10px;padding-right:10px"><div styl=
+e=3D"color:#101b24;direction:ltr;font-family:Open Sans,Arial,Sans-serif;fon=
+t-size:14px;font-weight:400;letter-spacing:0;line-height:NaN;text-align:lef=
+t;mso-line-height-alt:NaNpx"><p style=3D"margin:0"><a href=3D"https://click=
+s.messari.io/f/a/LkSzaB2Uc6Acpbts1wfedQ~~/AAQRxRA~/kbvT1shh00pvGPib5fBD4n6J=
+z5bnfDR9itNQ8yLYPs4L4-0q47vNbnzw8Br6GnfkAaCpoGfmUXHBrFp94VIkb_w_p0L7QckjtNJ=
+PiE-9s4oJHeKik9uT2bFEAF0D7ke0W4LUJOlh0yvPWg17SJ8LK12MXhO3afWqU3O-FSU9InA~" =
+target=3D"_blank" style=3D"text-decoration: underline; color: #0068a5;" rel=
+=3D"noopener"><u>State of FLock Q3 2025</u></a></p></div></td></tr></table>=
+=0A<table class=3D"list_block block-2" width=3D"100%" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace=
+:0;mso-table-rspace:0;word-break:break-word;color:#000;direction:ltr;font-f=
+amily:Roboto,Arial,Sans-serif;font-size:14px;font-weight:400;letter-spacing=
+:0;line-height:NaN;text-align:left;mso-line-height-alt:NaNpx"><tr><td class=
+=3D"pad" style=3D"padding-bottom:10px;padding-left:10px;padding-right:10px;=
+padding-top:5px"><div style=3D"margin-left:-20px"><ul start=3D"1" style=3D"=
+margin-top:0;margin-bottom:0;list-style-type:revert">=0A<li style=3D"Margin=
+:0">=0ACombines privacy-preserving federated learning with onchain incentiv=
+es to let communities collaboratively train AI models without sharing raw d=
+ata</li>=0A<li style=3D"Margin:0">Market cap more than doubled QoQ (+104%) =
+as exchange listings (Coinbase, Upbit) boosted awareness and liquidity</li>=
+=0A<li style=3D"Margin:0">Training nodes (+6%), validators (+5%), and deleg=
+ators (+10%) all increased, signaling healthy contributor growth</li>=0A<li=
+ style=3D"Margin:0">=0ANew long-term staking model aligns incentives, boost=
+s yield for longer lockups, and reduces mining-and-dumping behavior</li>=0A=
+</ul></div></td></tr></table>=0A</td>=0A</tr></tbody></table></td></tr></tb=
+ody></table>=0A<table class=3D"row row-6" align=3D"center" width=3D"100%" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td><table class=3D"r=
+ow-content" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"=
+0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;bac=
+kground-color:#fff;border-radius:0;color:#000;width:600px;margin:0 auto" wi=
+dth=3D"600"><tbody><tr>=0A<td class=3D"column column-1" width=3D"25%" style=
+=3D"mso-table-lspace:0;mso-table-rspace:0;font-weight:400;text-align:left;p=
+adding-bottom:5px;padding-top:5px;vertical-align:middle"><table class=3D"im=
+age_block block-1" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:=
+0"><tr>=0A<td class=3D"pad" style=3D"padding-bottom:5px;padding-left:30px;p=
+adding-right:30px;padding-top:5px;width:100%"><div class=3D"alignment" alig=
+n=3D"center"><div style=3D"max-width:75px"><a href=3D"https://clicks.messar=
+i.io/f/a/_1Jppk3gbJaYHWduVStxHQ~~/AAQRxRA~/5o36ygtEZoEm9b6Wc-NkK7sYI9VnOCB6=
+CSk2u5AxhD1Q1zHeZgbXOoddH_r1IqWarDlpT8TRQglLFE_CmSqBqfUNVz_acdLbR8bGfy_kjHv=
+36LW-KtxOfkD7lQdRBTxO510Gd6bjww-hwNYq7-QHbqNurTGyF7IYLzpIUCg8_MQ~" target=
+=3D"_blank"><img src=3D"https://braze-images.com/appboy/communication/asset=
+s/image_assets/images/692479161849df0063bee4d3/original.png=3F1763997974" s=
+tyle=3D"display:block;height:auto;border:0;width:100%;border-radius:200px" =
+width=3D"75" alt title height=3D"auto"></a></div></div></td>=0A</tr></table=
+></td>=0A<td class=3D"column column-2" width=3D"75%" style=3D"mso-table-lsp=
+ace:0;mso-table-rspace:0;font-weight:400;text-align:left;padding-bottom:5px=
+;padding-top:5px;vertical-align:middle">=0A<table class=3D"paragraph_block =
+block-1" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;word-bre=
+ak:break-word"><tr><td class=3D"pad" style=3D"padding-left:10px;padding-rig=
+ht:10px"><div style=3D"color:#101b24;direction:ltr;font-family:Open Sans,Ar=
+ial,Sans-serif;font-size:14px;font-weight:400;letter-spacing:0;line-height:=
+NaN;text-align:left;mso-line-height-alt:NaNpx"><p style=3D"margin:0">=0A<u>=
+<a href=3D"https://clicks.messari.io/f/a/Pyoctgro9FvF89eStA_1ew~~/AAQRxRA~/=
+DKvMhfP_XxCtO21w2xZDrFtWuCut6609yog3fEN609y4wOLvanlcPmYpjZiBzLxU0mFc50rBSgV=
+pW3O0H4UDjM-KY9X9fXOhSzd_nZwKxJ0a6m-61OCPbsu3W8q9J0kbekiH6Xemj3sMFaRWyGT8zm=
+9sv6iytQfzCBZgzux0e0w~" target=3D"_blank" style=3D"text-decoration: none; c=
+olor: #0068a5;" rel=3D"noopener"></a></u><a href=3D"https://clicks.messari.=
+io/f/a/GwFjgKIQqpR6f2vkOzr-ww~~/AAQRxRA~/YtcILdsxDvAlo_WP4J5u92oKy0IDQTWAGM=
+w89iT9mAu8iDgaE8V-KWkVCXl9_Ju7-pARRj14uGJ_shLSsYH8eKTyForcs6L5JouI58jvY7YKX=
+NeZA7gtREnv0lBaXY-lewGZFfxfMNxDEMSkiUzrKaVlSiQkILXrFd-kDB0L6KI~" target=3D"=
+_blank" style=3D"text-decoration: underline; color: #0068a5;" data-mce-attr=
+ibute-name-1 data-mce-attribute-value-1 rel=3D"noopener"><u></u></a><a href=
+=3D"https://clicks.messari.io/f/a/KVoMHRCG532l_LHW-GHzfw~~/AAQRxRA~/5o36ygt=
+EZoEm9b6Wc-NkK7sYI9VnOCB6CSk2u5AxhD1Q1zHeZgbXOoddH_r1IqWakcYpQ0OG5a9yLFzUTE=
+1l0pn7EXtASvNO-SyLwbeOL_aBvTyZ6kBYzuEB_rTrNHZwU4DWcyGIo0lz9BijX98LF94854qnu=
+_5nCZ9nFCf0nRk~" target=3D"_blank" style=3D"text-decoration: underline; col=
+or: #0068a5;" rel=3D"noopener">State of Mantle Q3 2025</a>=0A</p></div></td=
+></tr></table>=0A<table class=3D"list_block block-2" width=3D"100%" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"m=
+so-table-lspace:0;mso-table-rspace:0;word-break:break-word;color:#000;direc=
+tion:ltr;font-family:Roboto,Arial,Sans-serif;font-size:14px;font-weight:400=
+;letter-spacing:0;line-height:NaN;text-align:left;mso-line-height-alt:NaNpx=
+"><tr><td class=3D"pad" style=3D"padding-bottom:10px;padding-left:10px;padd=
+ing-right:10px;padding-top:5px"><div style=3D"margin-left:-20px"><ul start=
+=3D"1" style=3D"margin-top:0;margin-bottom:0;list-style-type:revert">=0A<li=
+ style=3D"Margin:0">Modular Layer-2 that separates execution, data availabi=
+lity (DA), and settlement to improve scalability and reduce costs</li>=0A<l=
+i style=3D"Margin:0">MNT governs Mantle=E2=80=99s treasury, roadmap, and ke=
+y protocol parameters</li>=0A<li style=3D"Margin:0">MNT=E2=80=99s price ros=
+e 199.8% to $1.8, aided by deeper Bybit integration</li>=0A<li style=3D"Mar=
+gin:0">=0ACirculating market cap surged 189.8% QoQ to $5.7B</li>=0A</ul></d=
+iv></td></tr></table>=0A</td>=0A</tr></tbody></table></td></tr></tbody></ta=
+ble>=0A<table class=3D"row row-7" align=3D"center" width=3D"100%" border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-=
+table-lspace:0;mso-table-rspace:0"><tbody><tr><td><table class=3D"row-conte=
+nt" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;background=
+-color:#fff;border-radius:0;color:#000;width:600px;margin:0 auto" width=3D"=
+600"><tbody><tr>=0A<td class=3D"column column-1" width=3D"25%" style=3D"mso=
+-table-lspace:0;mso-table-rspace:0;font-weight:400;text-align:left;padding-=
+bottom:5px;padding-top:5px;vertical-align:middle"><table class=3D"image_blo=
+ck block-1" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tr>=
+=0A<td class=3D"pad" style=3D"padding-bottom:5px;padding-left:25px;padding-=
+right:25px;padding-top:5px;width:100%"><div class=3D"alignment" align=3D"ce=
+nter"><div style=3D"max-width:75px"><a href=3D"https://clicks.messari.io/f/=
+a/uonhjefEJHyGYGndGLnuuw~~/AAQRxRA~/Q80gQVWoBVX4wyhRATuytV2w-1t_S_FMMywjjVT=
+2AMLNZVJ1--Kp8QsJw_8hQ_tvdT7_-EUS6W0X4LTQHW1j07xL_xzRWR-fr3zBN4iVgvQbLvfM-f=
+Ey7cZ20-aW6qUEhH7HkVAQQ5Bi7xQFl4k6bXP0VBC-pVM4DfH8WksBeHpIghZvpJXvKxa16YuDP=
+GYHiZ7JY7Hbj8P3IX8kjDYYkM3naVoZwmTzM8nlrufHdnrG2EdfBYESJCetE_DXQIf5pOYx_onT=
+ef6vmqHsjUBBWRH1IqcgDeHX19zL174a_io~" target=3D"_blank"><img src=3D"https:/=
+/braze-images.com/appboy/communication/assets/image_assets/images/691da524c=
+1ed0c00632b8c60/original.png=3F1763550500" style=3D"display:block;height:au=
+to;border:0;width:100%;border-radius:200px" width=3D"75" alt title height=
+=3D"auto"></a></div></div></td>=0A</tr></table></td>=0A<td class=3D"column =
+column-2" width=3D"75%" style=3D"mso-table-lspace:0;mso-table-rspace:0;font=
+-weight:400;text-align:left;padding-bottom:5px;padding-top:5px;vertical-ali=
+gn:middle">=0A<table class=3D"paragraph_block block-1" width=3D"100%" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"=
+mso-table-lspace:0;mso-table-rspace:0;word-break:break-word"><tr><td class=
+=3D"pad" style=3D"padding-left:10px;padding-right:10px"><div style=3D"color=
+:#101b24;direction:ltr;font-family:Open Sans,Arial,Sans-serif;font-size:14p=
+x;font-weight:400;letter-spacing:0;line-height:NaN;text-align:left;mso-line=
+-height-alt:NaNpx"><p style=3D"margin:0"><a href=3D"https://clicks.messari.=
+io/f/a/lNuPCfX_jSkPanUig4Y0SA~~/AAQRxRA~/Q80gQVWoBVX4wyhRATuytV2w-1t_S_FMMy=
+wjjVT2AMLNZVJ1--Kp8QsJw_8hQ_tvdT7_-EUS6W0X4LTQHW1j07xL_xzRWR-fr3zBN4iVgvQbL=
+vfM-fEy7cZ20-aW6qUEhH7HkVAQQ5Bi7xQFl4k6bXP0VBC-pVM4DfH8WksBeHpIghZvpJXvKxa1=
+6YuDPGYHUSYNHSQPxT8HOvfb475zELwCRkLqzbjjIB3WvHxCybLiB58poyQVijl35vh-xTDSLnu=
+9_MnY44rUrPxl9AA7X7-a4eE7Vnv2C3jZ9H09d4Y~" target=3D"_blank" style=3D"text-=
+decoration: underline; color: #0068a5;" rel=3D"noopener">State of peaq Q3 2=
+025</a></p></div></td></tr></table>=0A<table class=3D"list_block block-2" w=
+idth=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
+entation" style=3D"mso-table-lspace:0;mso-table-rspace:0;word-break:break-w=
+ord;color:#000;direction:ltr;font-family:Roboto,Arial,Sans-serif;font-size:=
+14px;font-weight:400;letter-spacing:0;line-height:NaN;text-align:left;mso-l=
+ine-height-alt:NaNpx"><tr><td class=3D"pad" style=3D"padding-bottom:10px;pa=
+dding-left:10px;padding-right:10px;padding-top:5px"><div style=3D"margin-le=
+ft:-20px"><ul start=3D"1" style=3D"margin-top:0;margin-bottom:0;list-style-=
+type:revert">=0A<li style=3D"Margin:0">=0APublic Layer-1 blockchain focused=
+ on the Machine Economy =E2=80=93 enabling robots, devices, vehicles, and o=
+ther machines to act as onchain economic agents</li>=0A<li style=3D"Margin:=
+0">Positioning as a leading chain for robotics + machine RWAs (e.g., tokeni=
+zed robo-farm in Hong Kong, Combinder energy devices, Silencio audio DePIN,=
+ XMAQUINA physical-AI DAO, Teneo AI-agent network)</li>=0A<li style=3D"Marg=
+in:0">Market cap up ~69% to ~$129M, 5.6M transactions (+19% QoQ)</li>=0A<li=
+ style=3D"Margin:0">=0AMultiple CEX listings improve PEAQ liquidity and rea=
+ch</li>=0A</ul></div></td></tr></table>=0A</td>=0A</tr></tbody></table></td=
+></tr></tbody></table>=0A<table class=3D"row row-8" align=3D"center" width=
+=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td><table=
+ class=3D"row-content stack" align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-t=
+able-rspace:0;background-color:#fff;border-radius:0;color:#000;width:600px;=
+margin:0 auto" width=3D"600"><tbody><tr><td class=3D"column column-1" width=
+=3D"100%" style=3D"mso-table-lspace:0;mso-table-rspace:0;font-weight:400;te=
+xt-align:left;padding-bottom:5px;vertical-align:top">=0A<table class=3D"div=
+ider_block block-1" width=3D"100%" border=3D"0" cellpadding=3D"5" cellspaci=
+ng=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace=
+:0"><tr><td class=3D"pad"><div class=3D"alignment" align=3D"center"><table =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" widt=
+h=3D"100%" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tr><td class=3D=
+"divider_inner" style=3D"font-size:1px;line-height:1px;border-top:1px solid=
+ #bbb"><span style=3D"word-break: break-word;">=E2=80=8A</span></td></tr></=
+table></div></td></tr></table>=0A<table class=3D"heading_block block-2" wid=
+th=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tr>=0A<td class=3D=
+"pad" style=3D"padding-bottom:10px;padding-left:10px;padding-right:10px;pad=
+ding-top:5px;text-align:center;width:100%"><h1 style=3D"margin:0;color:#000=
+;direction:ltr;font-family:Roboto,Arial,Sans-serif;font-size:24px;font-weig=
+ht:700;letter-spacing:normal;line-height:1.2;text-align:center;margin-top:0=
+;margin-bottom:0;mso-line-height-alt:29px"><span class=3D"tinyMce-placehold=
+er" style=3D"word-break: break-word;">From Our Sponsor</span></h1></td>=0A<=
+/tr></table>=0A<table class=3D"image_block block-3" width=3D"100%" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"m=
+so-table-lspace:0;mso-table-rspace:0"><tr><td class=3D"pad" style=3D"paddin=
+g-bottom:5px;padding-left:5px;padding-right:5px;width:100%"><div class=3D"a=
+lignment" align=3D"center"><div style=3D"max-width:180px"><a href=3D"https:=
+//clicks.messari.io/f/a/AeCNlgbqtB6XPARMQBWOrw~~/AAQRxRA~/L9OlndlgkGn1l6KGT=
+BT4bfE85hnNrAGZ_w48anb6qMb6SDKBvGQx23ydNMOmkCVVZoqB1FYfD3ndiAMOnhwCypt0aRTa=
+AU6ywyfbnxRmNzKoEjUGBhoDHj161EJaWryf" target=3D"_blank"><img src=3D"https:/=
+/braze-images.com/appboy/communication/assets/image_assets/images/6908bf091=
+d465800637e4a84/original.png=3F1762180873" style=3D"display:block;height:au=
+to;border:0;width:100%;border-radius:0" width=3D"180" alt title height=3D"a=
+uto"></a></div></div></td></tr></table>=0A<table class=3D"paragraph_block b=
+lock-4" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" rol=
+e=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;word-brea=
+k:break-word"><tr><td class=3D"pad" style=3D"padding-bottom:10px;padding-le=
+ft:5px;padding-right:5px;padding-top:5px"><div style=3D"color:#000;directio=
+n:ltr;font-family:Roboto,Arial,Sans-serif;font-size:14px;font-weight:400;le=
+tter-spacing:0;line-height:1.2;text-align:center;mso-line-height-alt:17px">=
+<p style=3D"margin:0">Quantus is Quantum Secure Money. Join the Testnet Now=
+!</p></div></td></tr></table>=0A<table class=3D"button_block block-5" width=
+=3D"100%" border=3D"0" cellpadding=3D"10" cellspacing=3D"0" role=3D"present=
+ation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tr><td class=3D"pad=
+"><div class=3D"alignment" align=3D"center"><a href=3D"https://clicks.messa=
+ri.io/f/a/r-m4Wx3J5hcH0kRrhZJ91Q~~/AAQRxRA~/L9OlndlgkGn1l6KGTBT4bfE85hnNrAG=
+Z_w48anb6qMY7ba_hxa8yF3HzO7dZ4jvJ-iCy7FwbtxGEEibX2C2ymqnzF7n6WeKLlOrwYjO7X2=
+EinjuS4Jt-BP1q7mkADgUf" target=3D"_blank" style=3D"color:#FFFFFF;text-decor=
+ation:none;"><!--[if mso]>=0A<v:roundrect xmlns:v=3D"urn:schemas-microsoft-=
+com:vml" xmlns:w=3D"urn:schemas-microsoft-com:office:word"  href=3D"https:/=
+/clicks.messari.io/f/a/r-m4Wx3J5hcH0kRrhZJ91Q~~/AAQRxRA~/L9OlndlgkGn1l6KGTB=
+T4bfE85hnNrAGZ_w48anb6qMY7ba_hxa8yF3HzO7dZ4jvJ-iCy7FwbtxGEEibX2C2ymqnzF7n6W=
+eKLlOrwYjO7X2EinjuS4Jt-BP1q7mkADgUf"  style=3D"height:38px;width:78px;v-tex=
+t-anchor:middle;" arcsize=3D"32%" fillcolor=3D"#0092ff">=0A<v:stroke dashst=
+yle=3D"Solid" weight=3D"0px" color=3D"#0092ff"/>=0A<w:anchorlock/>=0A<v:tex=
+tbox inset=3D"0px,0px,0px,0px">=0A<center dir=3D"false" style=3D"color:#FFF=
+FFF;font-family:sans-serif;font-size:14px">=0A<![endif]-->=0A<span class=3D=
+"button" style=3D"background-color: #0092ff; mso-shading: transparent; bord=
+er-bottom: 0px solid #0092ff; border-left: 0px solid #0092ff; border-radius=
+: 12px; border-right: 0px solid #0092ff; border-top: 0px solid #0092ff; col=
+or: #FFFFFF; display: inline-block; font-family: 'Roboto', 'Arial', Sans-se=
+rif; font-size: 14px; font-weight: 700; mso-border-alt: none; padding-botto=
+m: 5px; padding-top: 5px; padding-left: 10px; padding-right: 10px; text-ali=
+gn: center; width: auto; word-break: keep-all; letter-spacing: normal;"><sp=
+an style=3D"word-break: break-word; line-height: 28px;">Join Now</span></sp=
+an>=0A<!--[if mso]></center></v:textbox></v:roundrect><![endif]--></a></div=
+></td></tr></table>=0A<table class=3D"image_block block-6" width=3D"100%" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"mso-table-lspace:0;mso-table-rspace:0"><tr><td class=3D"pad" style=3D"p=
+adding-bottom:5px;padding-left:5px;padding-right:5px;width:100%"><div class=
+=3D"alignment" align=3D"center"><div style=3D"max-width:590px"><a href=3D"h=
+ttps://clicks.messari.io/f/a/iXbifeXQrrkistCah0yj8Q~~/AAQRxRA~/vhQW9ofSdWf-=
+4AcPiuU7H29l-v2GODzCb25cBfRQ23XyYJ6GVB6bGmu06MZ736Hzn3hpzJt0AicGETBplAsaICj=
+0h0tHStI2O3cwrPgcN_cuvuV4s_xFmU_KWmMnStAdLQKLGTcaU7F042zJ-Q1JuA~~" target=
+=3D"_blank"><img src=3D"https://braze-images.com/appboy/communication/asset=
+s/image_assets/images/6925bd0e8136ae00630e4aff/original.png=3F1764080909" s=
+tyle=3D"display:block;height:auto;border:0;width:100%;border-radius:15px" w=
+idth=3D"590" alt title height=3D"auto"></a></div></div></td></tr></table>=
+=0A<table class=3D"paragraph_block block-7" width=3D"100%" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-l=
+space:0;mso-table-rspace:0;word-break:break-word"><tr><td class=3D"pad" sty=
+le=3D"padding-bottom:10px;padding-left:5px;padding-right:5px;padding-top:10=
+px"><div style=3D"color:#000;direction:ltr;font-family:Roboto,Arial,Sans-se=
+rif;font-size:14px;font-weight:400;letter-spacing:0;line-height:1.2;text-al=
+ign:left;mso-line-height-alt:17px"><p style=3D"margin:0">=0AYesterday, the =
+long-awaited TGE and mainnet for Monad went live. Before launch, Monad had =
+<a href=3D"https://clicks.messari.io/f/a/2jKgnFOKqzP0-dgl_u-jOA~~/AAQRxRA~/=
+hq17dQabqYnnmd6LCvrtfV9KciMLA8xD3XGL50p_8UlFsnpeKuE5qoLRqoSKVKRgl6QRk_enPIM=
+LSeWsGx4bT_fujiBazIQLmM-6mZQABNaLoVs9sUFnP2RkjjEDyVAqsaOwQF95Sy2s_lriM6emDd=
+-UseDG_j09MxgmWTnpF2I~" style=3D"text-decoration: underline; color: #0068a5=
+;">raised</a> $244 million since its first round in Feb. 2023. Last week, t=
+he team raised an additional $187.5 million through <a href=3D"https://clic=
+ks.messari.io/f/a/roTY2WVn7FWwbV2ttvV9nQ~~/AAQRxRA~/9S1kCqrAsKmNm0ABNVxSHWD=
+zAFJnnhAQfCaNiWlsuA4QTp8do0Dr6B77H-wRIyOtEPxKGBdhxp94wV8RlSlcpRrJPZSG0Olg9u=
+CPatyBs8VOKRQaHgVBu9mwRMm_3rwJoY0fUYQkq1lhd8H0wf0uQQ~~" style=3D"text-decor=
+ation: underline; color: #0068a5;">Coinbase=E2=80=99s new ICO mechanism</a>=
+ for the MON token. The MON token serves as the native currency of the Mona=
+d blockchain, enabling transaction fee payments and staking to secure the n=
+etwork. At mainnet launch, MON=E2=80=99s total initial supply will be set a=
+t 100 billion tokens, of which 7.5% was offered during the ICO at a $2.5 bi=
+llion valuation. There was sufficient demand for the token, as the sale was=
+ 1.47 times oversubscribed, with Coinbase users requesting over $276 millio=
+n in just a five-day period.&nbsp;=0A</p></div></td></tr></table>=0A<table =
+class=3D"image_block block-8" width=3D"100%" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-ta=
+ble-rspace:0"><tr><td class=3D"pad" style=3D"padding-bottom:5px;padding-lef=
+t:5px;padding-right:5px;width:100%"><div class=3D"alignment" align=3D"cente=
+r"><div style=3D"max-width:590px"><img src=3D"https://braze-images.com/appb=
+oy/communication/assets/image_assets/images/6925bd4a7b74310063b81464/origin=
+al.webp=3F1764080970" style=3D"display:block;height:auto;border:0;width:100=
+%;border-radius:15px" width=3D"590" alt title height=3D"auto"></div></div><=
+/td></tr></table>=0A<table class=3D"paragraph_block block-9" width=3D"100%"=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" sty=
+le=3D"mso-table-lspace:0;mso-table-rspace:0;word-break:break-word"><tr><td =
+class=3D"pad" style=3D"padding-bottom:10px;padding-left:5px;padding-right:5=
+px;padding-top:10px"><div style=3D"color:#000;direction:ltr;font-family:Rob=
+oto,Arial,Sans-serif;font-size:14px;font-weight:400;letter-spacing:0;line-h=
+eight:1.2;text-align:left;mso-line-height-alt:17px"><p style=3D"margin:0">=
+=0AThe token began trading around the pre-sale price of $2.5 billion, but b=
+y the end of the day had reclaimed $3 billion, where it stayed throughout t=
+he night. One of the most interesting aspects of the Monad mainnet launch i=
+s the size of its <a href=3D"https://clicks.messari.io/f/a/AuUH9tRxHZmbaBNR=
+XtjOXw~~/AAQRxRA~/gb7zwQKsusNWpoQPf1QM8BCoevP9YO9A1gSS32IkgmLWo2myQAvf90Bvv=
+XKlSt8lC3_oj7DSM6H0hagObJaofSknflUH4BscuMx8jj6Rj5ne4v52545zLLoS1hAbapfX" st=
+yle=3D"text-decoration: underline; color: #0068a5;">ecosystem</a>. There ar=
+e already <a href=3D"https://clicks.messari.io/f/a/_Cz3jJiIKvVttlzwjJPcLQ~~=
+/AAQRxRA~/nBxCHnQzN-zhY6q6AuniuTvSaiIE2_dFIc9s9kdhRbJqXDxVpPO1jCXgIA1U2elBo=
+1L-Rag23D-ER_88rpiWraGIseJWTOFnYFBXIDTUhKVZ7swxqz9QNOmrdr4N7zgawFHUqTg-e5Ku=
+QFgp4tPJVQ~~" style=3D"text-decoration: underline; color: #0068a5;">74 apps=
+ live</a>, including ones users are familiar with, such as Uniswap, Curve, =
+Morpho, and many Monad-exclusive apps.&nbsp;=0A</p></div></td></tr></table>=
+=0A<table class=3D"image_block block-10" width=3D"100%" border=3D"0" cellpa=
+dding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspa=
+ce:0;mso-table-rspace:0"><tr><td class=3D"pad" style=3D"padding-bottom:5px;=
+padding-left:5px;padding-right:5px;width:100%"><div class=3D"alignment" ali=
+gn=3D"center"><div style=3D"max-width:590px"><img src=3D"https://braze-imag=
+es.com/appboy/communication/assets/image_assets/images/6925bd513077f10063bd=
+1789/original.webp=3F1764080977" style=3D"display:block;height:auto;border:=
+0;width:100%;border-radius:15px" width=3D"590" alt title height=3D"auto"></=
+div></div></td></tr></table>=0A<table class=3D"paragraph_block block-11" wi=
+dth=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"mso-table-lspace:0;mso-table-rspace:0;word-break:break-wo=
+rd"><tr><td class=3D"pad" style=3D"padding-bottom:10px;padding-left:5px;pad=
+ding-right:5px;padding-top:10px"><div style=3D"color:#000;direction:ltr;fon=
+t-family:Roboto,Arial,Sans-serif;font-size:14px;font-weight:400;letter-spac=
+ing:0;line-height:1.2;text-align:left;mso-line-height-alt:17px">=0A<p style=
+=3D"margin:0;margin-bottom:0">=0AOver the next few months, the Monad Founda=
+tion will support ecosystem projects in accelerating user acquisition throu=
+gh <a href=3D"https://clicks.messari.io/f/a/-yvAGmi3Bc0-kw5yriU8zg~~/AAQRxR=
+A~/dQOrXWnU-eeOhniGFMlnDTXZcwk281drKkuJj4GaqASz2Rg98YJMQHUZIIdI3RfObeHAruIR=
+LFYgBQhPVXyUBp24EWehBCYSyi8gHOocbCYO0MaiYL2JVKgrMH_TpAiF" style=3D"text-dec=
+oration: underline; color: #0068a5;">Monad Momentum</a>. These incentives v=
+ary from boosted jackpots to higher referral trading rewards for users. A f=
+ull list of the apps in Wave 1 can be found <a href=3D"https://clicks.messa=
+ri.io/f/a/bbUMpBtlqjdXGuK7O_OTOw~~/AAQRxRA~/nBxCHnQzN-zhY6q6AuniuV9zEWmetry=
+Yl8T7elnFKImoJnwH_1LnoGAftVwnANF3522I-tg9Ak_KGNw6ncQREmhnfg_iIUSsFf4UjdCvGw=
+1KAZJcg7TDs7bMhwCe62Muin3brqr9_Sl2mc8n53ecOA~~" style=3D"text-decoration: u=
+nderline; color: #0068a5;">here</a>, and a brief description of each is ava=
+ilable <a href=3D"https://clicks.messari.io/f/a/Tsg3sfcRSDI14wOB3cmRaQ~~/AA=
+QRxRA~/_EKFPmCmLRQpI2LYn03-VarXyF-lzdBD5xDLiXNNFzY6RF2yjpTYr42a1-e6V45MoJQN=
+JT-rCHkpDXNUn_atfHlMRrY_8aDxPXmq1z7VNbshLVVOsI_mfAgroFs1yA5GeXglY5Yn565Zltx=
+Wsf71BN3Avh7C3IRJbljFQBYzT2a7N3mruwqMj3yxhUu-Qgds" style=3D"text-decoration=
+: underline; color: #0068a5;">here</a>.&nbsp;=0A</p>=0A<p style=3D"margin:0=
+;margin-bottom:0">&nbsp;</p>=0A<p style=3D"margin:0">For now, I will see yo=
+u in the Monad blockspace exploring all the new apps!</p>=0A</div></td></tr=
+></table>=0A<table class=3D"divider_block block-12" width=3D"100%" border=
+=3D"0" cellpadding=3D"5" cellspacing=3D"0" role=3D"presentation" style=3D"m=
+so-table-lspace:0;mso-table-rspace:0"><tr><td class=3D"pad"><div class=3D"a=
+lignment" align=3D"center"><table border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" role=3D"presentation" width=3D"100%" style=3D"mso-table-lspace:0;ms=
+o-table-rspace:0"><tr><td class=3D"divider_inner" style=3D"font-size:1px;li=
+ne-height:1px;border-top:1px solid #bbb"><span style=3D"word-break: break-w=
+ord;">=E2=80=8A</span></td></tr></table></div></td></tr></table>=0A<table c=
+lass=3D"image_block block-13" width=3D"100%" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-ta=
+ble-rspace:0"><tr><td class=3D"pad" style=3D"padding-bottom:5px;padding-lef=
+t:5px;padding-right:5px;width:100%"><div class=3D"alignment" align=3D"cente=
+r"><div style=3D"max-width:590px"><img src=3D"https://braze-images.com/appb=
+oy/communication/assets/image_assets/images/6908c0345617c600633c5f68/origin=
+al.png=3F1762181171" style=3D"display:block;height:auto;border:0;width:100%=
+;border-radius:15px" width=3D"590" alt title height=3D"auto"></div></div></=
+td></tr></table>=0A<table class=3D"paragraph_block block-14" width=3D"100%"=
+ border=3D"0" cellpadding=3D"10" cellspacing=3D"0" role=3D"presentation" st=
+yle=3D"mso-table-lspace:0;mso-table-rspace:0;word-break:break-word"><tr><td=
+ class=3D"pad"><div style=3D"color:#101b24;direction:ltr;font-family:Open S=
+ans,Arial,Sans-serif;font-size:12px;font-weight:400;letter-spacing:0;line-h=
+eight:NaN;text-align:center;mso-line-height-alt:NaNpx"><p style=3D"margin:0=
+"><a href=3D"https://clicks.messari.io/f/a/VdhMluaz1euaEpdqLKKXBw~~/AAQRxRA=
+~/x-Dx69f2LPNDa_df1NjN3ANSlHySMTr35YQqnltiIAxBvBpE3ZUf9QQ-d4CWsQ490JuOXo2tr=
+1_MVHf1uMgrAgbxP94eqcitRb4VDRJRqKHYKu-m3lK07A853iOY7rHXWIsh2VpyU9Bvf0ZNc1ke=
+PdExNy4l__Wb-7svBa6NsK38HtjkzNsCCWIp4CMPHFkJTkMgz0pvZD0cv0-stZrN7wc3KkTCosj=
+iKAvUM7_pc0AU07f01k5kHFDzbiS9i9_5mafCYKitUPfMholqJALHd4WJwFOAXd9TpcSryeAUnP=
+qXse9Xd2bOOzrVnvd3CK-SeFq5U8q3TvqpusJDsKHEhZzfTZ2l7kCB5igcKVxmhMgmWxCN9_yWq=
+7j8WxjVlyOA616t8-X0mFpd5UsHQNZCrVy5G5Urb3Y1ceAPaGQmjmOO6tCchqD2Fyh8NcEZbkzl=
+b4SlPuUPifoitfoHVLGRowzXiLKe2HqqlrRG8G090XZk7SWr0zq0pS3RE-ZkK1AoxYc46HKPPFv=
+TJW2lHGHVKd20TrRaDCdsdQqTlK9tNMlnrJlk1z2xX05ozr1KACg8BulISKjp_em4ZcS-ufPaiB=
+eSQXYbrbeELipLn_eEAQ91bDRNQKsT_EpyD_K7lKEX" target=3D"_blank" style=3D"text=
+-decoration: underline; color: #1871D8;" rel=3D"noopener">Unsubscribe</a></=
+p></div></td></tr></table>=0A<table class=3D"image_block block-15" width=3D=
+"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tr><td class=3D"pad" st=
+yle=3D"width:100%;padding-right:0;padding-left:0"><div class=3D"alignment" =
+align=3D"center"><div style=3D"max-width:90px"><img src=3D"https://braze-im=
+ages.com/appboy/communication/assets/image_assets/images/67a636d61923a10067=
+872238/original.png=3F1738946262" style=3D"display:block;height:auto;border=
+:0;width:100%" width=3D"90" alt title height=3D"auto"></div></div></td></tr=
+></table>=0A<table class=3D"social_block block-16" width=3D"100%" border=3D=
+"0" cellpadding=3D"10" cellspacing=3D"0" role=3D"presentation" style=3D"mso=
+-table-lspace:0;mso-table-rspace:0"><tr><td class=3D"pad"><div class=3D"ali=
+gnment" align=3D"center"><table class=3D"social-table" width=3D"108px" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D=
+"mso-table-lspace:0;mso-table-rspace:0;display:inline-block"><tr>=0A<td sty=
+le=3D"padding:0 2px 0 2px">=0A<a href=3D"https://clicks.messari.io/f/a/Uc8L=
+qunQaKzm3nqS9fV7PA~~/AAQRxRA~/dQOrXWnU-eeOhniGFMlnDdaExQxMkyO24Bwr2zT-3XAmm=
+4JloCiY7Uj7KaYSgnU2frgPFakZBUJxx_KHAOAKyJSt_bGej41J4daJ4VLlQeAkc0YNE1R-BDZt=
+0S5FUCyM" target=3D"_blank"><img src=3D"https://braze-social-icons.s3.amazo=
+naws.com/social-networks-icon-sets/circle-color/twitter@2x.png" width=3D"32=
+" height=3D"auto" alt=3D"X" title=3D"X" style=3D"display:block;height:auto;=
+border:0"></a>=0A</td>=0A<td style=3D"padding:0 2px 0 2px"><a href=3D"https=
+://clicks.messari.io/f/a/QcvUPODy01hyEcnTG5opyg~~/AAQRxRA~/MX3U8J2qlInl8GFt=
+yetjDnUDVyCYDcaWw4pm1Rxg_LWHy0qTLPCgwjNAk1dlSrjAIVtJ3dGX9rwHfOcnxt7C6sV08VP=
+Ffv0pLFIp-dRRGRJK23zYlncKepOMwlCqaSupLt6tOajwUzE7wBEKwrG6Zg~~" target=3D"_b=
+lank"><img src=3D"https://braze-social-icons.s3.amazonaws.com/social-networ=
+ks-icon-sets/circle-color/linkedin@2x.png" width=3D"32" height=3D"auto" alt=
+=3D"LinkedIn" title=3D"LinkedIn" style=3D"display:block;height:auto;border:=
+0"></a></td>=0A<td style=3D"padding:0 2px 0 2px"><a href=3D"https://clicks.=
+messari.io/f/a/8_n1KRZUmr1r4VQMtOpBmQ~~/AAQRxRA~/FjlZhxazJSqVTgRPYHLL4PXVvg=
+7_BkcfJwZ-14YwgUnk80Gi7E_pS-V3CUbqmCuNOoM87fI0GH9igkf8-0pppAVaeM0lSW4X-bptm=
+QVMbB26ZM7U-BYQRyT-g2K9InnZ2qgOWZhwhC2EljqJVDfapg~~" target=3D"_blank"><img=
+ src=3D"https://braze-social-icons.s3.amazonaws.com/social-networks-icon-se=
+ts/circle-color/youtube@2x.png" width=3D"32" height=3D"auto" alt=3D"YouTube=
+" title=3D"YouTube" style=3D"display:block;height:auto;border:0"></a></td>=
+=0A</tr></table></div></td></tr></table>=0A</td></tr></tbody></table></td><=
+/tr></tbody></table>=0A<table class=3D"row row-9" align=3D"center" width=3D=
+"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td><table cl=
+ass=3D"row-content stack" align=3D"center" border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-tabl=
+e-rspace:0;background-color:#fff;color:#000;width:600px;margin:0 auto" widt=
+h=3D"600"><tbody><tr><td class=3D"column column-1" width=3D"100%" style=3D"=
+mso-table-lspace:0;mso-table-rspace:0;font-weight:400;text-align:left;paddi=
+ng-left:5px;padding-right:5px;vertical-align:top"><table class=3D"paragraph=
+_block block-1" width=3D"100%" border=3D"0" cellpadding=3D"10" cellspacing=
+=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0=
+;word-break:break-word"><tr><td class=3D"pad"><div style=3D"color:#101b24;d=
+irection:ltr;font-family:Roboto,Arial,Sans-serif;font-size:12px;font-weight=
+:400;letter-spacing:0;line-height:NaN;text-align:center;mso-line-height-alt=
+:NaNpx">=0A<p style=3D"margin:0;margin-bottom:0">=0ADisclosure: Authors may=
+ own cryptoassets named in this newsletter. For more information, please vi=
+sit&nbsp;<a href=3D"https://clicks.messari.io/f/a/sQ7eAfw7JGYTMyrIdF0OfA~~/=
+AAQRxRA~/rxSsrzdcIWgQV2Z3Wuq71sMKNmQsW80NOC1bqejL-4g8FDWi6VlL0w1Wjgckv-9-Vq=
+MXuYFRuT8EaSeNnLCC-hEuopiRc6JeT78OmM8qFAjl6EDv_Ogdrs9WUXrB_PSlNGNRhfjXiHP6l=
+zBCXyKlB3KmDOZhIbO7I8381YBdGckymkKdJFbj2kHJRtxEOOA3OxB0LhHssNkOHqbwWRou0Jff=
+2h0jqeGiNlCCKdt3dZwFnamVjYNVTjbybX680AETHltM4sdGzJ_iszmwrwxju3KWJMjCNSJypwK=
+iMijGCblfZlFC114btzYJdNteOLhbXGHKFVDDzkSgNf6LyO6HpFYGE3srBvAOqd1GnWkYvDbeCY=
+bqnjX2UmAmO749U3ZgRr_je6WXwTcer7yqAj52hBPp8WE8jk4ktJdkw4v0evOzFnX4N6X9NG4Av=
+wV3O1FEZD79s0UbRlfu_4N2dRq9ik81CQLMYciahwhX_NiQy-2hDFDKJ0rOIYTG9OhhYq891Q-P=
+9b9hDy0wZN9nAugpiSir3qwjlj8ntr2R7EmLK7NHxi3yPqXk12qb8pW9KrWym7uf0C6qp3qYjIH=
+QZolgthYRpj6-BPpLR0MZO3XWqYQuGWQMFN-J9w31ONiBQ9xUDhrl_Wnv2yqgW0wSQFppV0VbXp=
+1E7QztT8W3q7chE39Ck-c5Vmq9P6GiM3LNJPU7Yq_18_BOB4Osj6bC1lP8Z8iWZmnP-mdUV2ZFT=
+Dndozv4wycqt-kAtM2QXPCvkhBP" rel=3D"noopener" target=3D"_blank" style=3D"te=
+xt-decoration: underline; color: #1871D8;">messari.io</a>.</p>=0A<p style=
+=3D"margin:0;margin-bottom:0">&nbsp;</p>=0A<p style=3D"margin:0;margin-bott=
+om:0">=0AUnqualified&nbsp;Opinions, a Messari newsletter, is meant for info=
+rmational purposes only. It is not meant to serve as investment advice. Ple=
+ase consult with your investment, tax, or legal advisor before making any i=
+nvestment decisions.</p>=0A<p style=3D"margin:0;margin-bottom:0">&nbsp;</p>=
+=0A<p style=3D"margin:0;margin-bottom:0">=0AAdvertising and sponsorship do =
+not influence editorial decisions or content. Third party advertisements an=
+d links to other sites where products or services are advertised are not en=
+dorsements or recommendations by Messari. Messari is not responsible for th=
+e content of the ads, promises made, or the quality or reliability of the p=
+roducts or services offered in any third party advertisement.</p>=0A<p styl=
+e=3D"margin:0;margin-bottom:0">&nbsp;</p>=0A<p style=3D"margin:0;margin-bot=
+tom:0">&nbsp;</p>=0A<p style=3D"margin:0;margin-bottom:0">&nbsp;</p>=0A<p s=
+tyle=3D"margin:0;margin-bottom:0">&nbsp;</p>=0A<p style=3D"margin:0">Copyri=
+ght =C2=A9 2024 Messari, All rights reserved.<br><br>Messari<br>228 Park Av=
+e S PMB 52631<br>New York, New York 10003</p>=0A</div></td></tr></table></t=
+d></tr></tbody></table></td></tr></tbody></table>=0A</td></tr></tbody></tab=
+le>=0A<!-- End -->=0A=0D=0A<img border=3D"0" width=3D"1" height=3D"1" alt=
+=3D"" src=3D"https://clicks.messari.io/q/LqX7MPZvgxYwOeKw_Gz94w~~/AAQRxRA~/=
+mm-7lg_YE-xX8iej5O5iTu-Dq-zs_Y45nWn50Yixv-_LPdamhBXuGlmh46yVIKjIA9t1IiwZaBJ=
+YdQ235aNC1A~~">=0D=0A</body>=0A</html>
+--_----fJy44DQYXj+AW511DVHhYQ===_CB/D7-62650-F7FD5296--
+
